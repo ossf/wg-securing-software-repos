@@ -5,7 +5,7 @@ repository:
   name: wg-securing-software-repos
 
   # A short description of the repository that will show up on GitHub
-  description: The Securing Software Repositories working group is for and focuses on the maintainers of software repositories, software registries, and tools which rely on them, at various levels including system, language, plugin, extensions and container system. It provides a forum to share experiences and to discuss shared problems, risks and threats.
+  description: The Securing Software Repositories working group is for and focuses on the maintainers of software repositories, software registries, and tools which rely on them, at various levels including system, language, plugin, extensions and container systems. It provides a forum to share experiences and to discuss shared problems, risks and threats.
 
   # A URL with more information about the repository
   homepage: https://openssf.org
