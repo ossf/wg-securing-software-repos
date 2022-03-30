@@ -12,7 +12,7 @@ This working group is for and focuses on the maintainers of software repositorie
 * Act as a clearinghouse for new ideas that could benefit multiple ecosystems
 * Enable maintainers to better align and coordinate policies and changes between different ecosystems
 * Identify & escalate needs for infrastructure and assistance for shared tooling and/or services (to be filled by supportive or sponsoring organizations (such as the [OpenSSF](https://www.openssf.org/)))
-* Develop methods for sharing data related to software repositories, software registries, and tools which rely on them.
+* Develop methods for sharing data related to software repositories, software registries, and tools which rely on them
 * Delegate solving particular problems and goals to subgroups or other workgroups as appropriate
 
 The working group may create:
