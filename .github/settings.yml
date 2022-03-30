@@ -19,6 +19,8 @@ collaborators:
   # Chairs and Admin Help
   - username: bobcallaway
     permission: admin
+  - username: di
+    permission: admin
 
     # Contributors
     # all permissions except admin
