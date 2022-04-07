@@ -8,7 +8,7 @@ This Technical Charter sets forth the responsibilities and procedures for techni
 
 #### 1. Mission and Scope of the Technical Initiative
 
-- a. The mission of the Technical Initiative is to be for and focus on the maintainers of software repositories, software registries, and tools which rely on them, at various levels including system, language, plugin, extensions and container systems. It provides a forum to share experiences and to discuss shared problems, risks and threats. This mission is elaborated in the Technical Initiative's [Objectives statement](https://github.com/jchestershopify/wg-securing-software-repos#objective).
+- a. The mission of the Technical Initiative is to be for and focus on the maintainers of software repositories, software registries, and tools which rely on them, at various levels including system, language, plugin, extensions and container systems. It provides a forum to share experiences and to discuss shared problems, risks and threats. This mission is elaborated in the Technical Initiative's [Objectives statement](https://github.com/ossf/wg-securing-software-repos#objective).
 
 - b. The scope of the Technical Initiative includes collaborative development under the Technical Initiative License (as defined herein) supporting the mission, including organizing collaboration activities, defining best practices, documentation, testing, integration, and the creation of other artifacts that support the mission.
 
