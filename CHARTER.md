@@ -105,3 +105,16 @@ This Technical Charter sets forth the responsibilities and procedures for techni
 #### 7. Amendments
 
 - a. This charter may be amended by a two-thirds vote of the entire TSC and is subject to approval by the TAC.
+
+#### 8. Maintainers
+
+- a. For the purposes of this document, the Maintainers are as follows:
+   * Bob Callaway (Google)
+   * Brian Fox (Sonatype / Maven Central)
+   * Dustin Ingram (Google / PyPI)
+   * Jacob Finkelman / Eh2406 (Cargo)
+   * Jacques Chester (Shopify)
+   * Jason Swank (Sonatype / Maven Central)
+   * Josef Šimánek (RubyGems)
+   * Myles Borins (GitHub / npm)
+   * Trevor Rosen (GitHub / npm)
