@@ -42,7 +42,7 @@ This group is chaired by [Dustin Ingram](https://github.com/di).
 
 * [Meeting Minutes](https://docs.google.com/document/d/1-f6m442MHg9hktrbcp-4sM9GbZC3HLTpZPpxMXjMCp4/edit)
 * [Mailing list](https://lists.openssf.org/g/openssf-wg-securing-software-repos). [Manage your subscriptions to Open SSF mailing lists](https://lists.openssf.org/g/main/subgroups).
-* [OpenSSF Slack](https://openssf.slack.com/archives/C034CBLMQ9G) instance in the `#securing_software_repos` channel
+* [OpenSSF Slack](https://openssf.slack.com/archives/C034CBLMQ9G) instance in the `#securing_software_repos` channel (see [here](https://openssf.slack.com/join/shared_invite/zt-xoktwsef-VzM~b22G2gfT_~4woTTsQA#/shared-invite/email) for an invite) 
 
 ## Meeting times
 
