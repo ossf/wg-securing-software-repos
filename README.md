@@ -1,6 +1,6 @@
 # wg-securing-software-repos
 
-_Proposed_ OpenSSF Working Group on Securing Software Repositories
+OpenSSF Working Group on Securing Software Repositories
 
 ## Motivation
 
