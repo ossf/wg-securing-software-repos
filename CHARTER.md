@@ -118,3 +118,4 @@ This Technical Charter sets forth the responsibilities and procedures for techni
    * Josef Šimánek (RubyGems)
    * Myles Borins (GitHub / npm)
    * Trevor Rosen (GitHub / npm)
+   * Zack Newman (Chainguard)
