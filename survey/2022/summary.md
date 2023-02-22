@@ -61,7 +61,7 @@ builds without this property.
 
 ## Protecting the ecosystem
 
-Most ecosystems are not currently performing any security testing against its
+Most ecosystems are not currently performing any security testing against 
 code/infrastructure. However, all of them are interested (7) or have it planned
 (2). These ecosystems could be funded for security testing.
 
@@ -82,9 +82,8 @@ Further investigation on why would be helpful.
 ## Policy:
 
 With policy, there is a mix of implementations that help provide ability to
-create policy on keys/hashes as well as checking for known vulnerabilities, as
-well as a significant number of ecosystems (4-5) which do not but are
-interested.
+create policy on keys/hashes as well as checking for known vulnerabilities. A
+significant number of ecosystems (4-5) currently do not but are interested.
 
 For policies that take into account 3rd party audits and attestations, only 1
 ecosystem provided functionality. The rest are mostly interested (8) and planned
@@ -112,16 +111,16 @@ In general most ecosystems allow pinned dependencies that are immutably
 verifiable. However, there are 3 ecosystems that do not have this yet. Further
 investigation on why would be helpful.
 
-Only 27.3% of ecosystems have fuzzing services and utilities available, 45.5%
+Only 27.3% of ecosystems have fuzzing services and utilities available, 45.4%
 have no plans on implementing and the last 27.3% are interested in exploring.
 This could be an avenue for education of the value of fuzzing within the
 different ecosystems.
 
 There is a surprising lack of SAST/DAST services available for ecosystems to
-detect bad code patterns with 5 ecosystems without the capabilities at the
-moment. Funding of tooling could be helpful here.
+detect bad code patterns. Currently, 5 ecosystems of the 11 are without the
+capabilities. Funding of tooling could be helpful here.
 
-There is a high demand (8) of services and tools for developers to help keep
+There is a high demand (8) for services and tools for developers to help keep
 their code and packages in good shape. E.g. like dependabot for the package
 ecosystem. This would be a gap that could be filled by additional tooling.
 
