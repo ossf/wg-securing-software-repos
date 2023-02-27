@@ -5,21 +5,20 @@ an effort to survey the current security landscape of package manager
 ecosystems.
 
 This effort provides a survey/landscape of different security mechanisms and
-features that are implemented across the different ecosystems as it pertains to
+features that are implemented across the different ecosystems as they pertain to
 security critical user journeys. The goal of this exercise is to understand
 overall security priorities, and to cross-pollinate ideas, threat models and
 designs across the ecosystems. 
 
-The survey covers 3 main broad topics: Secure, Ingest and
-Evaluate. This includes areas of:
+The survey covers the following topics:
 - Integrity
-- Typos & dependency confusion
+- Typos and dependency confusion
 - Handling compromise and malice
-- Portecting the ecosystem
-- Auth and credential Management
+- Protecting the ecosystem
+- Authentication and credential management
 - Policy
 - SBOMs
-- Identifying and producing good depdencies
+- Identifying and producing good dependencies
 
 ## Survey Summary
 

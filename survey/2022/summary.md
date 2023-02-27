@@ -6,23 +6,23 @@ takeaways from each category of the survey.
 In total, we had package manager maintainers (and/or reputable sources) from 11
 different package manager ecosystems responded to the survey. Including:
 
--   PyPI (Python
--   Gradle (JVM)
--   Basalt  (Bash)
+-   PyPI (Python)
+-   Gradle (Java)
+-   Basalt (Bash)
 -   Opam (OCaml)
--   RubyGems (ruby)
--   Npm (javascript)
--   Pkg.go.dev (go)
+-   RubyGems (Ruby)
+-   npm (javascript)
+-   Pkg.go.dev (Go)
 -   Cargo (Rust)
 -   Pub (Dart)
--   Apache Maven
--   Maven Central
+-   Apache Maven (Java)
+-   Maven Central (Java)
 
 ## Integrity
 
 Most support is still around developer owned keys for signing (with PGP being
-the most supported signature type), with some a couple ecosystems with no
-support for signing yet - but there is interest/plans.
+the most supported signature type), with some a couple ecosystems which do not
+support signing yet - but there is interest/plans.
 
 There are no package managers that support keyless signing yet.
 
@@ -36,7 +36,7 @@ making it mandatory.
 45.5% of package managers do not require and do not plan on having DNS
 verification proof when reserving/exercising a domain/namespace or domain name
 attribute of a package. This could lead to impersonation of
-organisations/entities. A method to reduce the cost of protecting against this
+organizations/entities. A method to reduce the cost of protecting against this
 threat or education of the seriousness of this threat is needed.
 
 General typos and dependency confusion is observed and handled in a myriad of
@@ -51,7 +51,7 @@ Most ecosystems don't see the responsibility of finding malware in the packages
 as their responsibility. However, they provide the ability to flag and handle
 malware in releases when it happens.
 
-Rust, Ruby and Gradle have no plans on ensuring that install and build code
+Rust, Ruby and Gradle have no plans on ensuring that install and build of code
 doesn't allow execution of arbitrary code on the host in an unprotected way.
 This is an area that requires further investigation into why that is not a
 priority and look into a way to be able to have isolation and provenance of
@@ -73,13 +73,13 @@ binaries/tooling that it produces. This is an area for improvement overall.
 
 ![image](https://user-images.githubusercontent.com/3060102/220682148-2d488135-4695-41b5-a6ab-e5f85883f612.png)
 
-## Auth and Credential Management
+## Authentication and credential management
 
 Generally there is interest in protecting token security, which is positive
 feedback. There are 2 ecosystems that currently have no plans on requiring MFA.
 Further investigation on why would be helpful.
 
-## Policy:
+## Policy
 
 With policy, there is a mix of implementations that help provide ability to
 create policy on keys/hashes as well as checking for known vulnerabilities. A
@@ -98,7 +98,7 @@ public instance can be leveraged to lower the cost to do so.
 interested (5) or planned (2). Additional tooling support is required and could
 be a place where the OpenSSF SBOMs everywhere workstream 9 can be helpful.
 
-Most SBOM formats are around SPDX and CycloneDX, with the exception of golang
+Most SBOM formats are around SPDX and CycloneDX, with the exception of Go 
 that provides an intermediary format. This is a positive indicator of
 convergence around the two SBOM standards.
 
