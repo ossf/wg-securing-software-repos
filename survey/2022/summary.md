@@ -68,7 +68,7 @@ code/infrastructure. However, all of them are interested (7) or have it planned
 All ecosystems have a process in place for vulnerability disclosure or are
 interested in doing so.
 
-Only 1 ecosystem has additional supply chain security guarantees for the
+Only 1 ecosystem (Go) has additional supply chain security guarantees for the
 binaries/tooling that it produces. This is an area for improvement overall.
 
 ![image](https://user-images.githubusercontent.com/3060102/220682148-2d488135-4695-41b5-a6ab-e5f85883f612.png)
