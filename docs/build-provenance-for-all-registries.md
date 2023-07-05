@@ -2,7 +2,7 @@
 
 There’s a new security capability that registries can offer - build provenance - which verifiably links a package back to its source code and build instructions.
 
-**The goal is to have packages be transparent about their contents.** Note that we aren’t saying a package with provenance is _inherently_ secure or trustworthy, just that links to source code and build instructions exist (and are non-falsifiable) for consumers to follow and make their own determination, either through manual inspection or by evaluating provenance with their own policies. This is a stronger guarantee than information optionally and manually being supplied by maintainers.
+**The goal is to have packages be transparent about their contents.** Note that we aren’t saying a package with provenance is _inherently_ secure or trustworthy, just that non-falsifiable links to source code and build instructions exist for consumers to follow and make their own determination, either through manual inspection or by evaluating provenance with their own policies. This is a stronger guarantee than information optionally and manually being supplied by maintainers.
 
 For provenance to be meaningful, it requires using a build system that can:
 
@@ -56,15 +56,15 @@ You might be wondering how much of this Sigstore interaction you need to impleme
 
 # Extending the registry to support build provenance
 
-Now we’re ready to publish the package to the registry, but we need a way to authorize the request. Instead of requiring maintainers to store their password or an unscoped API token in the cloud CI/CD provider, we recommend allowing maintainers to set up a trust relationship between the cloud CI/CD system and your registry via OIDC. For an example of this, see <https://docs.pypi.org/trusted-publishers/>. In fact, registries can implement OIDC trust relationshipƒ to authorize publish requests without needing any support from Sigstore client libraries. So this is an excellent scoped project to start with, which is exactly what PyPI did.
+Now we’re ready to publish the package to the registry, but we need a way to authorize the request. Instead of requiring maintainers to store their password or an unscoped API token in the cloud CI/CD provider, we recommend allowing maintainers to set up a trust relationship between the cloud CI/CD system and your registry via OIDC. For an example of this, see <https://docs.pypi.org/trusted-publishers/>. In fact, registries can implement OIDC trust relationships to authorize publish requests without needing any support from Sigstore client libraries. So this is an excellent scoped project to start with, which is exactly what PyPI did.
 
-Finally, we submit the package (along with the signed build attestations) to the registry. Our work is done… as the CLI tooling! Now we need to verify the provenance on the registry side. See above for a discussion on what Sigstore tooling is available in what programming languages.
+Finally, we submit the package and the signed build attestations to the registry. Our work is done… as the CLI tooling! Now we need to verify the provenance on the registry side. See above for a discussion on what Sigstore tooling is available in what programming languages.
 
 For a detailed description of how to verify the Sigstore bundle, see the [Verification section of the Sigstore Client Specification](https://docs.google.com/document/d/1kbhK2qyPPk8SLavHzYSDM8-Ueul9_oxIMVFuWMWKz0E/edit#heading=h.g11ovq2s1jxh). Additionally, the registry will want to verify that the bundle comes from a cloud CI/CD vendor it supports, and (of course) that the hash of the package matches what’s recorded in the Sigstore bundle.
 
 There’s one last verification we recommend registries do - check to see if the previous version had provenance, and if so, see if the source code has a new URI (i.e. if the project moved to a new name, new organization, or a new source code provider). While this could be an indication of compromise, it could also be a normal evolution of a project. We recommend registries do not allow unexpected changes in provenance, however, they should provide package maintainers a way to indicate ahead of time that the package provenance is expected to change. Relatedly, we recommend registries not allow a package to publish without provenance after it has published with provenance - unless the maintainers have indicated ahead of time that they intend to no longer publish with provenance.
 
-At this point, we recommend the registry make a publish attestation document and send it to Sigstore’s Rekor. This creates an auditable public record of what packages have been published to the registry with provenance. For an example of a publish attestation, see <https://search.sigstore.dev/?logIndex=20766332>. Note that this is \*not\* using an OIDC token or a Fulcio signing certificate; we recommend using a HSM-backed durable signing key, managed by the registry, for signing the publish attestation.
+At this point, we recommend the registry make a [`publish`](https://github.com/npm/attestation/tree/34f164c30ea75a364646e2439d9d1408bea57585/specs/publish/v0.1) attestation document and send it to Sigstore’s Rekor. This creates an auditable public record of what packages have been published to the registry with provenance. For an example of a published attestation, see <https://search.sigstore.dev/?logIndex=20766332>. Note that this is \*not\* authenticated using an OIDC token or a Fulcio signing certificate; we recommend using a HSM-backed durable signing key, managed by the registry, for signing the publish attestation.
 
 Once the bundle has been verified and the publish attestation publicly recorded, we can store the package and the Sigstore bundle for later use. The registry should maintain a one-to-one mapping between a package at a specific version and its associated provenance. It should retain that provenance for as long as it retains the associated package version.
 
@@ -77,7 +77,7 @@ When serving out build provenance, the registry should periodically ensure that 
 
 We recommend build provenance is served three ways: in the registry web UI, via an API call to the registry, and in CLI tooling.
 
-The registry web UI should convey to consumers that a package has provenance, but **not** that it is automatically trustworthy. Remember, build provenance just provides links back to the source code and build instructions - package consumers still need to follow those links to assess trustworthiness. We recommend providing literal links back to the source code, build instructions, and transparency log entry of the build provenance; here is what that looks like on the npm registry:
+The registry web UI should convey to consumers that a package has provenance, but **not** that it is automatically trustworthy. Remember, build provenance just provides links back to the source code and build instructions. Package consumers still need to follow those links to assess trustworthiness. We recommend providing literal links back to the source code, build instructions, and transparency log entry of the build provenance. Here is what that looks like on the npm registry:
 
 ![Provenance screenshot from npmjs.com showing the cloud CI/CD system along with links to source code, build instructions, and public ledger](./imgs/npm-provenance.png)
 
