@@ -58,7 +58,7 @@ You might be wondering how much of this Sigstore interaction you need to impleme
 
 # Extending the registry to support build provenance
 
-Now we're ready to publish the package to the registry, but we need a way to authorize the request. Instead of requiring maintainers to store their password or an unscoped API token in the cloud CI/CD provider, we recommend allowing maintainers to set up a trust relationship between the cloud CI/CD system and your registry via OIDC. For an example of this, see <https://docs.pypi.org/trusted-publishers/>. In fact, registries can implement OIDC trust relationships to authorize publish requests without needing any support from Sigstore client libraries. So this is an excellent scoped project to start with, which is exactly what PyPI did.
+Now we're ready to publish the package to the registry. Traditionally, the publish request would be authorized using a long-lived shared secret, like an API key or a password. However, since the cloud CI/CD system now has an OIDC token containing the workload identity, we can authorize the publish request with a trust relationship based on the properties in the OIDC token. For an example of this, see <https://docs.pypi.org/trusted-publishers/>. In fact, registries can implement OIDC trust relationships to authorize publish requests without needing any support from Sigstore client libraries. So this is an excellent scoped project to start with, which is exactly what PyPI did.
 
 Finally, we submit the package and the signed build attestations to the registry. Our work is done… as the CLI tooling! Now we need to verify the provenance on the registry side. See above for a discussion on what Sigstore tooling is available in what programming languages.
 
@@ -92,7 +92,7 @@ Last but not least, we recommend your CLI tooling provide a way to retrieve and 
 
 Adding build provenance to a registry is not a small undertaking, but it adds a major security capability in that packages can be transparent about what they contain and how they were built.
 
-If you aren't sure where to start, we recommend skipping Sigstore entirely and instead focusing on allowing publish authorization via a cloud CI/CD system's OIDC token, like <https://docs.pypi.org/trusted-publishers/>. This will increase the security of your registry by not requiring people to store passwords or unscoped API tokens in their build system, and introduce your users to the concept of OIDC tokens.
+If you aren't sure where to start, we recommend skipping Sigstore entirely and instead focusing on allowing publish authorization via a cloud CI/CD system's OIDC token, like <https://docs.pypi.org/trusted-publishers/>. This will increase the security of your registry by not requiring people to store passwords or API keys in their build system, and introduce your users to the concept of OIDC tokens.
 
 When you're ready to suggest your ecosystem provide build provenance with Sigstore, we have a few suggestions of points to emphasize:
 
