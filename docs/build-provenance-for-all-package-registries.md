@@ -2,16 +2,31 @@
 
 There's a new security capability that registries can offer - build provenance - which verifiably links a package back to its source code and build instructions. Since these links are publicly available, package consumers can verify the package contains what it says, instead of having to trust that the build process or source code wasn't compromised.
 
-Build provenance starts with the build system making information about source code and build instructions available in a non-falsifiable way. During a build, that information is sent to a public-good signing service called [Sigstore](https://www.sigstore.dev/how-it-works), which provides a public transparency log for auditing purposes as well as enabling signing without requiring individual users to manage keys. The signed build provenance is then sent to a registry on package upload, and served to users when they consume a package. In this document, we describe the design decisions and high-level implementation for adding build provenance to npm, to show other registries how they could also support this capability.
 
-Before we talk about the implementation, let's talk through the design decisions. **The goal is to have packages be transparent about their contents.** Note that we aren't saying a package with provenance is _inherently_ secure or trustworthy, just that non-falsifiable links to source code and build instructions exist for consumers to follow and make their own determination, either through manual inspection or by evaluating provenance with their own policies. This is a stronger guarantee than information optionally and manually being supplied by maintainers.
+## Why Build Provenance
+
+**The goal is to have packages be transparent about their contents.** Many packaging systems today allow maintainers to manually specify links to their source code, but there's no guarantee the provided information is what was actually used in producing that package. Build provenance ensures these links both exist and are non-falsifiable. Note that this doesn't mean a package with build provenance is _inherently_ secure or trustworthy; just that those links do exist. Package consumers still need to follow those links to make their own determination of trustworthiness, either through manual inspection or other policies.
+
+
+## How Build Provenance Works
+
+Producing build provenance is a collaboration between a cloud CI/CD provider, a public-good signing service called [Sigstore](https://www.sigstore.dev/how-it-works), and a package registry (like npm):
+
+![Diagram of provenance information flows between the cloud CI/CD system, Sigstore, and the npm registry](./imgs/provenance-flow.png)
+
+At a high level, the cloud CI/CD system enforces the source code and build instructions used to build the package, and provides that information in a signed OIDC token. Those build properties are then sent to Sigstore, which both enables signing without requiring individual packages to manage keys, as well as provide a public transparency log for auditing purposes. The build provenance signed by Sigstore is then sent to the registry on package upload, and served to users when they consume a package.
+
+
+## Resulting Design Decisions
+
+Before we walk through the implementation in more detail, let's talk through several design decisions that come from the goal of packages being transparent about their contents.
 
 For provenance to provide strong security guarantees, it requires using a build system that can:
 
 - Run a build in an isolated, ephemeral environment
 - Securely communicate the build properties to the registry, in a way the build instructions themselves cannot tamper with
 
-These requirements mean you won't be able to generate trustworthy build provenance anywhere, like on a personal development machine. That's okay! Because most programming language registries have a mandate that anyone be able to publish new content quickly, **we do not recommend registries _require_ build provenance for all packages**. Instead, we encourage maintainers to think of build provenance as an important step of maturity for open source projects. You should add build provenance to your project as you grow and alongside other steps of maturity, like adding formal contribution rules, enumerated responsibilities for maintainers, or setting up a security vulnerability reporting policy.
+These requirements mean you won't be able to generate trustworthy build provenance anywhere, like on a personal development machine. That's okay! Because some package registries have a mandate that anyone be able to publish new content quickly, **we do not recommend registries _require_ build provenance for all packages**. Instead, we encourage maintainers to think of build provenance as an important step of maturity for open source projects. You should add build provenance to your project as you grow and alongside other steps of maturity, like adding formal contribution rules, enumerated responsibilities for maintainers, or setting up a security vulnerability reporting policy.
 
 Instead, we recommend that **builds take place on cloud CI/CD systems** that are able to provide isolation, ephemeral runners, and signed build metadata that the build cannot tamper with. The information from these cloud CI/CD systems are sent to Sigstore's Fulcio component. You can see what cloud CI/CD systems Fulcio trusts at <https://github.com/sigstore/fulcio/tree/main/federation>, and you can see what information those cloud CI/CD systems must provide at <https://github.com/sigstore/fulcio/blob/main/docs/oid-info.md#requirements-to-support-signing-with-cicd-workload-identities>.
 
@@ -22,7 +37,7 @@ As of April 2023, there is a [public beta of build provenance in npm](https://gi
 
 # npm build provenance
 
-Here's a high-level diagram of how npm build provenance works:
+Again, here's a high-level diagram of how build provenance works:
 
 ![Diagram of provenance information flows between the cloud CI/CD system, Sigstore, and the npm registry](./imgs/provenance-flow.png)
 
@@ -45,7 +60,7 @@ If your registry supports private packages, the registry should check that you'r
 
 Then we want to request an OIDC token that Sigstore Fulcio will accept. The registry should ensure you're on [CI/CD provider Fulcio supports](https://github.com/sigstore/fulcio/tree/main/federation), and if so, request an OIDC token with the audience set to "sigstore".
 
-Next you'll construct the build provenance attestations. We recommend using [in-toto attestations](https://github.com/in-toto/attestation/blob/main/spec/README.md#in-toto-attestation-framework-spec) for formatting your attestation document, and [SLSA provenance](https://slsa.dev/provenance/v1) for the predicates in the in-toto attestation document. See [npm CLI's provenance.js](https://github.com/npm/cli/blob/latest/workspaces/libnpmpublish/lib/provenance.js) for a reference implementation.
+Next you'll construct the build provenance attestations. We recommend using [in-toto attestations](https://github.com/in-toto/attestation/blob/main/spec/README.md#in-toto-attestation-framework-spec) for formatting your attestation document, and [SLSA provenance](https://slsa.dev/provenance/v1) for the predicates in the in-toto attestation document. See [npm CLI's provenance.js](https://github.com/npm/cli/blob/latest/workspaces/libnpmpublish/lib/provenance.js) for a reference implementation, and note that there are [official in-toto protocol buffers for SLSA provenance](https://github.com/in-toto/attestation/blob/main/protos/in_toto_attestation/predicates/provenance/v1/provenance.proto).
 
 Now you're ready to sign the package! You'll create an ephemeral key pair, and then send to Fulcio the OIDC token, your ephemeral public key, the OIDC subject signed with your private key (the “challenge value”), and your build artifact signed with your private key. See [sigstore-js' sign.ts](https://github.com/sigstore/sigstore-js/blob/main/packages/client/src/sign.ts#L110) for a reference implementation.
 
@@ -60,7 +75,7 @@ You might be wondering how much of this Sigstore interaction you need to impleme
 
 Now we're ready to publish the package to the registry. Traditionally, the publish request would be authorized using a long-lived shared secret, like an API key or a password. However, since the cloud CI/CD system now has an OIDC token containing the workload identity, we can authorize the publish request with a trust relationship based on the properties in the OIDC token. For an example of this, see <https://docs.pypi.org/trusted-publishers/>. In fact, registries can implement OIDC trust relationships to authorize publish requests without needing any support from Sigstore client libraries. So this is an excellent scoped project to start with, which is exactly what PyPI did.
 
-Finally, we submit the package and the signed build attestations to the registry. Our work is done… as the CLI tooling! Now we need to verify the provenance on the registry side. See above for a discussion on what Sigstore tooling is available in what programming languages.
+Now that we have the package and the signed build attestation, we switch our focus to the registry and how it verifiers that information as it handles the publish request. See above for a discussion on what Sigstore libraries are available in what programming languages.
 
 For a detailed description of how to verify the Sigstore bundle, see the [Verification section of the Sigstore Client Specification](https://docs.google.com/document/d/1kbhK2qyPPk8SLavHzYSDM8-Ueul9_oxIMVFuWMWKz0E/edit#heading=h.g11ovq2s1jxh). Additionally, the registry will want to verify that the bundle comes from a cloud CI/CD vendor it supports, and (of course) that the hash of the package matches what's recorded in the Sigstore bundle.
 
