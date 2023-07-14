@@ -25,10 +25,12 @@ The working group may create:
 * The working group is not a governing body and does not create binding obligations on members
 * The working group does not dictate technologies, tools or solutions, though members are free to recommend them to one another
 
-## Current work
+## Published work
 
-* Survey of OSS software repositories
-* TBD
+* **[Build Provenance for All Package Registries](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/build-provenance-for-all-package-registries.md)**
+  > Guidance for package registries in adopting build provenance to verifiably link a package back to its source code and build instructions.
+* **[The Package Manager Landscape Survey](https://github.com/ossf/wg-securing-software-repos/blob/main/survey/2022/README.md)**
+  > A survey/landscape of different security mechanisms and features that are implemented across the different ecosystems as they pertain to security critical user journeys.
 
 ## Governance
 
