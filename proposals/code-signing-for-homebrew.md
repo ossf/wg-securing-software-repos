@@ -45,6 +45,7 @@ The Sigstore signatures described above are submitted to each tap's object stora
 To verify a Sigstore signature, a particular `brew` client needs the following:
 
 - A trust proposition, i.e. a reason to trust the identity producing the signature. For Homebrew, this trust proposition comes from the tap's own identity: the act of performing `brew tap foo/bar` establishes that Sigstore identities tied to `github.com/foo/bar` can be trusted to sign for bottles in that tap. This applies to implicit `brew tap` invocations as well, e.g. `brew install foo/bar/baz` asserts that the user expects a signature on `baz` from the `foo/bar` GitHub identity.
+    - In the interest of simplicity, this proposal limits tap identities to just GitHub Actions identities, as these are "intrinsic" to the tap itself and therefore require no additional user trust decisions. Future extensions to this scheme may extend tap identities to include email, user, or other identity types supported by Sigstore.
 - A Sigstore client library capable of verifying Sigstore signatures.
 
 Client-side verification of bottles requires `brew` to know which bottles are actually signed. Clients should use the "flag day" metadata above to establish this: `brew install` should refuse to install any unsigned bottle from a tap that both had a flag day _and_ whose flag day is before the local system time.
