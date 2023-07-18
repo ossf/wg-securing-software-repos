@@ -99,4 +99,4 @@ For source artifacts hosted on GitHub and provided (along with their signatures)
 
 For source artifacts hosted on other services (or that are signed with a non-GitHub-Actions identity), the second option allows the formula to explicitly specify the signature's URL and associated identity.
 
-For formulae with verifiable source artifacts, the attestation described above can be extended to include the verified signature, resulting in a countersignature. This countersignature can be verified by `brew` (through a Sigstore client) using the same basic client-side signature verification process described in the task above, making this a progressive enhancement to "bottle-only" signatures.
+For formulae with verifiable source artifacts, the signed bottle attestation described above can be extended to include the verified source signature, resulting in a countersignature. This countersignature can be verified by `brew` (through a Sigstore client) using the same basic client-side signature verification process described in the task above, making this a progressive enhancement to "bottle-only" signatures.
