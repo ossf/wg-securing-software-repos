@@ -107,4 +107,4 @@ For formulae with verifiable source artifacts, the signed bottle attestation des
 
 ### macOS executable code signing
 
-Because this proposal only concerns bottles and not their contents, it should have no effect on Homebrew's current use or any future uses of "ad-hoc" executable signatures (which are produced not for authenticity, but because macOS on Apple Silicon requires all executables to be signed).
+Because this proposal only concerns bottles and not their individual executable members, it should have no effect on Homebrew's current use or any future uses of "ad-hoc" executable signatures (which are produced not for authenticity, but because macOS on Apple Silicon requires all executables to be signed).
