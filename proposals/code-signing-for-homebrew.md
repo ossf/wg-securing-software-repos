@@ -25,10 +25,10 @@ Because Homebrew uses GitHub Actions for all `homebrew-core` builds, the Homebre
 The high-level flow for bottle signing:
 
 1. Existing bottle-building workflows will gain a signing step, which will only run as a finalization step for bottles that appear on `master` (i.e., not just the temporary bottles that are built as part of the normal PR lifecycle).
-2. The signing step is responsible for producing a Sigstore signature that _attests_ to the bottle. This should include, at minimum, the bottle's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of bar, or even a different version of foo than the resolver produces).
-3. The signing step is responsible for uploading the resulting signature to the same object storage as the bottle, and ensuring that the uploaded signature is addressable in a consistent and publicly derivable manner from just the formula and bottle's own metadata. In other words: a client that knows how to access the bottle's resource should also be able to access the bottle's signature resource with no additional metadata. 
+2. The signing step is responsible for producing a Sigstore signature that _attests_ to the bottle. This signed attestation should include, at minimum, the bottle archive's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of bar, or even a different version of foo than the resolver produces). The attestation will follow the [in-toto format](https://github.com/in-toto/attestation/tree/main/spec/v1) and thus will be consistent with [SLSA's attestation model](https://slsa.dev/attestation-model).
+3. The signing step is responsible for uploading the resulting signature to the same object storage as the bottle, and ensuring that the uploaded signature is addressable in a consistent and publicly derivable manner from just the formula and bottle's own metadata. In other words: a client that knows how to access the bottle's resource should also be able to access the bottle's signature resource with no additional metadata.
 
-At the end of this flow, both the bottle and its signature should appear in the tap's associated object storage. 
+At the end of this flow, both the bottle and its signature should appear in the tap's associated object storage.
 
 This flow does not sign for bottles that have already been produced, meaning that pre-existing formulae will not receive bottle signatures until they are rebuilt or otherwise updated. Consequently, each tap needs to establish a piece of "flag day" metadata: a tap should designate a timestamp `T`, after which all bottles defined by formulae in the tap are signed. This fundamentally requires that the tap itself is honest about its flag day: an attacker who can replace the tap's flag day can perform a downgrade by disabling signature verification. This is no different in scope from Homebrew's existing threat model, where an attacker must not be allowed to modify files in a tap. In other words: this signing scheme only protects the bottles themselves, not the tap's repository; the tap's repository must continue to be protected as a matter of policy.
 
@@ -45,9 +45,10 @@ The Sigstore signatures described above are submitted to each tap's object stora
 To verify a Sigstore signature, a particular `brew` client needs the following:
 
 - A trust proposition, i.e. a reason to trust the identity producing the signature. For Homebrew, this trust proposition comes from the tap's own identity: the act of performing `brew tap foo/bar` establishes that Sigstore identities tied to `github.com/foo/bar` can be trusted to sign for bottles in that tap. This applies to implicit `brew tap` invocations as well, e.g. `brew install foo/bar/baz` asserts that the user expects a signature on `baz` from the `foo/bar` GitHub identity.
+    - In the interest of simplicity, this proposal limits tap identities to just GitHub Actions identities, as these are "intrinsic" to the tap itself and therefore require no additional user trust decisions. Future extensions to this scheme may extend tap identities to include email, user, or other identity types supported by Sigstore.
 - A Sigstore client library capable of verifying Sigstore signatures.
 
-Client-side verification of bottles requires `brew` to know which bottles are actually signed. Clients should use the "flag day" metadata above to establish this: `brew install` should refuse to install any unsigned bottle from a tap that both had a flag day _and_ whose flag day is before the local system time. 
+Client-side verification of bottles requires `brew` to know which bottles are actually signed. Clients should use the "flag day" metadata above to establish this: `brew install` should refuse to install any unsigned bottle from a tap that both had a flag day _and_ whose flag day is before the local system time.
 
 The high-level flow for bottle signature verification, at tap time:
 
@@ -76,7 +77,7 @@ class Ripgrep < Formula
   homepage "https://github.com/BurntSushi/ripgrep"
   url "https://github.com/BurntSushi/ripgrep/archive/13.0.0.tar.gz"
 
-  # OPTION 1: 
+  # OPTION 1:
   # verifies using the default `#{url}.sigstore` bundle above
   # with the identity and issuer for the repo
   sigstore :default
