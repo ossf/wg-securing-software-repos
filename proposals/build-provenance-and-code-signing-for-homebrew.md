@@ -65,7 +65,7 @@ And at `brew install` time:
 - For each bottle and signature, `brew install` must internally reconstruct the _attestation_ described in the signing process above. This is then used as the cleartext input for signature verification. This input is then passed into the underlying Sigstore client along with its associated signature; the Sigstore client is responsible for performing both the signature verification and its associated identity verification.
 - If the underlying signature verification fails, then `brew install` must fail.
 
-Like with previous Homebrew features, an experimental feature-flagged variant of signature verification may be merged and enabled before it is enabled by default.
+Like with previous Homebrew features, an experimental feature-flagged variant of signature verification may be merged and enabled before it is enabled by default. Verification will be optional while bottles are incrementally updated/rebuilt with signatures, and once every core bottle is signed, then everything must be signed after the flag day.
 
 ## Full source and build provenance for Homebrew
 
