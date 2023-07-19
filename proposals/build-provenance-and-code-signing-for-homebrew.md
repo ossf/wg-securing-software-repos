@@ -1,10 +1,10 @@
-# Code-signing for Homebrew with Sigstore
+# Build Provenance and Code-signing for Homebrew
 
 Authors: [William Woodruff](https://github.com/woodruffw), [Dustin Ingram](https://github.com/di)
 
 ## Summary
 
-The document contains a technical proposal for using Sigstore to produce cryptographic signatures for the Homebrew package manager. The end goal is to improve Homebrew's authenticity and supply-chain integrity properties, establishing that a given package was both built from an attested source artifact as well as on an attested machine (i.e., a Homebrew-controlled GitHub Actions workflow).
+The document contains a technical proposal for introducing build provenance and cryptographic signatures to the Homebrew package manager. The end goal is to improve Homebrew's authenticity and supply-chain integrity properties, establishing that a given package was both built from an attested source artifact as well as on an attested machine (i.e., a Homebrew-controlled GitHub Actions workflow).
 
 The proposal is broken up into individual technical items, which are meant to be semi-independent units of work. The units of work are ordered by dependency relationship; i.e. signature generation must come before any signatures can be verified on the client side.
 
@@ -14,21 +14,23 @@ The proposal is broken up into individual technical items, which are meant to be
 
 [Sigstore](https://www.sigstore.dev/) is a Linux Foundation project aimed at making codesigning available to everybody. It uses a combination of open standards (OpenID Connect, WebPKI, Certificate Transparency) to bind non-cryptographic identities (such as emails or GitHub Actions workflow identities) to short-lived signing keys, which can then be used to sign for artifacts much like `gpg` or any other signing tool.
 
+[SLSA](https://slsa.dev) is a set of incrementally adoptable guidelines for supply chain security, established by industry consensus, as well as a specification for attesting to the usage of these best practices in a verifiable way. The specification set by SLSA is useful for both software producers and consumers: producers can follow SLSA's guidelines to make their software supply chain more secure, and consumers can use SLSA to make decisions about whether to trust a software package.
+
 ## Technical Items
 
-### Sigstore signatures for official Homebrew taps
+### Provenance attestations and signatures for official Homebrew taps
 
 Homebrew's packaging processes are built around GitHub Actions. In particular, Homebrew uses GitHub Actions to perform builds of all core formulae (package specifications, like LLVM, `bash`, or `git`) into bottles (binary distributions that can be installed on client machines, similar to an `.app` or `.pkg`). Bottles are then hosted on GitHub Packages (or other hosts, for third-party taps) and are installed by end-user clients e.g. during `brew install` invocations.
 
-Because Homebrew uses GitHub Actions for all `homebrew-core` builds, the Homebrew CI has trivial access to GitHub Actions' [ambient OpenID Connect identities](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect). These identities can in turn be used to sign with Sigstore, meaning that Homebrew's existing CI workflows would require relatively little additional configuration (and zero external key management) to produce valid Sigstore signatures for each bottle build.
+Because Homebrew uses GitHub Actions for all `homebrew-core` builds, the Homebrew CI has trivial access to GitHub Actions' [ambient OpenID Connect identities](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect). These identities can in turn be used to generate build provenance and sign with Sigstore, meaning that Homebrew's existing CI workflows would require relatively little additional configuration (and zero external key management) to produce valid SLSA attestations and Sigstore signatures for each bottle build.
 
 The high-level flow for bottle signing:
 
 1. Existing bottle-building workflows will gain a signing step, which will only run as a finalization step for bottles that appear on `master` (i.e., not just the temporary bottles that are built as part of the normal PR lifecycle).
-2. The signing step is responsible for producing a Sigstore signature that _attests_ to the bottle. This signed attestation should include, at minimum, the bottle archive's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of `bar`, or even a different version of `foo` than the resolver produces). The attestation will follow the [in-toto format](https://github.com/in-toto/attestation/tree/main/spec/v1) and thus will be consistent with [SLSA's attestation model](https://slsa.dev/attestation-model).
-3. The signing step is responsible for uploading the resulting signature to the same object storage as the bottle, and ensuring that the uploaded signature is addressable in a consistent and publicly derivable manner from just the formula and bottle's own metadata. In other words: a client that knows how to access the bottle's resource should also be able to access the bottle's signature resource with no additional metadata, similar to how [signature location and management](https://docs.sigstore.dev/cosign/signing_with_containers/#signature-location-and-management) works for signing container images with Sigstore.
+2. The signing step is responsible for producing an attestation with a Sigstore signature that _attests_ to the bottle. This signed attestation should include, at minimum, the bottle archive's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of `bar`, or even a different version of `foo` than the resolver produces). The attestation will follow the [in-toto format](https://github.com/in-toto/attestation/tree/main/spec/v1) and thus will be consistent with [SLSA's attestation model](https://slsa.dev/attestation-model).
+3. The signing step is responsible for uploading the resulting signature to the same object storage as the bottle, and ensuring that the uploaded signature is addressable in a predictable and publicly derivable manner from just the formula and bottle's own metadata, [consistent with SLSA's guidenlines on distributing provenance](https://slsa.dev/spec/v1.0/distributing-provenance). In other words: a client that knows how to access the bottle's resource should also be able to access the bottle's signature resource with no additional metadata, similar to how [signature location and management](https://docs.sigstore.dev/cosign/signing_with_containers/#signature-location-and-management) works for signing container images with Sigstore.
 
-At the end of this flow, both the bottle and its signature should appear in the tap's associated object storage.
+At the end of this flow, both the bottle and its attestation with signature should appear in the tap's associated object storage.
 
 In addition to signing for bottles as they're produced, the signing step may be used to "backfill" signatures (and corresponding attestations) for pre-existing bottles. These signatures would effectively act as notarizations for pre-existing bottles, rather than guarantees of build provenance. This "backfill" stage is expected to produce an initial attestation and signature for every pre-existing bottle, after which it will be removed and supplanted by signing during the bottle-building workflows. Removal of the "backfill" functionality after the initial backfill operation ensures that all subsequent attestations have corresponding build provenances.
 
@@ -65,7 +67,7 @@ And at `brew install` time:
 
 Like with previous Homebrew features, an experimental feature-flagged variant of signature verification may be merged and enabled before it is enabled by default.
 
-## Full source and build provenance with Homebrew and Sigstore
+## Full source and build provenance for Homebrew
 
 Bottle signing and subsequent verification unlocks a potential subsequent improvement: because Homebrew performs source builds to produce bottles, Homebrew could also verify signatures for those source artifacts. That signature could then be _countersigned_ for by Homebrew's own bottle signatures, effectively producing a strong cryptographic association from the original source artifact (produced by a third-party upstream) to the Homebrew-produced binary artifact.
 
