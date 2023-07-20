@@ -27,7 +27,7 @@ Because Homebrew uses GitHub Actions for all `homebrew-core` builds, the Homebre
 The high-level flow for bottle signing:
 
 1. Existing bottle-building workflows will gain a signing step, which will only run as a finalization step for bottles that appear on `master` (i.e., not just the temporary bottles that are built as part of the normal PR lifecycle).
-2. The signing step is responsible for producing an attestation with a Sigstore signature that _attests_ to the bottle. This signed attestation should include, at minimum, the bottle archive's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of `bar`, or even a different version of `foo` than the resolver produces). The attestation will follow the [in-toto format](https://github.com/in-toto/attestation/tree/main/spec/v1) and thus will be consistent with [SLSA's attestation model](https://slsa.dev/attestation-model).
+2. The signing step is responsible for producing an attestation with a Sigstore signature that _attests_ to the bottle. This signed attestation should include, at minimum, the bottle archive's SHA256 digest and the bottle's filename. The digest is necessary to produce a proof that the signature is for a particular bottle's contents, and the filename is necessary to produce a proof that the signature is intended to accompany a particular install step (i.e. `brew install foo` should not verify if an attacker substitutes `foo`'s bottle for a correctly signed bottle of `bar`, or even a different version of `foo` than the resolver produces). The attestation will follow the [in-toto provenance attestation format](https://slsa.dev/provenance/v1) and thus will be consistent with [SLSA's attestation model](https://slsa.dev/attestation-model).
 3. The signing step is responsible for uploading the resulting signature to the same object storage as the bottle, and ensuring that the uploaded signature is addressable in a predictable and publicly derivable manner from just the formula and bottle's own metadata, [consistent with SLSA's guidenlines on distributing provenance](https://slsa.dev/spec/v1.0/distributing-provenance). In other words: a client that knows how to access the bottle's resource should also be able to access the bottle's signature resource with no additional metadata, similar to how [signature location and management](https://docs.sigstore.dev/cosign/signing_with_containers/#signature-location-and-management) works for signing container images with Sigstore.
 
 At the end of this flow, both the bottle and its attestation with signature should appear in the tap's associated object storage.
@@ -110,3 +110,61 @@ For formulae with verifiable source artifacts, the signed bottle attestation des
 ### macOS executable code signing
 
 Because this proposal only concerns bottles and not their individual executable members, it should have no effect on Homebrew's current use or any future uses of "ad-hoc" executable signatures (which are produced not for authenticity, but because macOS on Apple Silicon requires all executables to be signed).
+
+## Threat model
+
+### Scope
+
+The scope of this proposal is *authenticated build provenance* for Homebrew bottles.
+
+*Source compromise* is **not** included in the scope of this proposal.
+
+As an end state: when a user performs `brew install foo`, the bottle corresponding to `foo` will be installed *if and only if* it has a valid signature defined over an *attestation* for that bottle. That signature in turn is considered valid *if and only if* it is both cryptographically valid  and* corresponds to the tap repository identity that `foo` was built in (e.g. `homebrew/homebrew-core`).
+
+### Attacker models
+
+All attacker models listed below are remote models. Local attackers are not modeled, under Homebrew's pre-existing operating assumption that a local attacker capable of modifying files or running code has already won. This assumption is comparable to the client integrity assumption in the Web PKI (i.e., that the client's root of trust is not itself compromised).
+
+These models are not intended to be exhaustive.
+
+#### Model 1: Compromise of bottle storage
+
+**Scenario**: Mallory is able to circumvent Homebrew's ordinary bottle building and publishing workflows and is able to upload malicious bottles to a tap's bottle storage.
+
+**Mitigation**: With *just* upload access to the bottle storage, Mallory is unable to forge valid signatures for her malicious bottles. `brew install $compromised-bottle` fails to install due to a missing or mismatched signature, and users who attempt to install `$compromised-bottle` are loudly notified.
+
+**Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory remains undetected.
+
+#### Model 2: Compromise of bottle-building workflows
+
+**Scenario**: Mallory is able to interpose or otherwise control Homebrew's authentic bottle-building workflows. She is able to modify or outright replace authentic bottles with malicious ones in a way that does not reveal her presence.
+
+**Mitigation**: With *just* access to the bottle-building workflows, Mallory still lacks access to the signing workflow. As such, she is unable to force valid signatures for her malicious bottles and remains unable to compel malicious bottle installation as described above.
+
+**Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory remains undetected.
+
+#### Model 3: Compromise of bottle-signing workflows
+
+**Scenario**: Mallory is able to interpose or otherwise control Homebrew's authentic bottle-signing workflows. She is able to sign for malicious bottles that she controls, resulting in signatures that match a given tap's signing identity but are inauthentic.
+
+**Mitigation**: With *just* access to the bottle-signing workflows, Mallory is unable to upload her inauthentically signed bottles to the bottle storage. Her bottles *would* pass signature verification but remain inaccessible to users. By virtue of Sigstore's transparency services, Mallory loses her stealth in mounting this attack.
+
+**Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory does **not** remain undetected.
+
+#### Model 4: Compromise of bottle-building *and* bottle-signing workflows
+
+**Scenario**: Mallory is able to compromise both the bottle-building and signing workflows, allowing her to craft, inauthentically sign, and upload to bottle storage.
+
+**Mitigation**: Mallory's bottles appear authentic and are hosted, meaning that she successfully convinces uses to `brew install $compromised-bottle`. However, she does so at a cost: she loses stealth due to Sigstore's transparency services, and she is compelled to distribute her compromised bottle to *all* users due to Homebrew's bottle distribution architecture.
+
+**Outcome**: Mallory is **able** to force an install of a compromised bottle. Mallory does **not** remain undetected, and is unable to target individual users.
+
+### Summary
+
+In models (1), (2), and (3), Mallory is **unable** to compel users to install maliciously modified bottles, even when she is otherwise able to produce valid-but-inauthentic signatures for those bottles (the third scenario).
+
+In models (1) and (2), Mallory remains "undetected" in the sense of the transparency log: she might be detected by other means (such as event logs and security monitoring systems), but her inability to produce valid-but-inauthentic signatures means that the transparency log does not contain actionable evidence of her attack. Being undetected is not *itself* a successful "win" state for Mallory.
+
+In models (3) and (4), Mallory is able to produce inauthentic signatures in exchange for a loss of stealth. This assumes that Homebrew and other parties monitor the transparency service that Mallory is required to submit her inauthentic signatures to.
+
+In model (4) (the "disaster case"), Mallory is **able** to compel users to install a malicious, inauthentically signed bottle. However, even in this scenario, Mallory's attack posture is diminished: she is forced to accept a loss of stealth in exchange for mounting her attack, and is unable to target individual users. This is comparable in attacker risk to certificate transparency under the Web PKI.
