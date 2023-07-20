@@ -163,6 +163,8 @@ These models are not intended to be exhaustive.
 
 In models (1), (2), and (3), Mallory is **unable** to compel users to install maliciously modified bottles, even when she is otherwise able to produce valid-but-inauthentic signatures for those bottles (the third scenario).
 
+In models (1) and (2), Mallory remains "undetected" in the sense of the transparency log: she might be detected by other means (such as event logs and security monitoring systems), but her inability to produce valid-but-inauthentic signatures means that the transparency log does not contain actionable evidence of her attack. Being undetected is not *itself* a successful "win" state for Mallory.
+
 In models (3) and (4), Mallory is able to produce inauthentic signatures in exchange for a loss of stealth. This assumes that Homebrew and other parties monitor the transparency service that Mallory is required to submit her inauthentic signatures to.
 
 In model (4) (the "disaster case"), Mallory is **able** to compel users to install a malicious, inauthentically signed bottle. However, even in this scenario, Mallory's attack posture is diminished: she is forced to accept a loss of stealth in exchange for mounting her attack, and is unable to target individual users. This is comparable in attacker risk to certificate transparency under the Web PKI.
