@@ -117,6 +117,8 @@ Because this proposal only concerns bottles and not their individual executable 
 
 The scope of this proposal is *authenticated build provenance* for Homebrew bottles.
 
+*Source compromise* is **not** included in the scope of this proposal.
+
 As an end state: when a user performs `brew install foo`, the bottle corresponding to `foo` will be installed *if and only if* it has a valid signature defined over an *attestation* for that bottle. That signature in turn is considered valid *if and only if* it is both cryptographically valid  and* corresponds to the tap repository identity that `foo` was built in (e.g. `homebrew/homebrew-core`).
 
 ### Attacker models
@@ -125,7 +127,7 @@ All attacker models listed below are remote models. Local attackers are not mode
 
 These models are not intended to be exhaustive.
 
-#### Compromise of bottle storage
+#### Model 1: Compromise of bottle storage
 
 **Scenario**: Mallory is able to circumvent Homebrew's ordinary bottle building and publishing workflows and is able to upload malicious bottles to a tap's bottle storage.
 
@@ -133,7 +135,7 @@ These models are not intended to be exhaustive.
 
 **Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory remains undetected.
 
-#### Compromise of bottle-building workflows
+#### Model 2: Compromise of bottle-building workflows
 
 **Scenario**: Mallory is able to interpose or otherwise control Homebrew's authentic bottle-building workflows. She is able to modify or outright replace authentic bottles with malicious ones in a way that does not reveal her presence.
 
@@ -141,7 +143,7 @@ These models are not intended to be exhaustive.
 
 **Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory remains undetected.
 
-#### Compromise of bottle-signing workflows
+#### Model 3: Compromise of bottle-signing workflows
 
 **Scenario**: Mallory is able to interpose or otherwise control Homebrew's authentic bottle-signing workflows. She is able to sign for malicious bottles that she controls, resulting in signatures that match a given tap's signing identity but are inauthentic.
 
@@ -149,7 +151,7 @@ These models are not intended to be exhaustive.
 
 **Outcome**: Mallory is **unable** to force an install of a compromised bottle. Mallory does **not** remain undetected.
 
-#### Compromise of bottle-building *and* bottle-signing workflows
+#### Model 4: Compromise of bottle-building *and* bottle-signing workflows
 
 **Scenario**: Mallory is able to compromise both the bottle-building and signing workflows, allowing her to craft, inauthentically sign, and upload to bottle storage.
 
@@ -159,6 +161,8 @@ These models are not intended to be exhaustive.
 
 ### Summary
 
-In three of the four compromise models above, Mallory is **unable** to compel users to install maliciously modified bottles, even when she is otherwise able to produce valid-but-inauthentic signatures for those bottles (the third scenario).
+In models (1), (2), and (3), Mallory is **unable** to compel users to install maliciously modified bottles, even when she is otherwise able to produce valid-but-inauthentic signatures for those bottles (the third scenario).
 
-In the last compromise model (the "disaster case"), Mallory is **able** to compel users to install a malicious, inauthentically signed bottle. However, even in this scenario, Mallory's attack posture is diminished: she is forced to accept a loss of stealth in exchange for mounting her attack, and is unable to target individual users. This is comparable in attacker risk to certificate transparency under the Web PKI.
+In models (3) and (4), Mallory is able to produce inauthentic signatures in exchange for a loss of stealth. This assumes that Homebrew and other parties monitor the transparency service that Mallory is required to submit her inauthentic signatures to.
+
+In model (4) (the "disaster case"), Mallory is **able** to compel users to install a malicious, inauthentically signed bottle. However, even in this scenario, Mallory's attack posture is diminished: she is forced to accept a loss of stealth in exchange for mounting her attack, and is unable to target individual users. This is comparable in attacker risk to certificate transparency under the Web PKI.
