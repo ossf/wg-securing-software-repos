@@ -27,9 +27,13 @@ The working group may create:
 
 ## Published work
 
-* **[Build Provenance for All Package Registries](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/build-provenance-for-all-package-registries.md)**
+See also https://repos.openssf.org/
+
+* **[Build Provenance and Code-signing for Homebrew](https://repos.openssf.org/proposals/build-provenance-and-code-signing-for-homebrew)** - July 2023
+  > A proposal for introducing build provenance and cryptographic signatures to the Homebrew package manager.
+* **[Build Provenance for All Package Registries](https://repos.openssf.org/build-provenance-for-all-package-registries)** - July 2023
   > Guidance for package registries in adopting build provenance to verifiably link a package back to its source code and build instructions.
-* **[The Package Manager Landscape Survey](https://github.com/ossf/wg-securing-software-repos/blob/main/survey/2022/README.md)**
+* **[The Package Manager Landscape Survey](https://github.com/ossf/wg-securing-software-repos/blob/main/survey/2022/README.md)** - December 2022
   > A survey/landscape of different security mechanisms and features that are implemented across the different ecosystems as they pertain to security critical user journeys.
 
 ## Governance
