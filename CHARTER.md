@@ -113,7 +113,6 @@ This Technical Charter sets forth the responsibilities and procedures for techni
    * Brian Fox (Sonatype / Maven Central)
    * Dustin Ingram (Google / PyPI)
    * Jacob Finkelman / Eh2406 (Cargo)
-   * Jacques Chester (Shopify)
    * Jason Swank (Sonatype / Maven Central)
    * Josef Šimánek (RubyGems)
    * Myles Borins (GitHub / npm)
