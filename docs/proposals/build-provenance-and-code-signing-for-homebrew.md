@@ -1,6 +1,7 @@
 # Build Provenance and Code-signing for Homebrew
 
 Authors: [William Woodruff](https://github.com/woodruffw), [Dustin Ingram](https://github.com/di)
+Last updated: July 2023
 
 ## Summary
 
