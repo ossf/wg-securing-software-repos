@@ -115,7 +115,6 @@ This Technical Charter sets forth the responsibilities and procedures for techni
    | Brian Fox | Sonatype / Maven Central | [@brianf](https://github.com/brianf) |
    | Dustin Ingram | Google / PyPI | [@di](https://github.com/di) |
    | Jacob Finkelman / Eh2406 | Cargo | [@Eh2406](https://github.com/Eh2406) |
-   | Jacques Chester | Shopify | [@jchester](https://github.com/jchester) |
    | Jason Swank | Sonatype / Maven Central | [@jswank](https://github.com/jswank) |
    | Josef Šimánek | RubyGems | [@simi](https://github.com/simi) |
    | Myles Borins | GitHub / npm | [@MylesBorins](https://github.com/MylesBorins) |
