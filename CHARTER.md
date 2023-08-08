@@ -109,12 +109,14 @@ This Technical Charter sets forth the responsibilities and procedures for techni
 #### 8. Maintainers
 
 - a. For the purposes of this document, the Maintainers are as follows:
-   * Bob Callaway (Google)
-   * Brian Fox (Sonatype / Maven Central)
-   * Dustin Ingram (Google / PyPI)
-   * Jacob Finkelman / Eh2406 (Cargo)
-   * Jason Swank (Sonatype / Maven Central)
-   * Josef Šimánek (RubyGems)
-   * Myles Borins (GitHub / npm)
-   * Trevor Rosen (GitHub / npm)
-   * Zack Newman (Chainguard)
+   | Name | Affiliation | GitHub |
+   | - | - | - |
+   | Bob Callaway | Google | [@bobcallaway](https://github.com/bobcallaway) |
+   | Brian Fox | Sonatype / Maven Central | [@brianf](https://github.com/brianf) |
+   | Dustin Ingram | Google / PyPI | [@di](https://github.com/di) |
+   | Jacob Finkelman / Eh2406 | Cargo | [@Eh2406](https://github.com/Eh2406) |
+   | Jason Swank | Sonatype / Maven Central | [@jswank](https://github.com/jswank) |
+   | Josef Šimánek | RubyGems | [@simi](https://github.com/simi) |
+   | Myles Borins | GitHub / npm | [@MylesBorins](https://github.com/MylesBorins) |
+   | Trevor Rosen | GitHub / npm | [@trevrosen](https://github.com/trevrosen) |
+   | Zack Newman | Chainguard | [@znewman01](https://github.com/znewman01) |

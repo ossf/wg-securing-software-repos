@@ -1,5 +1,7 @@
 # Build Provenance for All Package Registries
 
+Last updated: July 2023
+
 There's a new security capability that registries can offer - build provenance - which verifiably links a package back to its source code and build instructions. Since these links are publicly available, package consumers can verify the package contains what it says, instead of having to trust that the build process or source code wasn't compromised.
 
 
