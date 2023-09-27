@@ -40,7 +40,7 @@ See also https://repos.openssf.org/
 
 The [CHARTER.md](https://github.com/ossf/wg-securing-software-repos/blob/main/CHARTER.md) outlines the scope and governance of our group activities, as well as the maintainers of this repository.
 
-This group is chaired by [Dustin Ingram](https://github.com/di).
+This group is co-chaired by [Dustin Ingram](https://github.com/di) and [Zach Steindler](https://github.com/steiza).
 
 ## Communication
 
