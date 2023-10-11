@@ -36,6 +36,12 @@ See also https://repos.openssf.org/
 * **[The Package Manager Landscape Survey](https://github.com/ossf/wg-securing-software-repos/blob/main/survey/2022/README.md)** - December 2022
   > A survey/landscape of different security mechanisms and features that are implemented across the different ecosystems as they pertain to security critical user journeys.
 
+## Projects
+
+| Name | Repository/Home Page | Notes | Status |
+| --- | --- | --- | --- |
+| Repository Service for TUF | https://github.com/repository-service-tuf/repository-service-tuf |  [Meeting Notes](https://docs.google.com/document/d/13a_AtFpPK9WO4PlAN6ciD-G1jiBU3gEDtRD1OUinUFY/edit)  | Sandbox |
+
 ## Governance
 
 The [CHARTER.md](https://github.com/ossf/wg-securing-software-repos/blob/main/CHARTER.md) outlines the scope and governance of our group activities, as well as the maintainers of this repository.
