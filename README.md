@@ -56,7 +56,7 @@ This group is co-chaired by [Dustin Ingram](https://github.com/di) and [Zach Ste
 
 ## Meeting times
 
-[Zoom](https://zoom.us/j/94941582286?pwd=SjdwZmY1eit6RlhiS1RsLzBZK3pVdz09) every other Wednesday, alternating between EMEA (13:00 UTC) and APAC-friendly times (22:00 UTC).
+[Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/98058137343?password=28dafc6e-cfcf-440d-bb63-ca73a1739f06) every other Wednesday, alternating between EMEA (13:00 UTC) and APAC-friendly times (22:00 UTC).
 
 The meeting invite is available on the public [OSSF calendar](https://calendar.google.com/calendar?cid=czYzdm9lZmhwNWk5cGZsdGI1cTY3bmdwZXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ).
 
