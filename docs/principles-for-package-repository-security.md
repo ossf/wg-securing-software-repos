@@ -47,7 +47,7 @@ Applies to: package repositories that have user accounts.
   - The package repository notifies maintainers via email for critical account security changes, such as password changes or disabling multi-factor authentication. This helps users detect if their account has been compromised.
   - The package repository implements account security measures like brute force prevention (even with 2FA attempts)
 - Level 2
-  - To prevent domain resurrection for account takeover via the recovery process, the package repository detects abandoned email domains. This may look like doing a WHOIS lookup on all registered email domains, and locking accounts for which the domain is abandoned.
+  - To prevent domain resurrection for account takeover via the recovery process, the package repository detects abandoned email domains. This may look like doing a WHOIS lookup on all registered email domains, and removing the ability to recover an account via an email domain that has been abandoned.
   - The package repository supports MFA via phishing-resistant means such as WebAuthn
   - The package repository requires MFA for packages deemed critical (e.g. top 1% of packages by downloads).
   - The package repository integrates with public leaked credential databases such as Have I Been Pwned to detect when users are using leaked credentials. If a user has a leaked credential, the package repository prompts them to change it upon login.
