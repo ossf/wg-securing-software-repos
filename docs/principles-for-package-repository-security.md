@@ -84,7 +84,7 @@ Applies to: all package repositories
 - Level 3
   - Undergo periodic cloud security review (and optionally publish remediations once they are complete)
   - The package repository publishes an event transparency log to enable detection of anomalous behaviors (e.g. [replicate.npmjs.com](https://replicate.npmjs.com/)).
-  - Malicious packages are published using OSV (e.g. [here](https://github.com/ossf/malicious-packages))
+  - Advisories for malicious packages are published using the OSV schema and aggregated by the OSV service (e.g. [here](https://github.com/ossf/malicious-packages))
 
 ### CLI Tooling
 
