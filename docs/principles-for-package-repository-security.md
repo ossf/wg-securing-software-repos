@@ -5,7 +5,7 @@ Last updated: Dec 2023
 
 ## Background
 
-The Securing Software Repositories Working Group (WG) of the OpenSSF is putting together a taxonomy of package repositories and a set of principles for security capabilities. This is intended to be an opinionated document, offering a set of best practices that package repositories should strive to adhere to.
+The Securing Software Repositories Working Group (WG) of the OpenSSF has identified a taxonomy of package repositories and a set of principles for their security capabilities. This is intended to be an opinionated document, offering a set of best practices that package repositories should strive to adhere to.
 
 By package repository (sometimes also called package registry) we're referring to the service that stores and index packages, that users and clients can download packages from. Often users and clients use a CLI tool to download packages, and some ecosystems have multiple popular CLI tools in use. Most of these security capabilities focus on the package repository, but there's also a section on security capabilities the CLI tooling can implement.
 
