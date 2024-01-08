@@ -32,7 +32,7 @@ Does the package repository ...
 
 We define 4 levels of security maturity:
 - Level 0 is defined as having very little security maturity.
-- Level 1 is defined as having basic security maturity. Package repositories support basic security features like multi-factor authentication, allow security researchers to report vulnerabilities. All package management ecosystems should be working towards this level.
+- Level 1 is defined as having basic security maturity. Package repositories support basic security features like multi-factor authentication and allow security researchers to report vulnerabilities. All package management ecosystems should be working towards this level.
 - Level 2 is defined as having moderate security.
 - Level 3 is defined as having advanced security. These items are more aspirational, especially for smaller package management ecosystems.
 
