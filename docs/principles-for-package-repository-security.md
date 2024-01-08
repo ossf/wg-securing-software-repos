@@ -62,6 +62,7 @@ Applies to: package repositories that have user accounts and accept built packag
 
 - Level 1
   - The package repository allows maintainers to provision API keys scoped to specific packages. This allows maintainers to maintain packages via automated workflows without needing to provide their account password.
+  - API tokens are prefixed with a repository-specific identifier
 - Level 2
   - The package repository supports role-based access control (RBAC) for maintainers, allowing separate roles for managing users and publishing packages.
 - Level 3
