@@ -75,7 +75,7 @@ Applies to: package repositories that have user accounts and accept built packag
 Applies to: all package repositories
 
 - Level 1
-  - The package repository has published a vulnerability disclosure policy allowing security researchers to report vulnerabilities to the package repository, and receive legal safe harbor when doing so. The package repository should strive to remediate reported vulnerabilities within 90 days.
+  - The package repository has published a vulnerability disclosure policy allowing security researchers to report vulnerabilities affecting the package repository, and receive legal safe harbor when doing so. The package repository should strive to remediate reported vulnerabilities within 90 days.
   - The package repository takes steps to prevent typosquatting attacks around package names. This may include namespacing, detecting similar names, or other actions.
 - Level 2
   - The package repository has an unpublish policy to prevent specific versions of a package from being replaced, and, if a package is deleted, prevent others from reusing the same package name and version.
