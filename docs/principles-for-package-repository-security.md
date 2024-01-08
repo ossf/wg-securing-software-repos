@@ -43,7 +43,7 @@ Applies to: package repositories that have user accounts.
 - Level 1
   - The package repository requires users to verify their email address. This ensures that if a user loses access to their account, they are able to recover it.
   - The package repository documents their account recovery policy.
-  - The package repository supports multi-factor authentication (MFA) via (at minimum) TOTP.
+  - The package repository supports strong multi-factor authentication (MFA) via (at minimum) TOTP. Solely offering weaker forms of MFA such as SMS, email, or phone call-based MFA would not meet this requirement.
   - The package repository notifies maintainers via email for critical account security changes, such as password changes or disabling multi-factor authentication. This helps users detect if their account has been compromised.
   - The package repository implements account security measures like brute force prevention (even with 2FA attempts)
 - Level 2
