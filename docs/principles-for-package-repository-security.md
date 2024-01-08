@@ -67,7 +67,7 @@ Applies to: package repositories that have user accounts and accept built packag
   - The package repository supports role-based access control (RBAC) for maintainers, allowing separate roles for managing users and publishing packages.
 - Level 3
   - The package repository provisions short-lived API tokens via an OpenID Connect (OIDC) token exchange to prevent the need to provision long-lived API keys. Example: [trusted publishers](https://docs.pypi.org/trusted-publishers/)
-  - The package repository API tokens are integrated into common third-party secret scanning programs like GitGuardian, GitHub, etc. This typically requires using a known prefix or pattern to reduce false-positives.
+  - The package repository API tokens are integrated into common third-party secret scanning programs. This typically requires using a known prefix or pattern to reduce false-positives. Furthermore, the package repository provides a secret-reporting endpoint for these secret scanning programs to report leaked credentials, which automatically revokes valid credentials.
   - The package repository supports providing [build provenance](https://repos.openssf.org/build-provenance-for-all-package-registries) for packages.
 
 ### General Capabilities
