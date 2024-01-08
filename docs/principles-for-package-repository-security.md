@@ -50,7 +50,7 @@ Applies to: package repositories that have user accounts.
   - To prevent domain resurrection for account takeover via the recovery process, the package repository detects abandoned email domains. This may look like doing a WHOIS lookup on all registered email domains, and removing the ability to recover an account via an email domain that has been abandoned.
   - The package repository supports MFA via phishing-resistant means such as WebAuthn
   - The package repository requires MFA for packages deemed critical (e.g. top 1% of packages by downloads).
-  - The package repository integrates with public leaked credential databases such as Have I Been Pwned to detect when users are using leaked credentials. If a user has a leaked credential, the package repository prompts them to change it upon login.
+  - The package repository integrates with public leaked credential databases such as Have I Been Pwned to detect when users are using known leaked credentials upon login. If a user has a leaked credential, detected upon login, the package repository prompts them to change it. The package manager checks passwords at registration and prevents users from registering with known leaked credentials.
 - Level 3
   - The package repository supports passwordless authentication, such as passkeys.
   - The package repository requires MFA for all maintainers.
