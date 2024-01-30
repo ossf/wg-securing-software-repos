@@ -1,7 +1,7 @@
 # Principles for Package Repository Security
 
-Authors: [Jack Cable](https://github.com/cablej), [Zach Steindler](https://github.com/steiza)
-Last updated: Dec 2023
+Authors: [Jack Cable (CISA)](https://github.com/cablej), [Zach Steindler](https://github.com/steiza)
+Last updated: Jan 2024
 
 ## Background
 
