@@ -82,7 +82,7 @@ Applies to: all package repositories
   - The package repository allows users to report a package as suspicious or malicious via the registry UI, tooling CLI, and via API.
   - The package repository takes steps to detect malware, including scanning for known malware code snippets and hashes.
 - Level 3
-  - Undergo periodic cloud security review (and optionally publish remediations once they are complete)
+  - Undergo periodic security reviews of package repository infrastructure (and optionally publish remediations once they are complete)
   - The package repository publishes an event transparency log to enable detection of anomalous behaviors (e.g. [replicate.npmjs.com](https://replicate.npmjs.com/)).
   - Advisories for malicious packages are published using the OSV schema and aggregated by the OSV service (e.g. [here](https://github.com/ossf/malicious-packages))
 
