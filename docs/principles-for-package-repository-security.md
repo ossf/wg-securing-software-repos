@@ -5,13 +5,13 @@ Last updated: Jan 2024
 
 ## Background
 
-The Securing Software Repositories Working Group (WG) of the OpenSSF has identified a taxonomy of package repositories and a set of principles for their security capabilities. This is intended to be an opinionated document, offering a set of best practices that package repositories should strive to adhere to.
+The Securing Software Repositories Working Group (WG) of the OpenSSF has identified a taxonomy of package repositories and a set of principles for their security capabilities. This is intended to offer a set of best practices that package repositories should strive to adhere to.
 
-By package repository (sometimes also called package registry) we're referring to the service that stores and index packages, that users and clients can download packages from. Often users and clients use a CLI tool to download packages, and some ecosystems have multiple popular CLI tools in use. Most of these security capabilities focus on the package repository, but there's also a section on security capabilities the CLI tooling can implement.
+By package repository (sometimes also called package registry) we're referring to the service that stores and indexes packages, enabling users and clients to download packages. Often users and clients use a CLI tool to download packages, and some ecosystems have multiple popular CLI tools in use. Most of these security capabilities focus on the package repository, but there's also a section on security capabilities the CLI tooling can implement.
 
-The taxonomy is because not all security advice applies to all package repositories. For example, https://proxy.golang.org/ does not manage user accounts, and so has no need of documented account recovery.
+We include the below taxonomy because not all security advice applies to all package repositories. For example, https://proxy.golang.org/ does not manage user accounts, and so has no need of documented account recovery.
 
-The roadmap of security capabilities can then be used by package repositories to assess gaps, put together fundable improvement lists ([like Python Packaging WG](https://github.com/psf/fundable-packaging-improvements/blob/master/FUNDABLES.md)) or write specific grant proposals that reference this guidance.
+The roadmap of security capabilities can then be used by package repositories to assess gaps, put together fundable improvement lists ([like Python Packaging WG](https://github.com/psf/fundable-packaging-improvements/blob/master/FUNDABLES.md)), or write specific grant proposals that reference this guidance.
 
 ## Taxonomy of Package Repositories
 
@@ -32,9 +32,9 @@ Does the package repository ...
 
 We define 4 levels of security maturity:
 - Level 0 is defined as having very little security maturity.
-- Level 1 is defined as having basic security maturity. Package repositories support basic security features like multi-factor authentication and allow security researchers to report vulnerabilities. All package management ecosystems should be working towards this level.
-- Level 2 is defined as having moderate security.
-- Level 3 is defined as having advanced security. These items are more aspirational, especially for smaller package management ecosystems.
+- Level 1 is defined as having basic security maturity, which includes supporting basic security features like multi-factor authentication (MFA) and allowing security researchers to report vulnerabilities. All package management ecosystems should be working towards at least this level.
+- Level 2 is defined as having moderate security, which includes actions like requiring MFA for critical packages and warning users of known security vulnerabilities.
+- Level 3 is defined as having advanced security, which includes actions like requiring MFA for all maintainers and supporting build provenance for packages. This level is more aspirational, especially for smaller package management ecosystems.
 
 ### Authentication
 
@@ -43,18 +43,18 @@ Applies to: package repositories that have user accounts.
 - Level 1
   - The package repository requires users to verify their email address. This ensures that if a user loses access to their account, they are able to recover it.
   - The package repository documents their account recovery policy.
-  - The package repository supports strong multi-factor authentication (MFA) via (at minimum) TOTP. Solely offering weaker forms of MFA such as SMS, email, or phone call-based MFA would not meet this requirement.
+  - The package repository supports strong multi-factor authentication (MFA) via, at minimum, TOTP. Solely offering weaker forms of MFA such as SMS, email, or phone call-based MFA would not meet this requirement.
   - The package repository notifies maintainers via email for critical account security changes, such as password changes or disabling multi-factor authentication. This helps users detect if their account has been compromised.
   - The package repository implements account security measures like brute force prevention (even with 2FA attempts)
 - Level 2
   - To prevent domain resurrection for account takeover via the recovery process, the package repository detects abandoned email domains. This may look like doing a WHOIS lookup on all registered email domains, and removing the ability to recover an account via an email domain that has been abandoned.
-  - The package repository supports MFA via phishing-resistant means such as WebAuthn
+  - The package repository supports MFA via phishing-resistant means such as WebAuthn.
   - The package repository requires MFA for packages deemed critical (e.g. top 1% of packages by downloads).
   - The package repository integrates with public leaked credential databases such as Have I Been Pwned to detect when users are using known leaked credentials upon login. If a user has a leaked credential, detected upon login, the package repository prompts them to change it. The package manager checks passwords at registration and prevents users from registering with known leaked credentials.
 - Level 3
   - The package repository supports passwordless authentication, such as passkeys.
   - The package repository requires MFA for all maintainers.
-  - The package repository requires phishing-resistant MFA for packages deemed critical (e.g. top 1% of packages by downloads). If possible, the package repository supplies security keys to these maintainers.
+  - The package repository requires phishing-resistant MFA for packages deemed critical (e.g., the top 1% of packages by downloads). If possible, the package repository supplies security keys to these maintainers.
 
 ### Authorization
 
@@ -62,12 +62,12 @@ Applies to: package repositories that have user accounts and accept built packag
 
 - Level 1
   - The package repository allows maintainers to provision API keys scoped to specific packages. This allows maintainers to maintain packages via automated workflows without needing to provide their account password.
-  - API tokens are prefixed with a repository-specific identifier
+  - API tokens are prefixed with a repository-specific identifier.
 - Level 2
   - The package repository supports role-based access control (RBAC) for maintainers, allowing separate roles for managing users and publishing packages.
 - Level 3
-  - The package repository provisions short-lived API tokens via an OpenID Connect (OIDC) token exchange to prevent the need to provision long-lived API keys. Example: [trusted publishers](https://docs.pypi.org/trusted-publishers/)
-  - The package repository API tokens are integrated into common third-party secret scanning programs. This typically requires using a known prefix or pattern to reduce false-positives. Furthermore, the package repository provides a secret-reporting endpoint for these secret scanning programs to report leaked credentials, which automatically revokes valid credentials.
+  - The package repository provisions short-lived API tokens via an OpenID Connect (OIDC) token exchange to prevent the need to provision long-lived API keys. Example: [trusted publishers](https://docs.pypi.org/trusted-publishers/).
+  - The package repository API tokens are integrated into common third-party secret scanning programs. This typically requires using a known prefix or pattern to reduce false positives. Furthermore, the package repository provides a secret-reporting endpoint for these secret scanning programs to report leaked credentials, which automatically revokes valid credentials.
   - The package repository supports providing [build provenance](https://repos.openssf.org/build-provenance-for-all-package-registries) for packages.
 
 ### General Capabilities
@@ -75,16 +75,17 @@ Applies to: package repositories that have user accounts and accept built packag
 Applies to: all package repositories
 
 - Level 1
-  - The package repository has published a vulnerability disclosure policy allowing security researchers to report vulnerabilities affecting the package repository, and receive legal safe harbor when doing so. The package repository should strive to remediate reported vulnerabilities within 90 days.
+  - The package repository has published a vulnerability disclosure policy allowing security researchers to identify and report vulnerabilities affecting the package repository, and receive legal safe harbor when doing so within the requirements of the policy. The package repository should strive to remediate reported vulnerabilities within 90 days.
   - The package repository takes steps to prevent typosquatting attacks around package names. This may include namespacing, detecting similar names, or other actions.
 - Level 2
   - The package repository has an unpublish policy to prevent specific versions of a package from being replaced, and, if a package is deleted, prevent others from reusing the same package name and version.
   - The package repository allows users to report a package as suspicious or malicious via the registry UI, tooling CLI, and via API.
   - The package repository takes steps to detect malware, including scanning for known malware code snippets and hashes.
+  - The package repository warns of known security vulnerabilities in dependencies in the package repository UI.
 - Level 3
   - Undergo periodic security reviews of package repository infrastructure (and optionally publish remediations once they are complete)
   - The package repository publishes an event transparency log to enable detection of anomalous behaviors (e.g. [replicate.npmjs.com](https://replicate.npmjs.com/)).
-  - Advisories for malicious packages are published using the OSV schema and aggregated by the OSV service (e.g. [here](https://github.com/ossf/malicious-packages))
+  - Advisories for malicious packages are published using a standardized machine readable format, such as using the OSV schema and aggregation provided by the OSV service (e.g. [here](https://github.com/ossf/malicious-packages)).
 
 ### CLI Tooling
 
@@ -93,10 +94,11 @@ Applies to: all package management ecosystems, although here we are primarily fo
 - Level 1
   - The CLI allows installing dependencies that are pinned based on hash, version, etc.
 - Level 2
-  - The package repository warns of known security vulnerabilities in dependencies, in both the package repository UI and CLI tools when installing.
+  - The CLI warns of known security vulnerabilities in dependencies when installing packages.
 - Level 3
   - The CLI has functionality to produce SBOMs.
-  - The package repository is able to reduce false positives of identified vulnerabilities using static analysis to understand whether a vulnerable code path is actually reachable. (e.g. [Golang's vulncheck feature](https://go.dev/security/vuln))
+  - The CLI has functionality to, where possible, automatically remediate known vulnerabilities in dependencies by upgrading them.
+  - The package repository is able to reduce false positives of identified vulnerabilities using static analysis to understand whether a vulnerable code path is actually reachable. (e.g. [Golang's vulncheck feature](https://go.dev/security/vuln)).
 
 ## Resources / Inspiration
 
@@ -104,3 +106,5 @@ Applies to: all package management ecosystems, although here we are primarily fo
 - <https://github.com/ossf/wg-securing-software-repos/blob/main/survey/2022/results.csv>
 - <https://docs.npmjs.com/threats-and-mitigations>
 - <https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf> (as a framework for comparing options in a problem space)
+
+Note: CISA does not endorse any commercial entity, product, company, or service, including any entities, products, or services linked within this document. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by CISA.
