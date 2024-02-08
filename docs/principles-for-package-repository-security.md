@@ -13,6 +13,8 @@ We include the below taxonomy because not all security advice applies to all pac
 
 The roadmap of security capabilities can then be used by package repositories to assess gaps, put together fundable improvement lists ([like Python Packaging WG](https://github.com/psf/fundable-packaging-improvements/blob/master/FUNDABLES.md)), or write specific grant proposals that reference this guidance.
 
+This is v0.2 of this document.
+
 ## Taxonomy of Package Repositories
 
 Security capabilities will differ based on the services that the package repository offers. For instance, if the package repository has user accounts, it will need to enforce authentication securely. In this section, we lay out the various relevant aspects of package repositories.
