@@ -9,9 +9,11 @@ This is a list of materials (surveys, documents, proposals, and so on) released 
 
 ## Documents
 
+* [Principles for Package Repository Security](https://repos.openssf.org/principles-for-package-repository-security) - February 2024
+  > A security maturity model for package repositories, for assessing current capabilities and roadmapping future improvements.
+
 * [Build Provenance for All Package Registries](https://repos.openssf.org/build-provenance-for-all-package-registries) - July 2023
   > Guidance for package registries in adopting build provenance to verifiably link a package back to its source code and build instructions.
-
 
 ## Proposals
 
