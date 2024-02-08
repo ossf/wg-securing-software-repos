@@ -29,7 +29,7 @@ The working group may create:
 
 See also https://repos.openssf.org/
 
-* **[Principles for Package Repository Security](https://repos.openssf.org/principles-for-package-repository-security)** - December 2023
+* **[Principles for Package Repository Security](https://repos.openssf.org/principles-for-package-repository-security)** - February 2024
   > A security maturity model for package repositories, for assessing current capabilities and roadmapping future improvements.
 * **[Build Provenance and Code-signing for Homebrew](https://repos.openssf.org/proposals/build-provenance-and-code-signing-for-homebrew)** - July 2023
   > A proposal for introducing build provenance and cryptographic signatures to the Homebrew package manager.

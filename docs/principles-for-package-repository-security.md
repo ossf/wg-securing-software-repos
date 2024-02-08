@@ -1,7 +1,7 @@
 # Principles for Package Repository Security
 
 Authors: [Jack Cable (CISA)](https://github.com/cablej), [Zach Steindler](https://github.com/steiza)
-Last updated: Jan 2024
+Last updated: Feb 2024
 
 ## Background
 
@@ -15,26 +15,29 @@ The roadmap of security capabilities can then be used by package repositories to
 
 ## Taxonomy of Package Repositories
 
-Security capabilities will differ based on the services that the package repository offers. For instance, if the package repository has user accounts, the package repository will need to enforce authentication securely. In this section, we lay out the various relevant aspects of package repositories.
+Security capabilities will differ based on the services that the package repository offers. For instance, if the package repository has user accounts, it will need to enforce authentication securely. In this section, we lay out the various relevant aspects of package repositories.
 
 Does the package repository ...
 
 ... have user accounts?
-- Yes: then you have to manage things like authentication and account recovery. For example: PyPI
-- No: For example: {index, proxy, sum}.golang.org
+- Yes: then you have to manage things like authentication and account recovery. For example, PyPI
+- No: for example, {index, proxy, sum}.golang.org
 
 ... accept built packages, do builds on behalf of users, or only host source code?
-- Accept built packages: then you have to provide a way to link packages back to source code and build instructions. For example: npm
-- Builds on behalf of users: For example, Homebrew
-- Only host source code: For example: {index, proxy, sum}.golang.org
+- Accept built packages: for example, npm
+- Builds on behalf of users: for example, Homebrew
+- Only host source code: for example, {index, proxy, sum}.golang.org
 
 ## Security Capabilities of Package Repositories
 
 We define 4 levels of security maturity:
+
 - Level 0 is defined as having very little security maturity.
 - Level 1 is defined as having basic security maturity, which includes supporting basic security features like multi-factor authentication (MFA) and allowing security researchers to report vulnerabilities. All package management ecosystems should be working towards at least this level.
 - Level 2 is defined as having moderate security, which includes actions like requiring MFA for critical packages and warning users of known security vulnerabilities.
 - Level 3 is defined as having advanced security, which includes actions like requiring MFA for all maintainers and supporting build provenance for packages. This level is more aspirational, especially for smaller package management ecosystems.
+
+These levels are split into four tracks enumerated in the below sections: Authentication, Authorization, General Capabilities, and CLI Tooling. All tracks may not apply to all package repositories, as detailed above. Having these tracks allows package repositories to assess their security across various dimensions.
 
 ### Authentication
 
@@ -62,7 +65,7 @@ Applies to: package repositories that have user accounts and accept built packag
 
 - Level 1
   - The package repository allows maintainers to provision API keys scoped to specific packages. This allows maintainers to maintain packages via automated workflows without needing to provide their account password.
-  - API tokens are prefixed with a repository-specific identifier.
+  - API tokens are prefixed with a package repository-specific identifier.
 - Level 2
   - The package repository supports role-based access control (RBAC) for maintainers, allowing separate roles for managing users and publishing packages.
 - Level 3
