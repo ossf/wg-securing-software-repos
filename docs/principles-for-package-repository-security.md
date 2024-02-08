@@ -1,6 +1,7 @@
 # Principles for Package Repository Security
 
 Authors: [Jack Cable (CISA)](https://github.com/cablej), [Zach Steindler](https://github.com/steiza)
+
 Last updated: Feb 2024
 
 ## Background
@@ -12,6 +13,8 @@ By package repository (sometimes also called package registry) we're referring t
 We include the below taxonomy because not all security advice applies to all package repositories. For example, https://proxy.golang.org/ does not manage user accounts, and so has no need of documented account recovery.
 
 The roadmap of security capabilities can then be used by package repositories to assess gaps, put together fundable improvement lists ([like Python Packaging WG](https://github.com/psf/fundable-packaging-improvements/blob/master/FUNDABLES.md)), or write specific grant proposals that reference this guidance.
+
+This is v0.1 of this document. You can give feedback for v0.2 at https://github.com/ossf/wg-securing-software-repos/pull/38.
 
 ## Taxonomy of Package Repositories
 
