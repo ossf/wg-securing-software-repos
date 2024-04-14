@@ -15,6 +15,16 @@ The roadmap of security capabilities can then be used by package repositories to
 
 This is v0.2 of this document.
 
+### Framing
+
+For a security capability to be listed, it should:
+
+- Be successfully deployed in at least one ecosystem. We encourage individual package repositories to explore ideas, but we want to see results from production before recommending it broadly.
+
+- Not be something already widely deployed (like "use HTTPS"). This document is to help package repositories assess gaps and plan roadmaps, and as such is forward-looking.
+
+- Be a security capability and not a prescribed implementation. Specifics of implementations can change quickly, but the capability they enable is much longer-lived.
+
 ## Taxonomy of Package Repositories
 
 Security capabilities will differ based on the services that the package repository offers. For instance, if the package repository has user accounts, it will need to enforce authentication securely. In this section, we lay out the various relevant aspects of package repositories.
