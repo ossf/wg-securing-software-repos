@@ -38,11 +38,11 @@ A high-level overview of how PyPI verifies the OIDC token against a pre-configur
 * Using the JWKs, [verify the JWT signature and claims](https://www.criipto.com/blog/jwt-validation-guide) (claims like `nbf`, `exp`, `jti`, etc).
 * Verify that the audience claim (`aud`) is equal to a service-specific value (i.e. `pypi` and `testpypi`). This requires that the IdP supports configuring the audience of the emitted OIDC token.
 * Using the claims, check the values against the pre-configured trust policy for the Trusted Publisher. For example, a GitHub workflow would check the following claims:
-    * `sub` (Subject) is of the form “example-owner/example-repo:.*”
-    * repository is “example-repo”
-    * repository_owner is “example-owner”
-    * repository_owner_id is “12345”
-    * job_workflow_ref is “example-owner/example-repo/.github/workflows/publish.yml@abcdef”
+    * `sub` (Subject) is of the form `example-owner/example-repo:.*`
+    * `repository` is `example-repo`
+    * `repository_owner` is `example-owner`
+    * `repository_owner_id` is `12345`
+    * `job_workflow_ref` is `example-owner/example-repo/.github/workflows/publish.yml@abcdef`
 
 Once this is complete, the package repository can authorize publications by delegating to a repository-managed token.
 
