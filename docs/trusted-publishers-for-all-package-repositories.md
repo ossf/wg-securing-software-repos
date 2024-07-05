@@ -73,9 +73,9 @@ For packaging ecosystems where there are multiple artifacts per release or multi
 
 ### Identity Providers and Claims
 
-OIDC tokens are implemented as [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token) (JWTs) and come with a set of claims, which are a mix of standard OIDC claims and provider-specific claims
+OIDC tokens are implemented as [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token) (JWTs) and come with a set of claims, which are a mix of standard OIDC claims and provider-specific claims.
 
-IdPs must support customizing the audience claim (`aud`) and Trusted Publisher implementations must only accept OIDC tokens with a service-specific audience claim (ie “pypi”).
+IdPs must support customizing the audience claim (`aud`) and Trusted Publisher implementations must only accept OIDC tokens with a service-specific audience claim (e.g. “pypi”).
 
 IdPs all have their own claim sets for their OIDC tokens. Creating a Trusted Publisher for a provider requires knowledge about the provider’s internal implementation and behavior when determining which subsets constitute a sufficiently trusted set to provide to users. Trusted Publisher implementations must not rely exclusively on a generic set of claims (i.e. only `sub` + `iss` + `aud`) as these do not constitute a sufficiently trusted set for many IdPs.
 
@@ -89,7 +89,7 @@ IdPs may allow customizing other claims, like validity time of the OIDC token. T
 
 Package repositories should not use OIDC tokens for directly authenticating with package publishing APIs. Instead, package repositories should exchange the OIDC token for a repository-controlled API token that is used for authenticating with publishing APIs. Below are a list of reasons for the exchange:
 
-* If the package repository already supports token-based authentication, OIDC tokens won’t plug into the existing authentication and authorization implementations. This will lead to needing to reimplement them for OIDC tokens, effectively having two token types and potentially leading to more bugs.
+* If the package repository already supports token-based authentication, OIDC tokens won’t plug into the pre-existing existing authentication and authorization implementations. This will lead to needing to reimplement them for OIDC tokens, effectively having two token types and potentially leading to more bugs.
 * JWTs can contain any information that the provider decides to include, like private or personally identifiable information (i.e. names and email addresses). Using a separate token avoids holding on to this information for extended periods of time to reduce potential exposure or persistence.
 * Identity Providers can change the expiration and other policies around their tokens without notice. Creating your own temporary token makes the repository resilient to these changes.
 * Repository-managed tokens are more pluggable into existing tooling for publishing packages.
