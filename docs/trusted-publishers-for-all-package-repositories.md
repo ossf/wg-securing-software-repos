@@ -1,6 +1,6 @@
 # Trusted Publishers for All Package Repositories
 
-Trusted Publishers is a new authentication mechanism using the OpenID Connect standard (OIDC) to exchange OIDC tokens for short-lived and tightly scoped API tokens for authenticating with package repository publishing APIs. Using short-lived API tokens removes the need to share long-lived and potentially highly privileged API tokens with external systems when publishing software. This capability is primarily beneficial for hosted, automated publishing workflows.
+Trusted Publishers is a new authentication method that builds on the existing OpenID Connect standard (OIDC) for user infrastructure publishing to public package repositories (e.g. CI publishing to PyPI, as opposed to maintainers publishing from their system or Homebrew's centralized builds). Authentication is performed by exchanging OIDC tokens for short-lived and tightly scoped API tokens for authenticating with package repository publishing APIs. Using short-lived API tokens removes the need to share long-lived and potentially highly privileged API tokens with external systems when publishing software.
 
 ## Why Trusted Publishers?
 
@@ -24,19 +24,19 @@ Package repositories which don’t host separate artifacts (such as pkg.go.dev) 
 
 Trusted Publishers allow a package repository like the Python Package Index (PyPI) to authenticate an identity from an Identity Provider (IdP) like GitHub Actions or GitLab Pipelines, and using a technology called OpenID Connect (OIDC).
 
-Trusted Publishers works by requiring users to pre-configure a trust policy on the receiving package repository which will be later used as part of authenticating a publish request. When new artifacts are being published to the registry, the OIDC ID token (implemented as a JWT token) will be verified by [checking the JWT claims and signature against the IdP’s  JSON Web Keyset (JWK)](https://www.criipto.com/blog/jwt-validation-guide) and checked to ensure the OIDC token’s issuer and claims match the [pre-configured trust policy for the package](https://docs.pypi.org/trusted-publishers/adding-a-publisher/#github-actions).
+Trusted Publishers works by requiring users to pre-configure a trust policy on the receiving package repository which will be later used as part of authenticating a publish request. When new artifacts are being published to the registry, the OIDC ID token (implemented as a JWT token) will be verified by [checking the JWT claims and signature against the IdP’s  JSON Web Keyset (JWK)](https://www.criipto.com/blog/jwt-validation-guide) and checked to ensure the OIDC ID token’s issuer and claims match the [pre-configured trust policy for the package](https://docs.pypi.org/trusted-publishers/adding-a-publisher/#github-actions).
 
 The trust policy doesn’t necessarily need to have a _direct_ link to a package, for example some package repositories may want to assign trust policies to package namespaces, the trust policy determines whether a given package can be published by a given workload identity.
 
 The JWKs are discovered using the [well-known OpenID Connect Discovery URL](https://swagger.io/docs/specification/authentication/openid-connect-discovery/) which is based on the JWT’s issuer (“iss”) claim. For example, GitHub’s “iss” claim is “[https://token.actions.githubusercontent.com](https://token.actions.githubusercontent.com)” and thus it’s well-known OpenID Connect Discovery URL is “[https://token.actions.githubusercontent.com/.well-known/openid-configuration](https://token.actions.githubusercontent.com/.well-known/openid-configuration)”.
 
-A high-level overview of how PyPI verifies the OIDC token against a pre-configured policy is below:
+A high-level overview of how PyPI verifies the OIDC ID token against a pre-configured policy is below:
 
 * Parse the JWT without verifying the claims or signature to extract the issuer claim (`iss`). Be sure that this parsed JWT is discarded and that the JWT isn’t marked as verified by the service at this stage.
 * Checking this issuer against the supported list of OIDC identity providers for the package repository, select the implementation for verifying the token (e.g “GitHub” or “GitLab”).
 * Fetch the OpenID Connect discovery URL and JWKs for the issuer.
 * Using the JWKs, [verify the JWT signature and claims](https://www.criipto.com/blog/jwt-validation-guide) (claims like `nbf`, `exp`, `jti`, etc).
-* Verify that the audience claim (`aud`) is equal to a service-specific value (i.e. `pypi` and `testpypi`). This requires that the IdP supports configuring the audience of the emitted OIDC token.
+* Verify that the audience claim (`aud`) is equal to a service-specific value (i.e. `pypi` and `testpypi`). This requires that the IdP supports configuring the audience of the emitted OIDC ID token.
 * Using the claims, check the values against the pre-configured trust policy for the Trusted Publisher. For example, a GitHub workflow would check the following claims:
     * `sub` (Subject) is of the form `example-owner/example-repo:.*`
     * `repository` is `example-repo`
@@ -46,11 +46,11 @@ A high-level overview of how PyPI verifies the OIDC token against a pre-configur
 
 Once this is complete, the package repository can authorize publications by delegating to a repository-managed token.
 
-This document recommends exchanging the OIDC token for a separate repository-managed token, but this step is not required and the OIDC token may be used directly for authenticating the publish request. See the “Resulting Design Decisions” section for further reasoning behind this recommendation.
+This document recommends exchanging the OIDC ID token for a separate repository-managed token, but this step is not required and the OIDC ID token may be used directly for authenticating the publish request. See the “Resulting Design Decisions” section for further reasoning behind this recommendation.
 
 ![Diagram of Trusted Publishers flow](./imgs/trusted-publishers-flow.png)
 
-Every unique IdP that a package repository wishes to support will require its own implementation as the claims on each OIDC token vary depending on the provider (beyond the standard issuer, expiration, and audience claims of JWT tokens). The sets of claims chosen to check must constitute sufficiently trusted metadata to be checked against the trust policy on packages. Trusted Publisher implementations must not rely exclusively on a generic set of claims (i.e. only `sub` + `iss` + `aud`) as these do not constitute a sufficiently trusted set for many IdPs.
+Every unique IdP that a package repository wishes to support will require its own implementation as the claims on each OIDC ID token vary depending on the provider (beyond the standard issuer, expiration, and audience claims of JWT tokens). The sets of claims chosen to check must constitute sufficiently trusted metadata to be checked against the trust policy on packages. Trusted Publisher implementations must not rely exclusively on a generic set of claims (i.e. only `sub` + `iss` + `aud`) as these do not constitute a sufficiently trusted set for many IdPs.
 
 ## Resulting Design Decisions
 
@@ -58,7 +58,7 @@ Every unique IdP that a package repository wishes to support will require its ow
 
 Trusted Publishers represent a more secure authentication model than long-lived API tokens, however Trusted Publishers are not a panacea. The following security model must be followed by users to maintain a secure configuration:
 
-* Short-lived tokens like OIDC tokens or repository-managed API tokens are still sensitive material and should not be disclosed. Either of these tokens being disclosed means they can be used by an attacker to publish malicious packages to the repository until they expire.
+* Short-lived tokens like OIDC ID tokens or repository-managed API tokens are still sensitive material and should not be disclosed. Either of these tokens being disclosed means they can be used by an attacker to publish malicious packages to the repository until they expire.
 * Configuring a Trusted Publisher is a means of establishing trust in some external state. That external state (both the IdP itself and the resources managed by the IdP) must not be controllable by untrusted parties.
 
 It’s recommended to document this security model alongside provider-specific guides on how to adopt Trusted Publishers for the package repository.
@@ -75,21 +75,21 @@ For packaging ecosystems where there are multiple artifacts per release or multi
 
 OIDC ID tokens are implemented as [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token) (JWTs) and come with a set of claims, which are a mix of standard OIDC claims and provider-specific claims.
 
-IdPs must support customizing the audience claim (`aud`) and Trusted Publisher implementations must only accept OIDC tokens with a service-specific audience claim (e.g. “pypi”).
+IdPs must support customizing the audience claim (`aud`) and Trusted Publisher implementations must only accept OIDC ID tokens with a service-specific audience claim (e.g. “pypi”).
 
-IdPs all have their own claim sets for their OIDC tokens. Creating a Trusted Publisher for a provider requires knowledge about the provider’s internal implementation and behavior when determining which subsets constitute a sufficiently trusted set to provide to users. Trusted Publisher implementations must not rely exclusively on a generic set of claims (i.e. only `sub` + `iss` + `aud`) as these do not constitute a sufficiently trusted set for many IdPs.
+IdPs all have their own claim sets for their OIDC ID tokens. Creating a Trusted Publisher for a provider requires knowledge about the provider’s internal implementation and behavior when determining which subsets constitute a sufficiently trusted set to provide to users. Trusted Publisher implementations must not rely exclusively on a generic set of claims (i.e. only `sub` + `iss` + `aud`) as these do not constitute a sufficiently trusted set for many IdPs.
 
-IdPs vary their sets of claims depending on the situation the OIDC token is used in, for example GitHub has special claims for reusable workflows or for different workflow trigger types. Providers have also been known to change their claims with varying amounts of fore-warning or documentation about the changes.
+IdPs vary their sets of claims depending on the situation the OIDC ID token is used in, for example GitHub has special claims for reusable workflows or for different workflow trigger types. Providers have also been known to change their claims with varying amounts of fore-warning or documentation about the changes.
 
-Trusted Publisher implementations may utilize the `jti` claim to prevent replaying of OIDC tokens by rejecting tokens which have been previously used.
+Some IdPs support the `jti` claim. When supported by an IdP, Trusted Publisher implementations should utilize the `jti` claim to prevent replaying of OIDC ID tokens by rejecting tokens which have been previously used.
 
-IdPs may allow customizing other claims, like validity time of the OIDC ID token. Trusted Publisher implementations may decide to add further requirements to IdPs and their OIDC tokens (such as maximum validity time) to enforce more secure OIDC ID token handling where this is possible with the IdP.
+IdPs may allow customizing other claims, like validity time of the OIDC ID token. Trusted Publisher implementations may decide to add further requirements to IdPs and their OIDC ID tokens (such as maximum validity time) to enforce more secure OIDC ID token handling where this is possible with the IdP.
 
-### OIDC tokens and repository-controlled tokens
+### OIDC ID tokens and repository-controlled tokens
 
-Package repositories should not use OIDC ID tokens for directly authenticating with package publishing APIs. Instead, package repositories should exchange the OIDC token for a repository-controlled API token that is used for authenticating with publishing APIs. Below are a list of reasons for the exchange:
+Package repositories should not use OIDC ID tokens for directly authenticating with package publishing APIs. Instead, package repositories should exchange the OIDC ID token for a repository-controlled API token that is used for authenticating with publishing APIs. Below are a list of reasons for the exchange:
 
-* If the package repository already supports token-based authentication, OIDC tokens won’t plug into the pre-existing existing authentication and authorization implementations. This will lead to needing to reimplement them for OIDC tokens, effectively having two token types and potentially leading to more bugs.
+* If the package repository already supports token-based authentication, OIDC ID tokens won’t plug into the pre-existing existing authentication and authorization implementations. This will lead to needing to reimplement them for OIDC ID tokens, effectively having two token types and potentially leading to more bugs.
 * JWTs can contain any information that the provider decides to include, like private or personally identifiable information (i.e. names and email addresses). Using a separate token avoids holding on to this information for extended periods of time to reduce potential exposure or persistence.
 * Identity Providers can change the expiration and other policies around their tokens without notice. Creating your own temporary token makes the repository resilient to these changes.
 * Repository-managed tokens are more pluggable into existing tooling for publishing packages.
