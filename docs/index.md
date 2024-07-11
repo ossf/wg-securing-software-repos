@@ -15,8 +15,8 @@ This is a list of materials (surveys, documents, proposals, and so on) released 
 * [Build Provenance for All Package Registries](https://repos.openssf.org/build-provenance-for-all-package-registries) - July 2023
   > Guidance for package registries in adopting build provenance to verifiably link a package back to its source code and build instructions.
 
-* [Trusted Publishers for All Package Repositories](https://repos.openssf.org/trusted-publishers-for-all-package-registries) - July 2024
-  > Guidance for package registries in adopting Trusted Publishers to authenticate with package repositories from hosted build environments without using long-lived credentials.
+* [Trusted Publishers for All Package Repositories](https://repos.openssf.org/trusted-publishers-for-all-package-repositories) - July 2024
+  > Guidance for package repositories in adopting Trusted Publishers to authenticate publishing from hosted build environments without using long-lived credentials.
 
 
 ## Proposals
