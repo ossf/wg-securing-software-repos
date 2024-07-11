@@ -29,6 +29,8 @@ The working group may create:
 
 See also https://repos.openssf.org/
 
+* **[Trusted Publishers for All Package Repositories](https://repos.openssf.org/trusted-publishers-for-all-package-repositories)** - July 2024
+  > Guidance for package repositories in adopting Trusted Publishers to authenticate publishing from hosted build environments without using long-lived credentials.
 * **[Principles for Package Repository Security](https://repos.openssf.org/principles-for-package-repository-security)** - February 2024
   > A security maturity model for package repositories, for assessing current capabilities and roadmapping future improvements.
 * **[Build Provenance and Code-signing for Homebrew](https://repos.openssf.org/proposals/build-provenance-and-code-signing-for-homebrew)** - July 2023

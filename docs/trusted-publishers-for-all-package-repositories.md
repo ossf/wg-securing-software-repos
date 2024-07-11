@@ -1,5 +1,9 @@
 # Trusted Publishers for All Package Repositories
 
+Authors: [Seth Michael Larson (Python Software Foundation)](https://github.com/sethmlarson)
+
+Last updated: July 2024
+
 Trusted Publishers is a new authentication method that builds on the existing OpenID Connect standard (OIDC) for user infrastructure publishing to public package repositories (e.g. CI publishing to PyPI, as opposed to maintainers publishing from their system or Homebrew's centralized builds). Authentication is performed by exchanging OIDC identity tokens for short-lived and tightly scoped API tokens for authenticating with package repository publishing APIs. Using short-lived API tokens removes the need to share long-lived and potentially highly privileged API tokens with external systems when publishing software.
 
 ## Why Trusted Publishers?
