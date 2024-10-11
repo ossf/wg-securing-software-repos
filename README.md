@@ -54,7 +54,7 @@ This group is co-chaired by [Dustin Ingram](https://github.com/di) and [Zach Ste
 
 ## Communication
 
-* [Meeting Minutes](https://docs.google.com/document/d/1-f6m442MHg9hktrbcp-4sM9GbZC3HLTpZPpxMXjMCp4/edit)
+* [Meeting Minutes](https://docs.google.com/document/d/1HzA4M4toiExUYQAkuLqimy4EuuunHagUQ7rZKJDb1Os/edit)
 * [Mailing list](https://lists.openssf.org/g/openssf-wg-securing-software-repos). [Manage your subscriptions to Open SSF mailing lists](https://lists.openssf.org/g/main/subgroups).
 * [OpenSSF Slack](https://openssf.slack.com/archives/C034CBLMQ9G) instance in the `#wg_securing_software_repos` channel (see [here](https://openssf.slack.com/join/shared_invite/zt-xoktwsef-VzM~b22G2gfT_~4woTTsQA#/shared-invite/email) for an invite) 
 
@@ -66,7 +66,7 @@ The meeting invite is available on the public [OSSF calendar](https://calendar.g
 
 ## Meeting Notes
 
-Meeting notes are maintained in a [Google Doc](https://docs.google.com/document/d/1-f6m442MHg9hktrbcp-4sM9GbZC3HLTpZPpxMXjMCp4/edit). If attending please add your name, and if a returning attendee, please change the color of your name from gray to black.
+Meeting notes are maintained in a [Google Doc](https://docs.google.com/document/d/1HzA4M4toiExUYQAkuLqimy4EuuunHagUQ7rZKJDb1Os/edit). If attending please add your name, and if a returning attendee, please change the color of your name from gray to black.
 
 ## Antitrust Policy Notice
 
