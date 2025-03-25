@@ -2,6 +2,74 @@
 
 Last updated: March 2025
 
+In 2016 after a dispute about the naming of an open source package, a maintainer deleted all the packages he had published to npm, including a small package called `left-pad`. Although `left-pad` was only about a dozen lines of code, it had impressive reach. Prior to removal, it had over 15 million downloads and was used by thousands of open source projects--including many that are critical to the npm ecosystem. The deletion of `left-pad` caused build failures for projects large and small and rendered a large portion of the internet unnavigable. Npm made the decision to republish the package,  
+
+After the `left-pad` incident, npm updated their package deletion policy to prevent similar failures and other package managers followed suit. In the over 9 years since the incident, package managers have continued to adjust their package deletion policies to balance the sometimes competing interests of open source maintainers, open source consumers, and the package ecosystem itself. 
+
+This paper discusses the components of modern package deletion policies, highlighting the strengths and weaknesses of specific policy components. It is not meant to be a sample deletion policy, but a discussion of things to consider when crafting such a policy. 
+
+## Deletion policy considerations
+
+If we consider a hypothetical package deletion policy, it would exist on a spectrum somewhere between never allowing packages to be deleted to allowing packages to be deleted without any restrictions. Both ends of this spectrum are impractical. 
+
+* Never allowing for package deletion could result in the publishing of malicious, abusive, illegal, or copywritten content without any recourse.
+* Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently vacated namespace, and other undesireable behavior. 
+
+So when crafting a deletion policy, we want to stay away from the two extremes, but what needs to be considered?
+
+Whether or not a package manager allows for users to delete packages in some cases, it should allow for the package manager maintainers to manually intervene and delete packages. This allows the maintainer team to protect the ecosystem from malicious, abusive, illegal, or copywritten content. 
+
+But what if a user wants to delete a package they published? Although it's possible to require such cases to go to the maintainer team to be manually reviewed and removed, that is not a very efficient policy. Such a policy would place a burden on the (already likely overworked) maintainer team, and the ecosystem would be cluttered with the unwanted packages until they are manually removed. 
+
+Allowing a user to delete their package, under specific conditions, is therefore good for the user, the package manager maintainer team, and the package ecosystem at large. But what factors need to be considered to avoid a `left-pad` style incident? 
+
+## Ecosystem impact
+
+In modern package deletion policies, packages are allowed to be deleted if doing so would cause only a small inconvenience to the ecosystem. Different package managers can consider different criteria or set different limits, but the following considerations are generally used when determining whether a package is a good candidate for deletion. 
+
+### Time
+
+How long ago was the package published? A package published two days ago and a package published two years ago are going to have different impacts on the community. Deleting a well established package will have a higher cost than deleting a brand new package. Although time since publication is not a perfect metric for ecosystem impact (maybe a package has been around for years but only has a handful of users), there are a number of use cases where this metric is very relevant. For example, the user could have:
+
+* Published the wrong package
+* Published the package with an unintended name (or a typo)
+* Published a test package to understand and experience the package publishing process
+
+In these cases, it is very useful for the package manager to have a no hassle deletion policy as long as the package has been published for less than a certain amount of time. 
+
+### Downloads
+
+How many times has the package been downloaded? Package download statistics provide an indication of how widely the package has been adopted with the ecosystem. Deleting a package with less than 50 downloads will have a smaller impact than deleting a package with 5,000 downloads, or 500,000 downloads, or 5 million downloads. Setting a maximum number of downloads a package can have to be eligible for deletion is a great way to ensure minimal ecosystem impact. 
+
+### Dependency status
+
+Is the package under consideration a dependency of other packages within the ecosystem? How many? Is _that_ package a dependency of another package (making the package to be deleted a transitive dependency)? 
+
+If other packages within the ecosystem depend on the package to be deleted, that is direct proof that deletion would cause ecosystem harm. A package manager maintainance team could choose whatever threshold they like, but none of the package managers surveyed for this report allowed for packages to be deleted if they are dependencies of other packages in the ecosystem. 
+
+### Maintainer status
+
+Many package deletion policies 
+
+## Package manager structure and package deletion policies
+### Mirrors
+### Test ecosystems
+
+## Deletion alternatives
+### Yanking
+### Deprecation
+### 
+
+## Additional considerations
+### Namespaces 
+
+## Conclusion
+
+## Bibliography
+
+
+ 
+
 NOTES: To be deleted when published. 
 
 * Opening
