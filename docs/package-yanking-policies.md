@@ -51,7 +51,7 @@ If other packages within the ecosystem depend on the package to be deleted, that
 
 ### Maintainer status
 
-Many package deletion policies will not allow packages with more than one maintainer to be deleted. Allowing a single maintainer to delete the package could contradict the will of the other maintainers and there is not an uncomplicated way to get the consent of the maintainer team. Multiple maintainers also implies an increased investment in the project. 
+Many package deletion policies will not allow packages with more than one maintainer to be deleted. Allowing a single maintainer to delete the package could contradict the will of the other maintainers and there is not an uncomplicated way to get the consent of the maintainer team. Multiple maintainers also implies an increased investment in the project. Additionally a package manager could differentiate between a "maintainer" and an "owner" and only allow for the package owner to delete the package. 
 
 ## Package manager structure and package deletion policies
 
@@ -59,8 +59,11 @@ Package managers are not all structured the same way and architecture decisions 
 
 ### Decentralized publishing
 
-For example, Go uses [decentralized publishing](https://go.dev/doc/modules/developing#decentralized) to make their modules available. A Go module is published by tagging the code in its repository. Publishing a moduleit is also uploaded to Go's [module proxy server](https://proxy.golang.org/). The module will be available on the module proxy server even if it is The module maintainer never directly adds their module to the proxy server, so a method to delete it from the proxy server doesn't make a lot of sense. 
-### Test ecosystems
+For example, Go uses [decentralized publishing](https://go.dev/doc/modules/developing#decentralized) to make their modules available. A Go module is published by tagging the code in its repository. When a module is published it is also uploaded to Go's [module proxy server](https://proxy.golang.org/). The module maintainer never directly adds their module to the proxy server, and there is not a way for the maintainer to delete the module from the proxy server. They can delete the original repository, but a copy of the project will remain on the proxy server. Instead, Go uses a [retract directive](https://go.dev/ref/mod#go-mod-file-retract).  
+
+### Test instances
+
+Another architecture decision related to a package deletion policy is the use of a seperate test instance. For example PyPI maintains [TestPyPI](https://test.pypi.org/) to allows users to try distribution tools and processes without affecting the real PyPI. A test instance does not necessarily eliminate the need for a package deletion policy because mistakes can still be made, but it does allow for users to experiment without leaving junk packages on the main instance. 
 
 ## Deletion alternatives
 ### Yanking
