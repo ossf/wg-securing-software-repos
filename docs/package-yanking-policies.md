@@ -2,7 +2,7 @@
 
 Last updated: March 2025
 
-In 2016 after a dispute about the naming of an open source package, a maintainer deleted all the packages he had published to npm, including a small package called `left-pad`. Although `left-pad` was only about a dozen lines of code, it had impressive reach. Prior to removal, it had over 15 million downloads and was used by thousands of open source projects--including many that are critical to the npm ecosystem. The deletion of `left-pad` caused build failures for projects large and small and rendered a large portion of the internet unnavigable. Npm made the decision to republish the package,  
+In 2016 after a dispute about the naming of an open source package, a maintainer deleted all the packages he had published to npm, including a small package called `left-pad`. Although `left-pad` was only about a dozen lines of code, it had impressive reach. Prior to removal, it had over 15 million downloads and was used by thousands of open source projects--including many that are critical to the npm ecosystem. The deletion of `left-pad` caused build failures for projects large and small and rendered a large portion of the internet unnavigable. Npm made the decision to republish the package.  
 
 After the `left-pad` incident, npm updated their package deletion policy to prevent similar failures and other package managers followed suit. In the over 9 years since the incident, package managers have continued to adjust their package deletion policies to balance the sometimes competing interests of open source maintainers, open source consumers, and the package ecosystem itself. 
 
@@ -21,15 +21,17 @@ Whether or not a package manager allows for users to delete packages in some cas
 
 But what if a user wants to delete a package they published? Although it's possible to require such cases to go to the maintainer team to be manually reviewed and removed, that is not a very efficient policy. Such a policy would place a burden on the (already likely overworked) maintainer team, and the ecosystem would be cluttered with the unwanted packages until they are manually removed. 
 
-Allowing a user to delete their package, under specific conditions, is therefore good for the user, the package manager maintainer team, and the package ecosystem at large. But what factors need to be considered to avoid a `left-pad` style incident? 
+Allowing a user to delete their package in certain cases is therefore good for the user, the package manager maintainer team, and the package ecosystem at large. But what factors need to be considered to avoid a `left-pad` style incident? 
 
 ## Ecosystem impact
 
-In modern package deletion policies, packages are allowed to be deleted if doing so would cause only a small inconvenience to the ecosystem. Different package managers can consider different criteria or set different limits, but the following considerations are generally used when determining whether a package is a good candidate for deletion. 
+A modern package deletion policy aims to minimize the impact a given deletion could have on the ecosystem, while granting users some flexibilty with their packages. 
+
+The following considerations are generally used when determining whether a package is a good candidate for deletion, although specific limits and criteria will vary between package managers. 
 
 ### Time
 
-How long ago was the package published? A package published two days ago and a package published two years ago are going to have different impacts on the community. Deleting a well established package will have a higher cost than deleting a brand new package. Although time since publication is not a perfect metric for ecosystem impact (maybe a package has been around for years but only has a handful of users), there are a number of use cases where this metric is very relevant. For example, the user could have:
+How long ago was the package published? Although time since publication is not a perfect metric for ecosystem impact (maybe a package has been around for years but only has a handful of users), there are a number of use cases where this metric is very relevant. For example, the user could have:
 
 * Published the wrong package
 * Published the package with an unintended name (or a typo)
@@ -49,19 +51,24 @@ If other packages within the ecosystem depend on the package to be deleted, that
 
 ### Maintainer status
 
-Many package deletion policies 
+Many package deletion policies will not allow packages with more than one maintainer to be deleted. Allowing a single maintainer to delete the package could contradict the will of the other maintainers and there is not an uncomplicated way to get the consent of the maintainer team. Multiple maintainers also implies an increased investment in the project. 
 
 ## Package manager structure and package deletion policies
-### Mirrors
+
+Package managers are not all structured the same way and architecture decisions can have an impact on what makes sense for a given ecosystem.
+
+### Decentralized publishing
+
+For example, Go uses [decentralized publishing](https://go.dev/doc/modules/developing#decentralized) to make their modules available. A Go module is published by tagging the code in its repository. Publishing a moduleit is also uploaded to Go's [module proxy server](https://proxy.golang.org/). The module will be available on the module proxy server even if it is The module maintainer never directly adds their module to the proxy server, so a method to delete it from the proxy server doesn't make a lot of sense. 
 ### Test ecosystems
 
 ## Deletion alternatives
 ### Yanking
 ### Deprecation
-### 
 
 ## Additional considerations
-### Namespaces 
+### Namespaces
+
 
 ## Conclusion
 
