@@ -13,11 +13,11 @@ This paper discusses the components of modern package deletion policies. It is n
 If we consider a hypothetical package deletion policy, it would exist on a spectrum somewhere between never allowing packages to be deleted to allowing packages to be deleted without any restrictions. Both ends of this spectrum are impractical.
 
 * Never allowing for package deletion could result in the publishing of malicious, abusive, illegal, or copywritten content without any recourse.
-* Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently vacated namespace, and other undesireable behavior.
+* Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently vacated namespace, and other undesirable behavior.
 
 So when crafting a deletion policy, we want to stay away from the two extremes, but what needs to be considered?
 
-Whether or not a package manager allows for users to delete packages in some cases, it should allow for the package manager maintainers to manually intervene and delete packages. This allows the maintainer team to protect the ecosystem from malicious, abusive, illegal, or copywritten content.
+Whether or not a package manager allows for users to delete packages in some cases, it should allow for the package manager maintainers to manually intervene and delete packages. This allows the maintainer team to protect the ecosystem from malicious, abusive, illegal, or copyrighted content.
 
 But what if a user wants to delete a package they published? Although it's possible to require such cases to go to the maintainer team to be manually reviewed and removed, that is not a very efficient policy. Such a policy would place a burden on the (already likely overworked) maintainer team, and the ecosystem would be cluttered with the unwanted packages until they are manually removed.
 
@@ -25,7 +25,7 @@ Allowing a user to delete their package in certain cases is therefore good for t
 
 ## Ecosystem impact
 
-A modern package deletion policy aims to minimize the impact a given deletion could have on the ecosystem, while granting users some flexibilty with their packages.
+A modern package deletion policy aims to minimize the impact a given deletion could have on the ecosystem, while granting users some flexibility with their packages.
 
 The following considerations are generally used when determining whether a package is a good candidate for deletion, although specific limits and criteria will vary between package managers.
 
@@ -41,13 +41,13 @@ In these cases, it is very useful for the package manager to have a no hassle de
 
 ### Downloads
 
-How many times has the package been downloaded? Package download statistics provide an indication of how widely the package has been adopted with the ecosystem. Deleting a package with less than 50 downloads will have a smaller impact than deleting a package with 5,000 downloads, or 500,000 downloads, or 5 million downloads. Setting a maximum number of downloads a package can have to be eligible for deletion is a great way to ensure minimal ecosystem impact. For example, npm's download limit is 300 downloads in the previous week.
+How many times has the package been downloaded? Package download statistics provide an indication of how widely the package has been adopted with the ecosystem. Deleting a package with less than 50 downloads will have a smaller impact than deleting a package with 5,000 downloads, or 500,000 downloads, or 5 million downloads. Setting a maximum number of downloads a package can have to be eligible for deletion is a great way to ensure minimal ecosystem impact. For example, npm's limit is 300 downloads within the previous week.
 
 ### Dependency status
 
 Is the package under consideration a dependency of other packages within the ecosystem? How many? Is _that_ package a dependency of another package (making the package to be deleted a transitive dependency)?
 
-If other packages within the ecosystem depend on the package to be deleted, that is direct proof that deletion would cause ecosystem harm. A package manager maintainance team could choose whatever threshold they like, but many package managers choose to not allow for deletion of dependent packages at all.
+If other packages within the ecosystem depend on the package to be deleted, that is direct proof that deletion would cause ecosystem harm. A package manager maintainer team could choose whatever threshold they like, but many package managers choose to not allow for deletion of dependent packages at all.
 
 ### Maintainer status
 
@@ -69,19 +69,19 @@ For example, Go uses [decentralized publishing](https://go.dev/doc/modules/devel
 
 ### Test instances and staging environments
 
-Another architecture decision related to a package deletion policy is the use of a seperate test instance or a staging environment.
+Another architecture decision related to a package deletion policy is the use of a separate test instance or a staging environment.
 
-For example PyPI maintains [TestPyPI](https://test.pypi.org/) to allows users to try distribution tools and processes without affecting the real PyPI. A test instance does not necessarily eliminate the need for a package deletion policy because mistakes can still be made, but it does allow for users to experiment without leaving junk packages on the main instance.
+For example PyPI maintains [TestPyPI](https://test.pypi.org/) to allow users to try distribution tools and processes without affecting the real PyPI. A test instance does not necessarily eliminate the need for a package deletion policy because mistakes can still be made, but it does allow for users to experiment without leaving junk packages on the main instance.
 
 ## Deletion alternatives
 
 There are a number of reasons that a person would want to delete a package. Package deletion is a good solution for some of those reasons (publishing the wrong package, making a typo, experimenting with the package manager), but not necessarily for others.
 
-What if a package (or version series) is no longer in active development? What if a specific version has a security issue? In these cases community should be informed of the issues, and possibly prevented from using a specific version, but deleting the package outright is not a tenable solution. So what can package managers do in these cases?
+What if a package (or version series) is no longer in active development? What if a specific version has a security issue? In these cases, the community should be informed of the issues, and possibly prevented from using a specific version, but deleting the package outright is not a tenable solution. So what can package managers do in these cases?
 
 ### Yanking
 
-"Yanking" refers to soft deleting a compromised package version. The version still exists, but by marking the version as yanked, installers will ignore the version unless it is the only release that matches a version specifier. If the yanked version is explicitly required, it will be installed and will not break the build. Mainters should consider yanking a release if it is broken, unstable, or contains a very severe vulnerability. Yanking will not completely guarantee that no one is using the compromised version, but it will reduce the prevalence of the corrupted version. If an ecosytem allows for version yanking, it is best practice to also allow maintainers to provide a reason. Users who are explicitly requiring the yanked version can then appropriately prioritize moving to a non-yanked version.
+"Yanking" refers to soft deleting a compromised package version. The version still exists, but by marking the version as yanked, installers will ignore the version unless it is the only release that matches a version specifier. If the yanked version is explicitly required, it will be installed and will not break the build. Maintainers should consider yanking a release if it is broken, unstable, or contains a very severe vulnerability. Yanking will not completely guarantee that no one is using the compromised version, but it will reduce the prevalence of the corrupted version. If an ecosystem allows for version yanking, it is best practice to also allow maintainers to provide a reason. Users who are explicitly requiring the yanked version can then appropriately prioritize moving to a non-yanked version.
 
 Some version yanking policies use slightly different terminology but are functionally very similar. For example, Go uses the term "retract" and the retract directive can indicate that a package version (or version range) should not be used.
 
@@ -94,7 +94,7 @@ Regardless of the term used, the following sets these policies apart from a dele
 
 ### Deprecation
 
-Software projects are not supported forever. When the maintainer/maintainer team is no longer willing to support a specific version series or an entire project, the team can mark the project as deprecated. Generally, deprecated projects are available for installation and can be continued to be used. Marking a project as deprecated allows users to make an informed decision about the use of the package. Going forward, the user knows that not only can the not expect any new features, but they can't even expect continued compatibility with other projects or security updates.
+Software projects are not supported forever. When the maintainer/maintainer team is no longer willing to support a specific version series or an entire project, the team can mark the project as deprecated. Generally, deprecated projects are available for installation and can be continued to be used. Marking a project as deprecated allows users to make an informed decision about the use of the package. Going forward, the user knows that not only can they not expect any new features, but they can't even expect continued compatibility with other projects or security updates.
 
 Similar to version yanking policies, deprecation policies could use slightly different languages including terms like 'end of life' or mention moving to the next major version. Regardless of the terms used, with a deprecation policy:
 
