@@ -123,7 +123,7 @@ There are a number of reasons that a person would want to delete a package.
 Package deletion is a good solution for some of those reasons (publishing the wrong package, making a typo, experimenting with the package manager), but not necessarily for others.
 
 What if a package (or version series) is no longer in active development?
-What if a specific version has a security issue?
+What if a specific version has a security issue or a severe bug?
 In these cases, the community should be informed of the issues, and possibly prevented from using a specific version, but deleting the package outright is not a tenable solution.
 So what can package managers do in these cases?
 
