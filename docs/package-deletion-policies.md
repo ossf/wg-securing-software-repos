@@ -133,7 +133,7 @@ So what can package managers do in these cases?
 The version still exists, but by marking the version as yanked, installers will ignore the version unless it is the only release that matches a version specifier.
 If the yanked version is explicitly required, it will be installed and will not break the build.
 Maintainers should consider yanking a release if it is broken, unstable, or contains a very severe vulnerability.
-Yanking will not completely guarantee that no one is using the compromised version, but it will reduce the prevalence of the corrupted version.
+Yanking will not completely guarantee that no one is using the yanked version, but it will reduce the installer preference to install it.
 If an ecosystem allows for version yanking, it is best practice to also allow maintainers to provide a reason.
 Users who are explicitly requiring the yanked version can then appropriately prioritize moving to a non-yanked version.
 
