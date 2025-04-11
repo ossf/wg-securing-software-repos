@@ -172,7 +172,7 @@ Regardless of the terms used, with a deprecation policy:
 
 ## A Comprehensive Policy
 
-A package deletion policy should take into account the needs of open source maintainers, open source consumers, the package registry maintainer team, and the ecosystem at large.
+A package deletion policy should take into account the needs of open source maintainers, open source consumers, the package registry administration team, and the ecosystem at large.
 There isn't one correct way to balance these interests, but we suggest that your team consider the following when constructing a policy:
 
 1. Craft your package deletion policy to limit the ecosystem impact to a team-defined acceptable level for author initiated package deletions. The package registry administration team should remove copyrighted, illegal, or abusive content regardless of how widely the package is adopted.  
