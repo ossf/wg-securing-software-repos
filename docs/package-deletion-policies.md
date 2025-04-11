@@ -10,49 +10,57 @@ Although `left-pad` was only about a dozen lines of code, it had impressive reac
 Prior to removal, it had over 15 million downloads and was used by thousands of open source projects--including many that are critical to the npm ecosystem.
 The deletion of `left-pad` caused build failures for projects large and small and rendered a large portion of the internet unnavigable. Npm made the decision to republish the package.
 
-[After the `left-pad` incident](https://en.wikipedia.org/wiki/Npm_left-pad_incident), npm updated their package deletion policy to prevent similar failures and other package managers followed suit.
-In the over 9 years since the incident, package managers have continued to adjust their package deletion policies to balance the sometimes competing interests of open source maintainers, open source consumers, and the package ecosystem itself.
+[After the `left-pad` incident](https://en.wikipedia.org/wiki/Npm_left-pad_incident), npm updated their package deletion policy to prevent similar failures and other package registries followed suit.
+In the over 9 years since the incident, package registries have continued to adjust their package deletion policies to balance the sometimes competing interests of open source maintainers, open source consumers, and the package ecosystem itself.
 
 This paper outlines the components of modern package deletion policies.
 It is not meant to be a sample deletion policy, but a list of things to consider when crafting such a policy including package deletion alternatives.
+
+## Defining Terms
+
+Package deletion policies are nuanced and terminology varies slightly between ecosystems. For the purposes of this paper, the following terms apply:
+
+* Deleted package: A deleted package is no longer available for download or installation and is removed from the package registry. If a user attempts an install, their build will break. An ecosystem might also use the term "unpublished" to convey the same idea.
+* Yanked version: A yanked version (or range of versions) is not removed from the package registry, but installers will ignore the version unless it is the only release that matches a version specifier. The term "retracted" is also used. 
+* Deprecated package/deprecated version: A deprecated package/version is still available to install but has been marked by the author as no longer supported.
 
 ## Deletion Policy Considerations
 
 If we consider a hypothetical package deletion policy, it would exist on a spectrum somewhere between never allowing packages to be deleted to allowing packages to be deleted without any restrictions.
 Both ends of this spectrum are impractical.
 
-* Never allowing for package deletion could result in the publishing of malicious, abusive, illegal, or copywritten content without any recourse.
+* Never allowing for package deletion could result in the publishing of malicious, abusive, illegal, or copyrighted content without any recourse.
 * Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently vacated namespace, and other undesirable behavior.
 
 So when crafting a deletion policy, we want to stay away from the two extremes, but what needs to be considered?
 
-Whether or not a package manager allows for users to delete packages in some cases, it should allow for the package manager maintainers to manually intervene and delete packages.
-This allows the maintainer team to protect the ecosystem from malicious, abusive, illegal, or copyrighted content.
+Whether or not a package registry allows for users to delete packages in some cases, it should allow for the package registry administrators to manually intervene and delete packages.
+This allows the administrator team to protect the ecosystem from malicious, abusive, illegal, or copyrighted content. In these cases, the administrator team will need to delete a package even if doing so causes problems for users.
 
 But what if a user wants to delete a package they published?
-Although it's possible to require such cases to go to the maintainer team to be manually reviewed and removed, that is not a very efficient policy.
-Such a policy would place a burden on the (already likely overworked) maintainer team, and the ecosystem would be cluttered with the unwanted packages until they are manually removed.
+Although it's possible to require such cases to go to the administrator team to be manually reviewed and removed, that is not a very efficient policy.
+Such a policy would place a burden on the (already likely overworked) administrator team, and the ecosystem would be cluttered with the unwanted packages until they are manually removed.
 
-Allowing a user to delete their package in certain cases is therefore good for the user, the package manager maintainer team, and the package ecosystem at large.
-But what factors need to be considered to avoid a `left-pad` style incident?
+Allowing a user to delete their package in certain cases is therefore good for the user, the package registry administrator team, and the package ecosystem at large.
+But what factors need to be considered to minimize the risk of a `left-pad` style incident?
 
 ## Ecosystem Impact
 
-A modern package deletion policy aims to minimize the impact a given deletion could have on the ecosystem, while granting users some flexibility with their packages.
+A modern package deletion policy aims to minimize the impact a given deletion could have on the ecosystem, while granting authors some flexibility with their packages.
 
-The following considerations are generally used when determining whether a package is a good candidate for deletion, although specific limits and criteria will vary between package managers.
+The following considerations are generally used when determining whether a package is a good candidate for deletion, although specific limits and criteria will vary between package registries.
 
 ### Time
 
 How long ago was the package published?
-Although time since publication is not a perfect metric for ecosystem impact (maybe a package has been around for years but only has a handful of users), there are a number of use cases where this metric is very relevant.
+Although time since publication is not a perfect metric for ecosystem impact, there are a number of use cases where this metric is very relevant.
 For example, the user could have:
 
 * Published the wrong package
 * Published the package with an unintended name (or a typo)
 * Published a test package to understand and experience the package publishing process
 
-In these cases, it is very useful for the package manager to have a no hassle deletion policy as long as the package has been published for less than a certain amount of time.
+In these cases, it is very useful for the package registry to have a no-hassle deletion policy as long as the package has been published for less than a certain amount of time.
 For instance, npm allows maintainers to delete their packages within the first 72 hours after publication.
 After 72 hours additional criteria must be met.
 
@@ -65,7 +73,8 @@ Setting a maximum number of downloads a package can have to be eligible for dele
 For example, npm's limit is 300 downloads within the previous week.
 
 Download counts are not a perfect way to account for the package's impact on the ecosystem.
-They can be arbitrarily inflated and might vary over time.
+They can be arbitrarily inflated or could vary over time.
+One ecosystem may count downloads differently than another.
 Download counts are best used in conjunction with other criteria in evaluating whether a given package should be eligible for deletion.
 
 ### Dependency Status
@@ -75,31 +84,31 @@ How many?
 Is _that_ package a dependency of another package (making the package to be deleted a transitive dependency)?
 
 If other packages within the ecosystem depend on the package to be deleted, that is direct proof that deletion would cause ecosystem harm.
-A package manager maintainer team could choose whatever threshold they like, but many package managers choose to not allow for deletion of dependent packages at all.
+A package registry administrator team could choose whatever threshold they like, but many package registries choose to not allow for deletion of dependent packages at all.
 
 ### Maintainer Status
 
 Many package deletion policies will not allow packages with more than one maintainer to be deleted.
 Allowing a single maintainer to delete the package could contradict the will of the other maintainers and there is not an uncomplicated way to get the consent of the maintainer team.
 Multiple maintainers also implies an increased investment in the project.
-Additionally a package manager could differentiate between a "maintainer" and an "owner" and only allow for the package owner to delete the package.
+Additionally a package registry could differentiate between a "maintainer" and an "owner" and only allow for the package owner to delete the package.
 
 ## What to do About Namespaces?
 
 When a given package meets all the criteria discussed above and the package maintainer deletes the package, what happens next?
 
-When a package is deleted from a package manager, it frees the namespace that the package was occupying.
+When a package is deleted from a package registry, it frees the namespace that the package was occupying.
 Unless specifically prohibited, another package could be published with the name of the previously deleted package.
 Within a fairly conservative package deletion policy, this is unlikely to be a problem as the deleted package did not have widespread adoption.
-However, if a package manager allows for the deletion of widely used, established packages, the open namespace can become a security issue if a new (potentially malicious) package is published with the same namespace.
-Even if the new package isn't malicious, it has the potential to be confusing to users.
+However, if a package registry allows for the deletion of widely used, established packages, the open namespace can become a security issue if a new (potentially malicious) package is published with the same namespace.
+Even if the new package isn't malicious, it has the potential to confuse users.
 Therefore, when considering a package deletion policy, it is important to consider what to do with the vacated namespaces.
-Some package managers never reuse a namespace, which is a reasonable security measure.
+Some package registries never reuse a namespace, which is a best practice security measure.
 Alternatively namespaces could be reused, with additional protections in place (for example, file hashing to notify users of changes).
 
-## Package Manager Structure and Package Deletion Policies
+## Package Registry Structure and Package Deletion Policies
 
-Additionally, a package deletion policy could be impacted by architectural choices within the given package manager.
+Additionally, a package deletion policy could be impacted by architectural choices within the given package registry.
 
 ### Decentralized Publishing
 
@@ -119,20 +128,19 @@ A test instance does not necessarily eliminate the need for a package deletion p
 
 ## Deletion Alternatives
 
-There are a number of reasons that a person would want to delete a package.
-Package deletion is a good solution for some of those reasons (publishing the wrong package, making a typo, experimenting with the package manager), but not necessarily for others.
+Once we've considered all the decision criteria for whether an author should be allowed to delete their package, it is clear that there are pain points for package authors that are not well addressed by allowing for a package to be deleted. 
 
 What if a package (or version series) is no longer in active development?
-What if a specific version has a security issue?
+What if a specific version is unstable?
 In these cases, the community should be informed of the issues, and possibly prevented from using a specific version, but deleting the package outright is not a tenable solution.
-So what can package managers do in these cases?
+These cases require a little more flexibility for users and a comprehensive package deletion policy will provide some more nuanced alternatives to deleting a package. 
 
 ### Yanking
 
-"Yanking" refers to soft deleting a compromised package version.
-The version still exists, but by marking the version as yanked, installers will ignore the version unless it is the only release that matches a version specifier.
-If the yanked version is explicitly required, it will be installed and will not break the build.
-Maintainers should consider yanking a release if it is broken, unstable, or contains a very severe vulnerability.
+Yanking is a way to deprioritize an installer's preference for a given release.
+When a package author yanks a version, the version still exists in the package registry but installers will ignore the version unless it is the only release that matches a version specifier.
+If a user explicitly requires a yanked version, it will be installed and will not break the build.
+Package authors should consider yanking a release if it is broken, unstable, or contains a very severe vulnerability.
 Yanking will not completely guarantee that no one is using the yanked version, but it will reduce the installer preference to install it.
 If an ecosystem allows for version yanking, it is best practice to also allow maintainers to provide a reason.
 Users who are explicitly requiring the yanked version can then appropriately prioritize moving to a non-yanked version.
@@ -164,13 +172,13 @@ Regardless of the terms used, with a deprecation policy:
 
 ## A Comprehensive Policy
 
-A package deletion policy should take into account the needs of open source maintainers, open source consumers, the package manager maintainer team, and the ecosystem at large.
+A package deletion policy should take into account the needs of open source maintainers, open source consumers, the package registry maintainer team, and the ecosystem at large.
 There isn't one correct way to balance these interests, but we suggest that your team consider the following when constructing a policy:
 
-1. Craft your package deletion policy to limit the ecosystem impact to a team-defined acceptable level.
-2. Considerations like the newly open namespaces, version yanking and deprecation policies, and package manager architecture should be a part of the conversation from the beginning, as they are intrinsically linked to package deletion.
-3. Including options like version yanking and project deprecation can help you balance the competing interests of maintainers, consumers, the package manager, and the ecosystem.
-4. Keep your community in the loop. Research pain points for your users, thoroughly document your policy, keep the community up to date on when to expect changes, and promote your policy once it is implemented.
+1. Craft your package deletion policy to limit the ecosystem impact to a team-defined acceptable level for author initiated package deletions. The package registry administration team should remove copyrighted, illegal, or abusive content regardless of how widely the package is adopted.  
+2. Considerations like the newly open namespaces, version yanking and deprecation policies, and package registry architecture should be a part of the conversation from the beginning, as they are intrinsically linked to package deletion policies.
+3. Including options like version yanking and project deprecation can help you balance the competing interests of maintainers, consumers, the package registry, and the ecosystem.
+5. Keep your community in the loop. Research pain points for your users, thoroughly document your policy, keep the community up to date on when to expect changes, and promote your policy once it is implemented.
 
 ## Sources
 
