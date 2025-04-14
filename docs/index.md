@@ -9,6 +9,9 @@ The motivation of the working group is to focus on helping maintainers of softwa
 
 ## Implementation Guidance
 
+* [Crafting a Package Deletion Policy](https://repos.openssf.org/package-deletion-policies) - April 2025
+  > Guidance for package registries adopting or revising a package deletion policy.
+
 * [Trusted Publishers for All Package Repositories](https://repos.openssf.org/trusted-publishers-for-all-package-repositories) - July 2024
   > Guidance for package repositories in adopting Trusted Publishers to authenticate publishing from hosted build environments without using long-lived credentials.
 
