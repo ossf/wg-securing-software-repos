@@ -30,7 +30,7 @@ If we consider a hypothetical package deletion policy, it would exist on a spect
 Both ends of this spectrum are impractical.
 
 * Never allowing for package deletion could result in the publishing of malicious, abusive, illegal, or copyrighted content without any recourse.
-* Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently vacated namespace, and other undesirable behavior.
+* Allowing for unrestricted package deletion could result in build failures like those seen in the `left-pad` incident, malicious packages snapping up a recently deleted package name, and other undesirable behavior.
 
 So when crafting a deletion policy, we want to stay away from the two extremes, but what needs to be considered?
 
@@ -93,22 +93,30 @@ Allowing a single maintainer to delete the package could contradict the will of 
 Multiple maintainers also implies an increased investment in the project.
 Additionally a package registry could differentiate between a "maintainer" and an "owner" and only allow for the package owner to delete the package.
 
-## What to do About Namespaces?
+## Deletion Granularity
 
-When a given package meets all the criteria discussed above and the package maintainer deletes the package, what happens next?
+When crafting a deletion policy, it is important to be specific about how granular you want the policy to be.
+Will deleting entire packages be allowed? What about individual versions? A version range?
+What makes sense for a single version might not make sense for an entire package.
+Feel free to differentiate between the two when crafting your policy.
 
-When a package is deleted from a package registry, it frees the namespace that the package was occupying.
+## Package Name and Version Immutability
+
+When a package is deleted from a package registry, does the package name become available?
 Unless specifically prohibited, another package could be published with the name of the previously deleted package.
 Within a fairly conservative package deletion policy, this is unlikely to be a problem as the deleted package did not have widespread adoption.
-However, if a package registry allows for the deletion of widely used, established packages, the open namespace can become a security issue if a new (potentially malicious) package is published with the same namespace.
+However, if a package registry allows for the deletion of widely used, established packages, the open name can become a security issue if a new (potentially malicious) package is published with the same name.
 Even if the new package isn't malicious, it has the potential to confuse users.
-Therefore, when considering a package deletion policy, it is important to consider what to do with the vacated namespaces.
-Some package registries never reuse a namespace, which is a best practice security measure.
-Alternatively namespaces could be reused, with additional protections in place (for example, file hashing to notify users of changes).
+Therefore, when considering a package deletion policy, it is important to consider what to do with the abandoned names.
+Some package registries never reuse a name, which is a best practice security measure.
+Alternatively package names could be reused with additional protections in place (for example, file hashing to notify users of changes).
+
+It is also important to decide if version numbers are immutable.
+It is a good security practice to have version immutability and when crafting your deletion policy, consider [deletion alternatives](#deletion-alternatives) like yanking or deprecation. 
 
 ## Package Registry Structure and Package Deletion Policies
 
-Additionally, a package deletion policy could be impacted by architectural choices within the given package registry.
+A package deletion policy could be impacted by architectural choices within the given package registry.
 
 ### Decentralized Publishing
 
@@ -125,6 +133,15 @@ Another architecture decision related to a package deletion policy is the use of
 
 For example PyPI maintains [TestPyPI](https://test.pypi.org/) to allow users to try distribution tools and processes without affecting the real PyPI.
 A test instance does not necessarily eliminate the need for a package deletion policy because mistakes can still be made, but it does allow for users to experiment without leaving junk packages on the main instance.
+
+### Other Edge Cases
+
+Some package registries allow for users to be deleted, so a package could theoretically exist without an owner.
+Under what conditions would such a package be deleted?
+
+Maybe your package registry would benefit from a list of deleted packages for auditing purposes. 
+
+Take some time to consider your ecosystem's edge cases. Do some testing. Implement things that would be helpful for your users or your administrators.
 
 ## Deletion Alternatives
 
@@ -176,9 +193,9 @@ A package deletion policy should take into account the needs of open source main
 There isn't one correct way to balance these interests, but we suggest that your team consider the following when constructing a policy:
 
 1. Craft your package deletion policy to limit the ecosystem impact to a team-defined acceptable level for author initiated package deletions. The package registry administration team should remove copyrighted, illegal, or abusive content regardless of how widely the package is adopted.  
-2. Considerations like the newly open namespaces, version yanking and deprecation policies, and package registry architecture should be a part of the conversation from the beginning, as they are intrinsically linked to package deletion policies.
-3. Including options like version yanking and project deprecation can help you balance the competing interests of maintainers, consumers, the package registry, and the ecosystem.
-5. Keep your community in the loop. Research pain points for your users, thoroughly document your policy, keep the community up to date on when to expect changes, and promote your policy once it is implemented.
+2. Take into account things like version yanking and deprecation policies, package name reuse, and package registry architecture from the beginning. These issues are intrinsically linked to package deletion policies.
+3. Be as granular as you need to balance the competing interests of maintainers, consumers, the package registry, and the ecosystem. Explain when users can delete packages, when package registry administrators will step in because of copywritten or illegal material, and when users can petition for package deletion. Be precise about any deletion alternatives you offer.
+4. Keep your community in the loop. Research pain points for your users, thoroughly document your policy, keep the community up to date on when to expect changes, and promote your policy once it is implemented.
 
 ## Sources
 
