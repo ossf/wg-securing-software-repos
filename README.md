@@ -66,7 +66,7 @@ The meeting invite is available on the public [OSSF calendar](https://calendar.g
 
 ## Meeting Notes
 
-Meeting notes are maintained in a [Google Doc](https://docs.google.com/document/d/1-f6m442MHg9hktrbcp-4sM9GbZC3HLTpZPpxMXjMCp4/edit). If attending please add your name, and if a returning attendee, please change the color of your name from gray to black.
+Meeting notes are maintained in a [Google Doc](https://docs.google.com/document/d/18Y8HxntL2RkcgqoFdhdLpj17e4MOSCdskP1IoDiuP1s/edit). If attending please add your name, and if a returning attendee, please change the color of your name from gray to black.
 
 ## Antitrust Policy Notice
 
