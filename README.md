@@ -29,6 +29,8 @@ The working group may create:
 
 See also https://repos.openssf.org/
 
+* **[Crafting a Package Deletion Policy](https://repos.openssf.org/package-deletion-policies)** - April 2025
+  > Guidance for package registries adopting or revising a package deletion policy.
 * **[Trusted Publishers for All Package Repositories](https://repos.openssf.org/trusted-publishers-for-all-package-repositories)** - July 2024
   > Guidance for package repositories in adopting Trusted Publishers to authenticate publishing from hosted build environments without using long-lived credentials.
 * **[Principles for Package Repository Security](https://repos.openssf.org/principles-for-package-repository-security)** - February 2024
@@ -54,7 +56,7 @@ This group is co-chaired by [Dustin Ingram](https://github.com/di) and [Zach Ste
 
 ## Communication
 
-* [Meeting Minutes](https://docs.google.com/document/d/1-f6m442MHg9hktrbcp-4sM9GbZC3HLTpZPpxMXjMCp4/edit)
+* [Meeting Minutes](https://docs.google.com/document/d/18Y8HxntL2RkcgqoFdhdLpj17e4MOSCdskP1IoDiuP1s/edit)
 * [Mailing list](https://lists.openssf.org/g/openssf-wg-securing-software-repos). [Manage your subscriptions to Open SSF mailing lists](https://lists.openssf.org/g/main/subgroups).
 * [OpenSSF Slack](https://openssf.slack.com/archives/C034CBLMQ9G) instance in the `#wg_securing_software_repos` channel (see [here](https://openssf.slack.com/join/shared_invite/zt-xoktwsef-VzM~b22G2gfT_~4woTTsQA#/shared-invite/email) for an invite) 
 
