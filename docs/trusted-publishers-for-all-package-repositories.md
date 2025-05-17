@@ -20,7 +20,7 @@ For some Trusted Publishing providers, Trusted Publishers allow binding verifiab
 
 Trusted Publishers are ideal for package repositories that accept user-built packages, like PyPI and RubyGems, as opposed to package repositories that have centralized build infrastructure like Homebrew.
 
-Trusted Publishers pairs well with other technologies such as SLSA build provenance, as it is built on the same underlying technology, the OIDC standard. 
+Trusted Publishers pairs well with other technologies such as SLSA build provenance, as it is built on the same underlying technology, the OIDC standard.
 
 Package repositories which don’t host separate artifacts (such as pkg.go.dev) don’t require authenticating with the repository, thus Trusted Publishers isn’t applicable.
 
@@ -46,7 +46,7 @@ A high-level overview of how PyPI verifies the OIDC ID token against a pre-confi
     * `repository` is `example-repo`
     * `repository_owner` is `example-owner`
     * `repository_owner_id` is `12345`
-    * `job_workflow_ref` is `example-owner/example-repo/.github/workflows/publish.yml@abcdef`
+    * `workflow_ref` is `example-owner/example-repo/.github/workflows/publish.yml@abcdef`
 
 Once this is complete, the package repository can authorize publications by delegating to a repository-managed token.
 
