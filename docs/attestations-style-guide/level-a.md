@@ -20,7 +20,7 @@ If you'd like to contribute, comment or iterate on this work then please see the
 
 ---
 
-![A screenshot of a UI example of the lowest level A requirements for visualising attestation information](../images/lowest-requirements-1.png "A screenshot of a UI example of the lowest level A requirements for visualising attestation information")
+![A screenshot of a UI example of the lowest level A requirements for visualising attestation information](/attestations-style-guide/images/lowest-requirements-1.png "A screenshot of a UI example of the lowest level A requirements for visualising attestation information")
 
 This is intended to sit in a main section of a webpage that might use a three-column layout--the main section occupying two-thirds and a sidebar occupying one-third of the width.
 
@@ -38,11 +38,11 @@ Depending on the width space you have available you can increase the width of bo
 
 With this Level A component styling, use words and letters conservatively in the attestation statement,  balancing clarity of statement with space available. If needed, the attestation can be placed underneath at full width to accommodate complex statements (UI example on next page).
 
-![A screenshot of a UI example detailing icon information](../images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
+![A screenshot of a UI example detailing icon information](/attestations-style-guide/images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
 
 re. the package icon or source code icon. Either can be used interchangeably for this information. Users connected both with this info in research.
 
-![A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like](../images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
+![A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like](/attestations-style-guide/images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
 
 **Signed by messages:**
 "Signed by" messages should be bold to indicate importance. They can flow over two lines but three lines should be avoided.
@@ -52,7 +52,7 @@ In this example, as in the last page, we've used PyPI's visual styling with blue
 
 The component variant to the left here shows when the panels are not grouped, instead they're separate panels aligned in a row. Their expandable sections still can be activated. Some platforms may prefer separated panels like this for their pages' global styles and/or to look more like buttons that can be interacted with.
 
-![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style](../images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
+![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style](/attestations-style-guide/images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
 
 In this example, we've used npm visual styles.
 
@@ -70,7 +70,7 @@ Additional recommendations to help users feel confident about the security of a 
 
 Users also rely on "social proof" (number of downloads, maintainers, recognizable project names) typically found on registry pages. Hashes/checksums also encourage confidence, but only if users recognize them and understand their function.
 
-![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style](../images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
+![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style](/attestations-style-guide/images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
 
 This example uses visual styles from RubyGems.
 
@@ -81,7 +81,7 @@ For 'Pragmatic Developers' and 'Incidental User' personas, simple visual and tex
 
 These users need to see this UI in its expanded state to understand what attestations communicate. Viewing the detailed information typically prompts them to explore further and piece together an understanding of package security. Providing additional documentation links can also help these users learn.
 
-![A screenshot of where the lowest level A UI should ideally be situated on a webpage](../images/lowest-requirements-webpage-placement-1.png "A screenshot of where the lowest level A UI should ideally be situated on a webpage")
+![A screenshot of where the lowest level A UI should ideally be situated on a webpage](/attestations-style-guide/images/lowest-requirements-webpage-placement-1.png "A screenshot of where the lowest level A UI should ideally be situated on a webpage")
 
 The positioning of these minimal elements on a page is also critical. The next page in this style guide illustrates their optimal positioning within each example package registry (please note that the next page is large, and you may need to scroll to find the appropriate UI example).
 
@@ -96,8 +96,8 @@ While promoting security awareness is important, it shouldn't overshadow essenti
 
 Please open the following annotated UI full webpage examples in an image viewer of your choice. This image is large at 5.7MB and 11300x12722 pixel canvas. There is also a .pdf file.
 
-* [ui-development-lowest-ui-version-a-level.png](../images/ui-development-lowest-ui-version-a-level.png)
-* [ui-development-lowest-ui-version-a-level.pdf](../images/ui-development-lowest-ui-version-a-level.pdf)
+* [ui-development-lowest-ui-version-a-level.png](/attestations-style-guide/images/ui-development-lowest-ui-version-a-level.png)
+* [ui-development-lowest-ui-version-a-level.pdf](/attestations-style-guide/images/ui-development-lowest-ui-version-a-level.pdf)
 
 The following text is included in the annotated image file:
 
@@ -123,4 +123,4 @@ The following text is included in the annotated image file:
 
 ---
 
-Next: [Medium UI requirements (Level AA)](../level-aa)
+Next: [Medium UI requirements (Level AA)](/attestations-style-guide/level-aa)

@@ -97,7 +97,7 @@ The insights from this research informed the recommendations in this guide, incl
 4. Where and why users seek information
 5. Opinions on attestations, their impact on trust and what other information, nearby attestations, help the trust of attestations.
 
-![A screenshot of the research synthesis that can be seen in full in the open source penpot files](./images/research-synthesis.png "A screenshot of the research synthesis that can be seen in full in the open source penpot files")
+![A screenshot of the research synthesis that can be seen in full in the open source penpot files](/attestations-style-guide/images/research-synthesis.png "A screenshot of the research synthesis that can be seen in full in the open source penpot files")
 
 ## How to use the style guide
 
@@ -224,4 +224,4 @@ We encourage continued contribution to this work, including:
 
 ---
 
-Next: [Lowest UI requirements (Level A)](./level-a)
+Next: [Lowest UI requirements (Level A)](/attestations-style-guide/level-a)
