@@ -9,6 +9,9 @@ The motivation of the working group is to focus on helping maintainers of softwa
 
 ## Implementation Guidance
 
+* [Style Guide for Attestations UI/UX](https://repos.openssf.org/attestations-style-guide) - October 2025
+  > Guidance for package registries to improve the user experience and user interface (UI) when providing support for attestations.
+
 * [Crafting a Package Deletion Policy](https://repos.openssf.org/package-deletion-policies) - April 2025
   > Guidance for package registries adopting or revising a package deletion policy.
 
