@@ -10,7 +10,7 @@ Attestations became much more critical in the smaller, niche package scenarios u
 
 If a registry/playtform wants to make attestations the most prominent they can, we recommend a UI with the full-width box container UI.
 
-![A screenshot of the UI Attestations component in isolation](../images/attestations-component.png "A screenshot of the UI Attestations component in isolation")
+![A screenshot of the UI Attestations component in isolation](/attestations-style-guide/images/attestations-component.png "A screenshot of the UI Attestations component in isolation")
 
 ## Style guide: Build component
 
@@ -24,7 +24,7 @@ Reviewing the build commit/file and logs is a process that not everyone—except
 
 All of the users expressed a desire for more documentation and guidance on how to assess build security.
 
-![A screenshot of the UI build component in isolation](../images/build-component.png "A screenshot of the UI build component in isolation")
+![A screenshot of the UI build component in isolation](/attestations-style-guide/images/build-component.png "A screenshot of the UI build component in isolation")
 
 ## Style guide: Source component
 
@@ -34,7 +34,7 @@ To reiterate a user finding, users did not find duplicate information distractin
 
 Source was one location where there are two icon options, either the box to represent 'package' or the browser and code brackets (`<>`) to represent source code.
 
-![A screenshot of the UI source component in isolation](../images/source-component.png "A screenshot of the UI source component in isolation")
+![A screenshot of the UI source component in isolation](/attestations-style-guide/images/source-component.png "A screenshot of the UI source component in isolation")
 
 ## Style guide: Integrity component
 
@@ -46,7 +46,7 @@ Users who didn't know what checksums were used for or how to use them were curio
 
 The term "integrity" and the magnifying glass icon helped the users understand that something was being inspected and clarified what their suggested action—investigating further—should be. Yet, internally, we also believe that "Inspect" could be used instead of "Integrity," as "integrity" may not accurately describe this information.
 
-![A screenshot of the UI integrity component in isolation](../images/integrity-component.png "A screenshot of the UI integrity component in isolation")
+![A screenshot of the UI integrity component in isolation](/attestations-style-guide/images/integrity-component.png "A screenshot of the UI integrity component in isolation")
 
 ## Style guide: Additional signals of trust
 
@@ -56,13 +56,13 @@ The first element that tested well with security experts—but not with less inf
 
 When known, these terms provided very positive security and safety signals for a package. When not known, some users chose to search or visit documentation to learn more, but the small components tested did not offer clear incentives as to why they should learn about these concepts or what benefits they provide. Therefore, these elements need comprehensive testing with appropriate guidance for users to seek and understand related documentation.
 
-![A screenshot of the UI for additional signals of trust](../images/additional-signals-of-trust-1.png "A screenshot of the UI for additional signals of trust")
+![A screenshot of the UI for additional signals of trust](/attestations-style-guide/images/additional-signals-of-trust-1.png "A screenshot of the UI for additional signals of trust")
 
 Known security advisories were included in the highest level of UI recommendations for attestations. This component tested incredibly well—so well that users often ignored other information in favor of it. (This is covered in more detail in the highest-level UI requirements.) This component requires further user research to fully understand why it is so implicitly trusted over other information.
 
 When an attestation statement used the term "trusted publisher," this was somewhat confusing for security expert users. Most users accepted the statement at face value and assumed the registry, platform, or another entity—such as GitHub—was taking accountability by using the label "trusted publisher." Security experts we tested, however, wanted to know exactly who or what the trusted publisher is, and what they are attesting to.
 
-![A screenshot of the UI for additional signals of trust](../images/additional-signals-of-trust-2.png "A screenshot of the UI for additional signals of trust")
+![A screenshot of the UI for additional signals of trust](/attestations-style-guide/images/additional-signals-of-trust-2.png "A screenshot of the UI for additional signals of trust")
 
 Step-by-step instructions for using checksums or SHA-256 were mentioned in very early user research as a way to help users with less security expertise become informed and follow the appropriate steps to process or verify SHA-256 checksums, hashes, or key signatures. The less security-proficient users indicated that if they didn't already know what this was, they wouldn't have time to learn the process while investigating packages. Instead, they would return to it after selecting a package or if given time in their job roles to learn or be shown how to do it.
 
@@ -70,7 +70,7 @@ As the style guide was further developed, we found that these processes we'd ena
 
 A very early design for an expandable set of step by step instructions for checking hashes.
 
-![A screenshot of the UI for additional signals of trust](../images/additional-signals-of-trust-3.png "A screenshot of the UI for additional signals of trust")
+![A screenshot of the UI for additional signals of trust](/attestations-style-guide/images/additional-signals-of-trust-3.png "A screenshot of the UI for additional signals of trust")
 
 ## Style guide: Icons
 
@@ -96,7 +96,7 @@ All icons were source from an open icons SVG repo: <https://www.svgrepo.com/>
 
 Links to individual icons will follow. Two unique icons were created by combining two or more open icons: the integrity magnifying glass with key, and the attestation signature icon. These will be detailed on the following pages.
 
-![A screenshot of the UI for icons](../images/icons-1.png "A screenshot of the UI for icons")
+![A screenshot of the UI for icons](/attestations-style-guide/images/icons-1.png "A screenshot of the UI for icons")
 
 Text included in the icons image:
 
@@ -108,12 +108,12 @@ Re. SBOM icon: Early designs used this recipet icon for SBOM.
 Re. Copy icon: Used where a copy function against a CLI command or hash was
 Re. Links icon: Only used to mimic existing link icon styles in registry pages
 
-![A screenshot of the UI for signature icon](../images/signature-icon.png "A screenshot of the UI for signature icon")
+![A screenshot of the UI for signature icon](/attestations-style-guide/images/signature-icon.png "A screenshot of the UI for signature icon")
 
 The signature icon was a critical icon to construct and took detailed editing of existing icons to balance the width and height of a signature, pen and container and/or the 'box or 'line' that people sign on a paper document.
 User all agreed this icon helped them to get an idea of what an attestation and references to 'signatures' mean't within the context. That some entity is 'signing off' in some way to the statement being made in the attestation statment.
 
-![A screenshot of the UI for icons](../images/icons-2.png "A screenshot of the UI for icons")
+![A screenshot of the UI for icons](/attestations-style-guide/images/icons-2.png "A screenshot of the UI for icons")
 
 Text included in the icons image:
 
@@ -121,7 +121,7 @@ Re. Source icon: Source icon was used as is from the open source icon repo. User
 Re. Integrity icon: The integrity magnifying glass was created by combining two icons. Users described the key in the magnifying glass as being critical to communicate 'investigating the security'. The term 'Integrity' also helped users understand that the information with this icon and heading was there to help them 'seek information related to security'
 Re. Package icon: The package icon was an edited version of some complex boxes from the icon repo. This box accurately communicated package to all users where it was used. They expected to see package info like source repo and package ino like version, name etc.
 
-![A screenshot of the UI development for an attestation specific icon](../images/attestation-icon-development.png "A screenshot of the UI development for an attestation specific icon")
+![A screenshot of the UI development for an attestation specific icon](/attestations-style-guide/images/attestation-icon-development.png "A screenshot of the UI development for an attestation specific icon")
 
 Early on some design work was done to try to reduce the attestation UI down to a single icon or badge. After some effort it was decided that for most users that are not security experts a badge or icon without any messaging wouldn't be useful. The only user person that a badge/icon is useful for are people who are alreayd well informed about attestations and begin to associate that knowledge with whatever badge/icon was cerated. There was no simple way to reduce these concepts into a symbol. It is worth re-exploring with a graphic desing, icon or other expert in brand/indentity language what can be created but for now, the progress made on attestation badge/icons is below.
 
@@ -174,7 +174,7 @@ Any of the following variations of hyperlinks can be used; yet, their styling sh
 
 Styling for hyperlinks should also follow the same style as other links across the platform.
 
-![A screenshot of the UI development for hyperlinks](../images/hyperlinks.png "A screenshot of the UI development for hyperlinks")
+![A screenshot of the UI development for hyperlinks](/attestations-style-guide/images/hyperlinks.png "A screenshot of the UI development for hyperlinks")
 
 ## Style guide: A note on right to left languages
 
@@ -184,15 +184,15 @@ Should work continue on this project or similar content, translations into langu
 
 We also recommend testing iconography to ensure that no icons convey unintended meanings in cultures beyond the assumed Western, US/European, English-speaking context.
 
-![A screenshot of right to left languages](../images/japanese.png "A screenshot of right to left languages")
+![A screenshot of right to left languages](/attestations-style-guide/images/japanese.png "A screenshot of right to left languages")
 
 Japanese is an example of 'signature' or サイン being a more modern word but many Japanese people still use a 'stamp' (印鑑) as their signature.
 
-![A screenshot of right to left languages](../images/arabic.png "A screenshot of right to left languages")
+![A screenshot of right to left languages](/attestations-style-guide/images/arabic.png "A screenshot of right to left languages")
 
 Arabic needs to have all elements viewed right to left.
 
-![A screenshot of right to left languages](../images/german.png "A screenshot of right to left languages")
+![A screenshot of right to left languages](/attestations-style-guide/images/german.png "A screenshot of right to left languages")
 
 German is also a useful example as it often has words that in English are two words 'Transparency log' and in German are one word 'Transparenzprotokoll'
 
@@ -213,7 +213,7 @@ Attestations documentation principles
 6.  Explain common attacks and how they are mitigated
 7.  Be transparent about limitations and set clear expectations
 
-For more information on each principle see [Best practices for documenting attestations in Package Repositories](../pdfs/best_practices_for_documenting_attestations_in_package_repositories.pdf).
+For more information on each principle see [Best practices for documenting attestations in Package Repositories](/attestations-style-guide/pdfs/best_practices_for_documenting_attestations_in_package_repositories.pdf).
 
 ## Style guide: Applying documentation principles to RubyGems.org, PyPI and npm
 
@@ -221,6 +221,6 @@ To help RubyGems.org, PyPI, and npm adopt attestation documentation best practic
 
 We encourage RubyGems.org, PyPI and npm to use, improve, and extend these templates as they see fit. Other package repositories can also use these templates as inspiration for their own attestations documentation.
 
-* [RubyGems.org documentation recommendations](../zips/rubygems_attestation_documentation_templates.zip)
-* [PyPI documentation recommendations](../zips/pypi_attestation_documentation_templates.zip)
-* [npm documentation recommendations](../zips/npm_attestation_documentation_templates.zip)
+* [RubyGems.org documentation recommendations](/attestations-style-guide/zips/rubygems_attestation_documentation_templates.zip)
+* [PyPI documentation recommendations](/attestations-style-guide/zips/pypi_attestation_documentation_templates.zip)
+* [npm documentation recommendations](/attestations-style-guide/zips/npm_attestation_documentation_templates.zip)
