@@ -12,24 +12,24 @@ Several users also noted that having a security page gave them the impression th
 
 Some registries and platforms will not have pages or tabs where a dedicated security page can be added. In these cases, as with the example of the RubyGems package below, adding a security section beneath other sections is sufficient to set it apart and provide a link from sidebar content. Further details are provided in subsequent sections about how security page sections were tested and user rationale.
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-1.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](../images/highest-requirements-1.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
 
 With registries or platforms like PyPI that have a left-hand menu, the security page can be added there.
 
 PyPI is a complex example, as there is a lot of different information that users in testing considered to be "security" information that could be included in this section. The best advice is that platforms should make informed decisions about what existing information moves to the security page and what information should be linked from the security page.
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-menu-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](../images/highest-requirements-menu-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](../images/highest-requirements-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
 
 
 With registries or platforms like npm that have a navigation tab bar, the security page can be added there.
 
 In the npm examples we tested, the packages often displayed entire READMEs, which meant many pages of scrolling to find any information not included in the README. In some cases, users were confused about which information was written by package maintainers and which was provided by the registry. One suggestion that was offered, but not explored in the UI, was to add author names to content, including the publish date. For example: “This security page was last updated on [ DATE ] by npm to include [ DETAILS ].”
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-menu-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](../images/highest-requirements-menu-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](../images/highest-requirements-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
 
 **Sidebar - Minimal**
 If present on a page, the sidebar typically already contains critically useful information to help users decide whether or not to use a package and/or if a package is safe. This is usually where downloads, releases, source code or repository links, and contributors are listed. These pieces of information are important not just for safety and security, but are generally useful for users when exploring packages.
@@ -45,7 +45,7 @@ See below dedicated security sections, nav bar tabs and left hand menu tabs. We 
 
 There may be cases where the visual style of a registry or platform does not allow for icon usage. It is acceptable to omit the lock icon in these cases.
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-4.png "A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally")
+![A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally](../images/highest-requirements-4.png "A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally")
 
 As previously stated, when positioning attestation content in the sidebar, it should not appear above essential general information such as:
 
@@ -63,13 +63,13 @@ Typically, this means that attestation information will still appear within the 
 
 We tested some expandable sections in the sidebar, but these did not perform well with users. There is a general expectation that sidebar information should be presented as is, or take you to an internal or external link, rather than expanding or contracting within the sidebar.
 
-![A screenshot of the highest level AAA UI showing good and bad placement](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/highest-requirements-webpage-placement-1.png "A screenshot of the highest level AAA UI showing good and bad placement")
+![A screenshot of the highest level AAA UI showing good and bad placement](../images/highest-requirements-webpage-placement-1.png "A screenshot of the highest level AAA UI showing good and bad placement")
 
 Please open the following annotated UI full webpage examples in an image viewer of your choice. This image is large at 3.2MB and 10982x5000 pixel canvas. There is also a .pdf file.
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-highest-ui-version-a-level.png](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-highest-ui-version-a-level.png)
+[ui-development-highest-ui-version-a-level.png](../images/ui-development-highest-ui-version-a-level.png)
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-highest-ui-version-a-level.pdf](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-highest-ui-version-a-level.pdf)
+[ui-development-highest-ui-version-a-level.pdf](../images/ui-development-highest-ui-version-a-level.pdf)
 
 The following text is included in the annotated image file:
 
@@ -77,7 +77,7 @@ These sidebar designs are the information-dense versions, where all relevant and
 
 These sidebar designs were heavily informed by the fact that users we tested with found the most useful information in the sidebars already. The users prioritised "social web of transparency" information alongside the source code and repository links which are typically included in the sidebar of existing registry pages. However, like in main page content users did not want attestation information and supplementary info below these critical general pieces of information. This typically means the attestation information still appears above the fold, within the first scroll, for most pages.
 
-You can see that the information can look squeezed into a small width for sidebars like rubygems page layout. We recommend that the sidebar widths not be any narrower than this example,  as writing sentence-length content in a smaller space would be difficult for developers to read and comprehend. 
+You can see that the information can look squeezed into a small width for sidebars like rubygems page layout. We recommend that the sidebar widths not be any narrower than this example,  as writing sentence-length content in a smaller space would be difficult for developers to read and comprehend.
 
 These sidebar designs are the minimal information versions, reduced to the essentials: icon, heading, and links.
 

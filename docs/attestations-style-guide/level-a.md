@@ -3,7 +3,7 @@
 This section of the style guide defines the minimum (level A) requirements for displaying attestation information on package registries:
 
 1. Attestation information should be placed in a visible, but not overpowering, location on registry pages
-2. It should contain enough information to make attestations understandable to a broad variety of 
+2. It should contain enough information to make attestations understandable to a broad variety of
    users (as detailed in this introduction)
 3. It must not impede users from achieving their primary goal, e.g., “finding out if this package is the best choice for the intended purpose.”
 
@@ -11,7 +11,7 @@ These Level A requirements describe a set of minimal, collapsible, and distinct 
 
 Alongside the following UI examples, variants, and recommendation we will reference and explain the user research rationale and insight the led to that decision.
 
-You can find the unedited user research sessions on the open issues related to this project: 
+You can find the unedited user research sessions on the open issues related to this project:
 
 • User Testing Sessions Issue #82: [https://github.com/ossf/wg-securing-software-repos/issues/82](https://github.com/ossf/wg-securing-software-repos/issues/82)
 • Persona & Research Issue #66: [https://github.com/ossf/wg-securing-software-repos/issues/66](https://github.com/ossf/wg-securing-software-repos/issues/66)
@@ -20,13 +20,13 @@ If you'd like to contribute, comment or iterate on this work then please see the
 
 ---
 
-![A screenshot of a UI example of the lowest level A requirements for visualising attestation information](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-1.png "A screenshot of a UI example of the lowest level A requirements for visualising attestation information")
+![A screenshot of a UI example of the lowest level A requirements for visualising attestation information](../images/lowest-requirements-1.png "A screenshot of a UI example of the lowest level A requirements for visualising attestation information")
 
 This is intended to sit in a main section of a webpage that might use a three-column layout--the main section occupying two-thirds and a sidebar occupying one-third of the width.
 
 In this version, each icon and heading is seperated by a vertical bar/pipe that spans approximately 75% of the total height of the container box.
 
-The panels can have a stroke or a drop shadow effect, yet should be adjusted to match whatever the platform's design system or styles. 
+The panels can have a stroke or a drop shadow effect, yet should be adjusted to match whatever the platform's design system or styles.
 
 While this panel can be used as-is with no interactive expansion, we advise against this.
 
@@ -38,11 +38,11 @@ Depending on the width space you have available you can increase the width of bo
 
 With this Level A component styling, use words and letters conservatively in the attestation statement,  balancing clarity of statement with space available. If needed, the attestation can be placed underneath at full width to accomodate complex statements (UI example on next page).
 
-![A screenshot of a UI example detailing icon information](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
+![A screenshot of a UI example detailing icon information](../images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
 
 re. the package icon or source code icon. Either can be used interchangeably for this information. Users connected both with this info in research.
 
-![A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
+![A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like](../images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
 
 **Signed by messages:**
 "Signed by" messages should be bold to indicate importance. They can flow over two lines but three lines should be avoided.
@@ -52,7 +52,7 @@ In this example, as in the last page, we've used PyPI's visual styling with blue
 
 The component variant to the left here shows when the panels are not grouped, instead they're separate panels aligned in a row. Their expandable sections still can be activated. Some platforms may prefer separated panels like this for their pages' global styles and/or to look more like buttons that can be interacted with.
 
-![A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
+![A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style](../images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
 
 In this example, we've used npm visual styles.
 
@@ -60,17 +60,17 @@ In this example, we've used npm visual styles.
 The links displayed here have all been carefully tested with users. In our research, we found that users expected the following information to be displayed near the attestation statement:
 
 1. Source repo & source commit
-2. Build commit & build logs 
+2. Build commit & build logs
 3. Transparency log (within the attestation statement section)
 
-We recommend left-aligning link labels, allowing them to span over two lines where required. 
+We recommend left-aligning link labels, allowing them to span over two lines where required.
 
 **Enhancing user confidence**
 Additional recommendations to help users feel confident about the security of a package are detailed in the medium (level AA) and highest (level AAA) UI recommendations.
 
 Users also rely on "social proof" (number of downloads, maintainers, recognizable project names) typically found on registry pages. Hashes/checksums also encourage confidence, but only if users recognize them and understand their function.
 
-![A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
+![A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style](../images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
 
 This example uses visual styles from RubyGems.
 
@@ -81,7 +81,7 @@ For 'Pragmatic Developers' and 'Incidental User' personas, simple visual and tex
 
 These users need to see this UI in its expanded state to understand what attestations communicate. Viewing the detailed information typically prompts them to explore further and piece together an understanding of package security. Providing additional documentation links can also help these users learn.
 
-![A screenshot of where the lowest level A UI should ideally be situated on a webpage](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/lowest-requirements-webpage-placement-1.png "A screenshot of where the lowest level A UI should ideally be situated on a webpage")
+![A screenshot of where the lowest level A UI should ideally be situated on a webpage](../images/lowest-requirements-webpage-placement-1.png "A screenshot of where the lowest level A UI should ideally be situated on a webpage")
 
 The positioning of these minimal elements on a page is also critical. The next page in this style guide illustrates their optimal positioning within each example package registry (please note that the next page is large, and you may need to scroll to find the appropriate UI example).
 
@@ -89,18 +89,18 @@ Ideally, this UI should not reside at the bottom of a page, particularly on plat
 
 Placing these UI elements at the top of a page or within a header component presents a dilemma:
 
-1. Prioritization: It effectively "forces" (as users described) immediate 
+1. Prioritization: It effectively "forces" (as users described) immediate
    consideration of security.
-2. Interruption: It disrupts the user's primary goal of quickly assessing the 
+2. Interruption: It disrupts the user's primary goal of quickly assessing the
    package's purpose.
 
 While promoting security awareness is important, it shouldn't overshadow essential package information. Therefore, while placing these elements in the first scroll/fold can prioritize security, it's generally more effective to position them at the top of the second scroll/fold. This aligns better with user expectations and their natural information discovery journey.
 
 Please open the following annotated UI full webpage examples in an image viewer of your choice. This image is large at 5.7MB and 11300x12722 pixel canvas. There is also a .pdf file.
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-lowest-ui-version-a-level.png](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-lowest-ui-version-a-level.png)
+[ui-development-lowest-ui-version-a-level.png](../images/ui-development-lowest-ui-version-a-level.png)
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-lowest-ui-version-a-level.pdf](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-lowest-ui-version-a-level.pdf)
+[ui-development-lowest-ui-version-a-level.pdf](../images/ui-development-lowest-ui-version-a-level.pdf)
 
 The following text is included in the annotated image file:
 
@@ -118,7 +118,7 @@ Based on these findings, we believe that for package pages like this, presenting
 
 If possible there should be a way for users to differentiate between maintainer provided information from the README versus index-controlled content such as the key words and provenance information.
 
-We recommend adding a visual break, such as a divider line or heading, here so that people understand what type of information they are looking at. 
+We recommend adding a visual break, such as a divider line or heading, here so that people understand what type of information they are looking at.
 
 The first place attestation information can be added is above the license information. Since the license is also detailed in the sidebar, users are generally comfortable with attestation content being positioned as high as possible on these types of pages. However, be aware that the likelihood of users discovering attestation information here is low. Most users will not scroll through these long README pages unless they are specifically searching for security, provenance, or attestation details they cannot find elsewhere on the page or in a different tab. More commonly, users will go to the project repository to find information such as build logs, commit files, source code, and so on.
 
@@ -132,7 +132,7 @@ Therefore, repeating information should not be a concern for platforms implement
 
 The first place attestation information can be added is above the license information. Since the license is also detailed in the sidebar, users are generally comfortable with attestation content being positioned as high as possible on these pages. However, be aware that the likelihood of users discovering attestation information here is low. Most users will not scroll through these long README pages unless they are specifically looking for security, provenance, or attestation information that they cannot find elsewhere on the page or in a different tab. More commonly, users will go to the project repository to find information such as build logs, commit files, source code, and so on.
 
-We recommend that there be a visual divider or way for the user to distinguish when maintainer provided content (eg. the project description) ends and index-controlled content (eg. security information) begins. This divider line follows the existing style of the site. 
+We recommend that there be a visual divider or way for the user to distinguish when maintainer provided content (eg. the project description) ends and index-controlled content (eg. security information) begins. This divider line follows the existing style of the site.
 
 Here, you can see that the separated elements can either span the full width of the available space in the main section, or they can take up only the minimum amount of space needed by the expandable sections to display additional information.
 

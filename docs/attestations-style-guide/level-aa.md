@@ -1,4 +1,4 @@
-# Style guide: Level AA - Medium 
+# Style guide: Level AA - Medium
 
 This section of the style guide defines the medium (Level AA) requirements for displaying attestation information on package registries, aiming to strengthen users' sense of security and trust in a package's build integrity.
 
@@ -6,12 +6,12 @@ Package repositories opting to implement these recommendations will need to allo
 
 There are variants for medium-level requirements:
 
-1. **Three-Card Layout**: Information is presented in distinct "cards" or modules. Each card includes 
-   icons, headings, labeled source links, and links to documentation (where relevant). This variant 
+1. **Three-Card Layout**: Information is presented in distinct "cards" or modules. Each card includes
+   icons, headings, labeled source links, and links to documentation (where relevant). This variant
    typically features three cards, with flexibility for additional cards as needed.
 
-2. **Four (Larger) Card Layout**: Designed for package registries with more visual space, this variant 
-   utilizes larger card designs. It typically features four cards, with flexibility for additional cards 
+2. **Four (Larger) Card Layout**: Designed for package registries with more visual space, this variant
+   utilizes larger card designs. It typically features four cards, with flexibility for additional cards
    as needed.
 
 During user testing, we found that variants one and two (three card and four card layouts) were most effective in helping users explore the safety, security and integrity of a package, along with the included links.
@@ -21,7 +21,7 @@ User research notes from this project, please see:
   Notes from user tests focused on evaluating attestation user interfaces for clarity and user preference.
 
 
-![A screenshot of a UI example of the medium level AA requirements for visualising attestation information](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-requirements-1.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information")
+![A screenshot of a UI example of the medium level AA requirements for visualising attestation information](../images/medium-requirements-1.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information")
 Box width = 200px Height = 160px in example
 
 Cards are designed so that three should fit in most main page widths for platforms and boxes can be stacked e.g. if there are two or more attestations the fourth box can go below the Source card etc.
@@ -35,7 +35,7 @@ Again, the Build Confirmed card contains the build commit (for the version avail
 The Transparency log link can either be the URL or a hyperlink.
 More detail about hyperlinks can be found in the hyperlinks page of this style guide.
 
-![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-requirements-2.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
+![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](../images/medium-requirements-2.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
 
 Box width = 260px Height = 200px in example
 
@@ -47,17 +47,17 @@ By having two (or three, depending on page width) cards horizontally, with other
 
 The possible and likely scenario of checksums being duplicated across page information is also addressed in the large medium UI mockups. In short, duplication was not an issue for users across any links or information. In fact, repeating details—such as links or checksum details, when they are supposed to match—was seen as a positive. All users we tested with reported greater confidence in the validity of the entire page’s information as a result.
 
-![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-requirements-3.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
+![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](../images/medium-requirements-3.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
 
 An example of the larger card sizes when a page width allows for three cards in a row with an additional Integrity card stacked under them in a row by itself.
 
 This indicates to the users that there could be more future information added here that is relevant to attestations. The design and layout did not look like there was 'unused space' to users but when implementing caution should be used when allowing for many solo/one cards as the information looks 'orphaned' when only one card is present and it does not attempt to span the width of the page layout's available space.
 
-![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-requirements-4.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
+![A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size](../images/medium-requirements-4.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information with larger 'box' size")
 
 An example—if appropriate and if sufficient page width is available—is centering a smaller row of cards  beneath a larger row, as seen here with three cards in the first row and two cards in the second row, rather than either left or right aligning the smaller row. (The example shown uses two of the same attestation and is only intended to demonstrate display orientation.)
 
-![A screenshot of where the medium level AA UI should ideally be situated on a webpage](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-requirements-webpage-placement-1.png "A screenshot of where the medium level AA UI should ideally be situated on a webpage")
+![A screenshot of where the medium level AA UI should ideally be situated on a webpage](../images/medium-requirements-webpage-placement-1.png "A screenshot of where the medium level AA UI should ideally be situated on a webpage")
 
 The positioning for the medium level AA UI are the same as the lowest level A UI.
 
@@ -65,7 +65,7 @@ After critical functional information about what the package does and as near to
 
 There was another tested Medium UI component that we've documented for clarity but no longer recommend implementing. This design follows in the next pages of medium requirements.
 
-![A screenshot of the medium level AA UI that uses a large, segmented container box for all information](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-box-requirements-1.png "A screenshot of the medium level AA UI that uses a large, segmented container box for all information")
+![A screenshot of the medium level AA UI that uses a large, segmented container box for all information](../images/medium-box-requirements-1.png "A screenshot of the medium level AA UI that uses a large, segmented container box for all information")
 
 When testing this large card's design, we learned that every user coming to a package registry page has some level of caution and/or doubt about the information it contains. They already arrive cautious and with shaky trust levels. This is due to thoughts like, “Anyone can just put any text or info on these pages, right? The maintainers or the registry, anyone? So by default, I don’t trust information unless I look at the sources and confirm for myself.”
 
@@ -77,20 +77,20 @@ This version also emphasizes explanatory text and warnings about the limitations
 
 Regarding language: this is the minimal design with the most clarifying text. For platforms that want to include as much disclaimer-like text as possible, this design (or the highest level, AAA, described later in this style guide) is recommended.
 
-![A screenshot of the medium level AA UI that uses a large, segmented container box for all information with annotation](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-box-requirements-2.png "A screenshot of the medium level AA UI that uses a large, segmented container box for all information with annotation")
+![A screenshot of the medium level AA UI that uses a large, segmented container box for all information with annotation](../images/medium-box-requirements-2.png "A screenshot of the medium level AA UI that uses a large, segmented container box for all information with annotation")
 
 A note on the words “verification,” “verified,” and “verify” versus using similar words like “confirm,” “confirmed,” “accepted,” “accepts,” “validates,” “inspected,” etc.
 
 When we asked users to explain back to us what attestation language meant to them, in our user tested designs, we avoided using "verified" as a term. Instead we relied on the terms "confirmed" or "accepted" as common language.
 
 Some users who lacked experience with attestation nuances explained this information as 'verification of complete safety of the package'.
-When we clarified that verification of complete safety is aspirational--not nessesarily what is on offer here--users acknowledged that they understand no package is ever 100% safe, regardless of the details provided. 
+When we clarified that verification of complete safety is aspirational--not nessesarily what is on offer here--users acknowledged that they understand no package is ever 100% safe, regardless of the details provided.
 
 However, this highlights the need to use terms like “verification” and “verified” with caution, as users often interpret them as a guarantee of complete safety.
 
 The language used in the card here—such as “confirms,” “accepts,” etc.—still clearly explains to users what is happening: that entities are checking details and asserting an opinionated “clearance” of certain aspects, such as build provenance or expected origin. However, users often jump to “verified!” assumptions. The term “verification” should only be used when a platform is prepared to accept the risk of users assuming full safety of a package when this word is present.
 
-![A screenshot of the medium level AA UI that uses a large, segmented container box with PyPI colours](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-box-requirements-3.png "A screenshot of the medium level AA UI that uses a large, segmented container box with PyPI colours")
+![A screenshot of the medium level AA UI that uses a large, segmented container box with PyPI colours](../images/medium-box-requirements-3.png "A screenshot of the medium level AA UI that uses a large, segmented container box with PyPI colours")
 
 Medium design that users least prefered.
 
@@ -100,9 +100,9 @@ This card attempts to combine all of the most useful information tested in the m
 
 Please open the following annotated UI full webpage examples in an image viewer of your choice. This image is large at 4.6MB and 14052x14542 pixel canvas. There is also a .pdf file.
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-medium-ui-version-a-level.png](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-medium-ui-version-a-level.png)
+[ui-development-medium-ui-version-a-level.png](../images/ui-development-medium-ui-version-a-level.png)
 
-[https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-medium-ui-version-a-level.pdf](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/ui-development-medium-ui-version-a-level.pdf)
+[ui-development-medium-ui-version-a-level.pdf](../images/ui-development-medium-ui-version-a-level.pdf)
 
 The following text is included in the annotated image file:
 
@@ -114,7 +114,7 @@ Example of a two x two horizontal stacking of cards.  In this example, the Integ
 
 Platforms can choose to make a single container span two spaces. There is no strict rule for how wide or tall box containers should be, but it is strongly advised not to have containers of different heights next to each other (see diagram below).
 
-![A screenshot of the medium level AA UI showing good and bad placement](https://github.com/ossf/wg-securing-software-repos/tree/main/attestations-ui-2025/images/medium-ui-placement.png "A screenshot of the medium level AA UI showing good and bad placement")
+![A screenshot of the medium level AA UI showing good and bad placement](../images/medium-ui-placement.png "A screenshot of the medium level AA UI showing good and bad placement")
 
 Note: the cards can either span the full width of the available page space, or they can occupy only the minimum width necessary for accessible visibility of information.
 
