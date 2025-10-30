@@ -21,6 +21,7 @@ If you'd like to contribute, comment or iterate on this work then please see the
 ---
 
 ![A screenshot of a UI example of the lowest level A requirements for visualising attestation information](/attestations-style-guide/images/lowest-requirements-1.png "A screenshot of a UI example of the lowest level A requirements for visualising attestation information")
+_A screenshot of a UI example of the lowest level A requirements for visualising attestation information_
 
 This is intended to sit in a main section of a webpage that might use a three-column layout--the main section occupying two-thirds and a sidebar occupying one-third of the width.
 
@@ -39,10 +40,10 @@ Depending on the width space you have available you can increase the width of bo
 With this Level A component styling, use words and letters conservatively in the attestation statement,  balancing clarity of statement with space available. If needed, the attestation can be placed underneath at full width to accommodate complex statements (UI example on next page).
 
 ![A screenshot of a UI example detailing icon information](/attestations-style-guide/images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
-
-re. the package icon or source code icon. Either can be used interchangeably for this information. Users connected both with this info in research.
+_A screenshot of a UI example detailing icon information_
 
 ![A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like](/attestations-style-guide/images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
+_A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like_
 
 **Signed by messages:**
 "Signed by" messages should be bold to indicate importance. They can flow over two lines but three lines should be avoided.
@@ -53,6 +54,7 @@ In this example, as in the last page, we've used PyPI's visual styling with blue
 The component variant to the left here shows when the panels are not grouped, instead they're separate panels aligned in a row. Their expandable sections still can be activated. Some platforms may prefer separated panels like this for their pages' global styles and/or to look more like buttons that can be interacted with.
 
 ![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style](/attestations-style-guide/images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
+_A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style_
 
 In this example, we've used npm visual styles.
 
@@ -71,6 +73,7 @@ Additional recommendations to help users feel confident about the security of a 
 Users also rely on "social proof" (number of downloads, maintainers, recognizable project names) typically found on registry pages. Hashes/checksums also encourage confidence, but only if users recognize them and understand their function.
 
 ![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style](/attestations-style-guide/images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
+_A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style_
 
 This example uses visual styles from RubyGems.
 
@@ -82,6 +85,7 @@ For 'Pragmatic Developers' and 'Incidental User' personas, simple visual and tex
 These users need to see this UI in its expanded state to understand what attestations communicate. Viewing the detailed information typically prompts them to explore further and piece together an understanding of package security. Providing additional documentation links can also help these users learn.
 
 ![A screenshot of where the lowest level A UI should ideally be situated on a webpage](/attestations-style-guide/images/lowest-requirements-webpage-placement-1.png "A screenshot of where the lowest level A UI should ideally be situated on a webpage")
+_A screenshot of where the lowest level A UI should ideally be situated on a webpage_
 
 The positioning of these minimal elements on a page is also critical. The next page in this style guide illustrates their optimal positioning within each example package registry (please note that the next page is large, and you may need to scroll to find the appropriate UI example).
 
