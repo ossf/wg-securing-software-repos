@@ -13,14 +13,17 @@ Several users also noted that having a security page gave them the impression th
 Some registries and platforms will not have pages or tabs where a dedicated security page can be added. In these cases, as with the example of the RubyGems package below, adding a security section beneath other sections is sufficient to set it apart and provide a link from sidebar content. Further details are provided in subsequent sections about how security page sections were tested and user rationale.
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](/attestations-style-guide/images/highest-requirements-1.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+_A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example_
 
 With registries or platforms like PyPI that have a left-hand menu, the security page can be added there.
 
 PyPI is a complex example, as there is a lot of different information that users in testing considered to be "security" information that could be included in this section. The best advice is that platforms should make informed decisions about what existing information moves to the security page and what information should be linked from the security page.
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](/attestations-style-guide/images/highest-requirements-menu-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+_A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example_
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](/attestations-style-guide/images/highest-requirements-2.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+_A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example_
 
 
 With registries or platforms like npm that have a navigation tab bar, the security page can be added there.
@@ -28,8 +31,10 @@ With registries or platforms like npm that have a navigation tab bar, the securi
 In the npm examples we tested, the packages often displayed entire READMEs, which meant many pages of scrolling to find any information not included in the README. In some cases, users were confused about which information was written by package maintainers and which was provided by the registry. One suggestion that was offered, but not explored in the UI, was to add author names to content, including the publish date. For example: "This security page was last updated on [ DATE ] by npm to include [ DETAILS ]."
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](/attestations-style-guide/images/highest-requirements-menu-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+_A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example_
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example](/attestations-style-guide/images/highest-requirements-3.png "A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example")
+_A screenshot of a UI example of the highest level AAA requirements for visualising attestation information along with entire security page content example_
 
 **Sidebar - Minimal**
 If present on a page, the sidebar typically already contains critically useful information to help users decide whether or not to use a package and/or if a package is safe. This is usually where downloads, releases, source code or repository links, and contributors are listed. These pieces of information are important not just for safety and security, but are generally useful for users when exploring packages.
@@ -46,6 +51,7 @@ See below dedicated security sections, nav bar tabs and left hand menu tabs. We 
 There may be cases where the visual style of a registry or platform does not allow for icon usage. It is acceptable to omit the lock icon in these cases.
 
 ![A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically](/attestations-style-guide/images/highest-requirements-4.png "A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally")
+_A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically_
 
 As previously stated, when positioning attestation content in the sidebar, it should not appear above essential general information such as:
 
@@ -64,6 +70,7 @@ Typically, this means that attestation information will still appear within the 
 We tested some expandable sections in the sidebar, but these did not perform well with users. There is a general expectation that sidebar information should be presented as is, or take you to an internal or external link, rather than expanding or contracting within the sidebar.
 
 ![A screenshot of the highest level AAA UI showing good and bad placement](/attestations-style-guide/images/highest-requirements-webpage-placement-1.png "A screenshot of the highest level AAA UI showing good and bad placement")
+_A screenshot of the highest level AAA UI showing good and bad placement_
 
 Please open the following annotated UI full webpage examples in an image viewer of your choice. This image is large at 3.2MB and 10982x5000 pixel canvas. There is also a .pdf file.
 
