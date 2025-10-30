@@ -1,0 +1,20 @@
+---
+---
+@import "{{ site.theme }}";
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+}
+
+img + em {
+  display: block;
+  text-align: center;
+  font-size: small;
+}
