@@ -21,7 +21,7 @@ focused on evaluating attestation user interfaces for clarity and user
 preference](https://github.com/ossf/wg-securing-software-repos/issues/66).
 
 ![A screenshot of a UI example of the medium level AA requirements for visualising attestation information](/attestations-style-guide/images/medium-requirements-1.png "A screenshot of a UI example of the medium level AA requirements for visualising attestation information")
-Box width = 200px Height = 160px in example
+_Box width = 200px Height = 160px in example_
 
 Cards are designed so that three should fit in most main page widths for platforms and boxes can be stacked e.g. if there are two or more attestations the fourth box can go below the Source card etc.
 
