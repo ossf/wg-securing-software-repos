@@ -31,10 +31,10 @@ The  public workplan can be seen [here](https://github.com/orgs/ossf/projects/36
 The style guide is broken into five parts:
 
 * Intro, background & contribution information (this page)
-* [Lowest UI requirements (Level A)](./level-a)
-* [Medium UI requirements (Level AA)](./level-aa)
-* [Highest UI requirements (Level AAA)](./level-aaa)
-* [UI Details](./ui-details)
+* [Lowest UI requirements (Level A)](/attestations-style-guide/level-a)
+* [Medium UI requirements (Level AA)](/attestations-style-guide/level-aa)
+* [Highest UI requirements (Level AAA)](/attestations-style-guide/level-aaa)
+* [UI Details](/attestations-style-guide/ui-details)
   * Attestations, Build, Source, Integrity UI in detail
   * Additional signals of trust
   * Icons
