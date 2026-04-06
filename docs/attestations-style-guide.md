@@ -1,8 +1,8 @@
 # Style Guide for Attestations UI/UX
 
-Authors: [Eriol Fox](https://github.com/Erioldoesdesign), [Nicole Harris](https://github.com/nlhkabu), [Dustin Ingram](https://github.com/di)
+Authors: [Eriol Fox](https://github.com/Erioldoesdesign), [Nicole Harris](https://github.com/nlhkabu), [Dustin Ingram](https://github.com/di), [Phillip Drummond](https://github.com/oilsinwater), [Superbloom Design](https://github.com/sprblm)
 
-Last updated: October 2025
+Last updated: October 2025, November 2025
 
 ## Background
 
@@ -31,10 +31,13 @@ The  public workplan can be seen [here](https://github.com/orgs/ossf/projects/36
 The style guide is broken into five parts:
 
 * Intro, background & contribution information (this page)
-* [Lowest UI requirements (Level A)](/attestations-style-guide/level-a)
-* [Medium UI requirements (Level AA)](/attestations-style-guide/level-aa)
-* [Highest UI requirements (Level AAA)](/attestations-style-guide/level-aaa)
-* [UI Details](/attestations-style-guide/ui-details)
+* [Lowest UI requirements (Level A)](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/attestations-style-guide/images/ui-development-lowest-ui-version-a-level.png)
+* [Medium UI requirements (Level AA)](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/attestations-style-guide/images/ui-development-medium-ui-version-a-level.png)
+* [Highest UI requirements in .png (Level AAA)](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/attestations-style-guide/images/ui-development-highest-ui-version-a-level.png)
+
+  .pdf versions also available here: https://github.com/ossf/wg-securing-software-repos/tree/main/docs/attestations-style-guide/images
+  
+* [UI Details](https://github.com/ossf/wg-securing-software-repos/blob/main/docs/attestations-style-guide/ui-details.md)
   * Attestations, Build, Source, Integrity UI in detail
   * Additional signals of trust
   * Icons
