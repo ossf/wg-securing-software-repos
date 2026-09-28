@@ -6,9 +6,9 @@ Overall, all of these attestation statements tested well. We recognize that they
 
 The users we tested tended to either skim or read in detail. All of the users generally understood these types of statements and agreed they helped them believe the package was safer and more "official." This was especially important for packages that lacked high download numbers or strong social/web-of-trust proof.
 
-Attestations became much more critical in the smaller, niche package scenarios users described. The users we tested also unanimously agreed that the icon was helpful in understanding an attestation. The attestation statements used in these UI mock ups may not be the most literal and accurate statements. We recommend technical writers to write the most accurate attesttation claim wording.
+Attestations became much more critical in the smaller, niche package scenarios users described. The users we tested also unanimously agreed that the icon was helpful in understanding an attestation. The attestation statements used in these UI mock ups may not be the most literal and accurate statements. We recommend technical writers to write the most accurate attestation claim wording.
 
-If a registry/playtform wants to make attestations the most prominent they can, we recommend a UI with the full-width box container UI.
+If a registry/platform wants to make attestations the most prominent they can, we recommend a UI with the full-width box container UI.
 
 ![A screenshot of the UI Attestations component in isolation](/attestations-style-guide/images/attestations-component.png "A screenshot of the UI Attestations component in isolation")
 _A screenshot of the UI Attestations component in isolation_
@@ -19,7 +19,7 @@ The Build component were the most important relational information to attestatio
 
 All users agreed that this information could be sourced from other locations or from the source repository itself, but having it near attestations made it quicker and easier to find and relate to the purpose of a build attestation statement.
 
-The links shown in the mock up may not be the exact ones that the packages would use for 'Build commit/file' and 'Build logs' but as long as these destinations are what folks with technical and package knowedge would place there then users are satisfied and go where they expect to go. In testing, we had the first link with the label 'Build commit'. We've since changed this label to 'Build workflow' to better describe the link used in the examples.
+The links shown in the mock up may not be the exact ones that the packages would use for 'Build commit/file' and 'Build logs' but as long as these destinations are what folks with technical and package knowledge would place there then users are satisfied and go where they expect to go. In testing, we had the first link with the label 'Build commit'. We've since changed this label to 'Build workflow' to better describe the link used in the examples.
 
 Reviewing the build commit/file and logs is a process that not everyone—except security experts we tested—knew exactly how to approach or compare; and for those users, the existence of this information helped create an impression of safety, security, and legitimacy for the package page. Typically, users we tested matched the links provided in the Build or Build confirmed components with what they could find themselves in the source repository.
 
@@ -43,7 +43,7 @@ _A screenshot of the UI source component in isolation_
 
 The integrity section—where we display a checksum, SHA-256, or hash for the attestation—was an area that divided opinions among the internal design team.
 
-Users we tested generally found this section to be useful and/or interesting, depending on whether they already understood what a checksum did and how to use it. Those who did felt more confident in the security of the build, attestation, or package, and were happy to see a checksum included. Suprisingly, the users we tested were not bothered by possible duplication; in fact, duplication signaled importance (as long as the values matched when appropriate and were correct).
+Users we tested generally found this section to be useful and/or interesting, depending on whether they already understood what a checksum did and how to use it. Those who did felt more confident in the security of the build, attestation, or package, and were happy to see a checksum included. Surprisingly, the users we tested were not bothered by possible duplication; in fact, duplication signaled importance (as long as the values matched when appropriate and were correct).
 
 Users who didn't know what checksums were used for or how to use them were curious rather than confused. They sensed that the information was important and potentially useful, should they choose to invest time in learning what it was. These users only needed clear documentation or guidance links on how to use checksums, referenced near the checksum information. Again, they were not confused by potential duplication; instead, they interpreted as "this must be important", an essential trust signal.
 
@@ -111,8 +111,8 @@ Text included in the icons image:
 Re. Build icons: Use whichever you think matches your design style and if unsure - go with the crane. Brick icon was edited to remove small details
 Re. Security icon: The lock icon was used for highest requirements pages next to the security heading/tab
 Re. Warning & info icon: Advised to only use the outline/stroke versions of the ! and i icons.
-Re. SLSA3 icon: Early designs used this recipet icon for SLSA3.
-Re. SBOM icon: Early designs used this recipet icon for SBOM.
+Re. SLSA3 icon: Early designs used this receipt icon for SLSA3.
+Re. SBOM icon: Early designs used this receipt icon for SBOM.
 Re. Copy icon: Used where a copy function against a CLI command or hash was
 Re. Links icon: Only used to mimic existing link icon styles in registry pages
 
@@ -120,7 +120,7 @@ Re. Links icon: Only used to mimic existing link icon styles in registry pages
 _A screenshot of the UI for signature icon_
 
 The signature icon was a critical icon to construct and took detailed editing of existing icons to balance the width and height of a signature, pen and container and/or the 'box or 'line' that people sign on a paper document.
-User all agreed this icon helped them to get an idea of what an attestation and references to 'signatures' mean't within the context. That some entity is 'signing off' in some way to the statement being made in the attestation statment.
+User all agreed this icon helped them to get an idea of what an attestation and references to 'signatures' meant within the context. That some entity is 'signing off' in some way to the statement being made in the attestation statement.
 
 ![A screenshot of the UI for icons](/attestations-style-guide/images/icons-2.png "A screenshot of the UI for icons")
 _A screenshot of the UI for icons_
@@ -129,14 +129,14 @@ Text included in the icons image:
 
 Re. Source icon: Source icon was used as is from the open source icon repo. Users described needing this icon after seeing the package used for 'source'
 Re. Integrity icon: The integrity magnifying glass was created by combining two icons. Users described the key in the magnifying glass as being critical to communicate 'investigating the security'. The term 'Integrity' also helped users understand that the information with this icon and heading was there to help them 'seek information related to security'
-Re. Package icon: The package icon was an edited version of some complex boxes from the icon repo. This box accurately communicated package to all users where it was used. They expected to see package info like source repo and package ino like version, name etc.
+Re. Package icon: The package icon was an edited version of some complex boxes from the icon repo. This box accurately communicated package to all users where it was used. They expected to see package info like source repo and package info like version, name etc.
 
 ![A screenshot of the UI development for an attestation specific icon](/attestations-style-guide/images/attestation-icon-development.png "A screenshot of the UI development for an attestation specific icon")
 _A screenshot of the UI development for an attestation specific icon_
 
-Early on some design work was done to try to reduce the attestation UI down to a single icon or badge. After some effort it was decided that for most users that are not security experts a badge or icon without any messaging wouldn't be useful. The only user person that a badge/icon is useful for are people who are alreayd well informed about attestations and begin to associate that knowledge with whatever badge/icon was cerated. There was no simple way to reduce these concepts into a symbol. It is worth re-exploring with a graphic desing, icon or other expert in brand/indentity language what can be created but for now, the progress made on attestation badge/icons is below.
+Early on some design work was done to try to reduce the attestation UI down to a single icon or badge. After some effort it was decided that for most users that are not security experts a badge or icon without any messaging wouldn't be useful. The only user person that a badge/icon is useful for are people who are already well informed about attestations and begin to associate that knowledge with whatever badge/icon was created. There was no simple way to reduce these concepts into a symbol. It is worth re-exploring with a graphic design, icon or other expert in brand/identity language what can be created but for now, the progress made on attestation badge/icons is below.
 
-Some of our early designs attempted to 'tell the story' of attestations from 'origin' to signed attestation statement on a package. We developed visual styles that used a mail/postal package being delivered and signed. This story /inforgraphic visual has potential but within registry pages for UI it was too complicated and required a user to swap to info gathering to story comprehension mode. Infographics could be good for documentation pages and should be tested.
+Some of our early designs attempted to 'tell the story' of attestations from 'origin' to signed attestation statement on a package. We developed visual styles that used a mail/postal package being delivered and signed. This story /infographic visual has potential but within registry pages for UI it was too complicated and required a user to swap to info gathering to story comprehension mode. Infographics could be good for documentation pages and should be tested.
 
 * <https://www.svgrepo.com/svg/446714/magnifying-glass-2>
 * <https://www.svgrepo.com/svg/437226/signature>
@@ -242,4 +242,4 @@ We encourage RubyGems.org, PyPI and npm to use, improve, and extend these templa
 
 ---
 
-Next: [UI Details](/attestations-style-guide/documentation)
+Next: [Documentation recommendations](/attestations-style-guide/documentation)

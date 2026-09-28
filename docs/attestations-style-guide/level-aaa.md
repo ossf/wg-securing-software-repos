@@ -50,7 +50,7 @@ See below dedicated security sections, nav bar tabs and left hand menu tabs. We 
 
 There may be cases where the visual style of a registry or platform does not allow for icon usage. It is acceptable to omit the lock icon in these cases.
 
-![A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically](/attestations-style-guide/images/highest-requirements-4.png "A screenshot of a UI example of the highest level AAA requirements for visualising the sidbar content specifcally")
+![A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically](/attestations-style-guide/images/highest-requirements-4.png "A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically")
 _A screenshot of a UI example of the highest level AAA requirements for visualising the sidebar content specifically_
 
 As previously stated, when positioning attestation content in the sidebar, it should not appear above essential general information such as:

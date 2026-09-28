@@ -40,7 +40,7 @@ The style guide is broken into five parts:
   * Hyperlinks and linking information
   * Documentation
   * Language localization
-* [Documentation recommendations](/attestations-style-guide/documentatation)
+* [Documentation recommendations](/attestations-style-guide/documentation)
 
 ## Research
 

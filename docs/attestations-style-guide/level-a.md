@@ -42,7 +42,7 @@ With this Level A component styling, use words and letters conservatively in the
 ![A screenshot of a UI example detailing icon information](/attestations-style-guide/images/lowest-requirements-2.png "A screenshot of a UI example detailing icon information")
 _A screenshot of a UI example detailing icon information_
 
-![A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like](/attestations-style-guide/images/lowest-requirements-3.png "A screenshot of a UI example detailing a verion of the lowest level UI that has seperated 'boxes' and what a full width attestation 'box' could look like")
+![A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like](/attestations-style-guide/images/lowest-requirements-3.png "A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like")
 _A screenshot of a UI example detailing a version of the lowest level UI that has separated 'boxes' and what a full width attestation 'box' could look like_
 
 **Signed by messages:**
@@ -53,7 +53,7 @@ In this example, as in the last page, we've used PyPI's visual styling with blue
 
 The component variant to the left here shows when the panels are not grouped, instead they're separate panels aligned in a row. Their expandable sections still can be activated. Some platforms may prefer separated panels like this for their pages' global styles and/or to look more like buttons that can be interacted with.
 
-![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style](/attestations-style-guide/images/lowest-requirements-4.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using npm style")
+![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style](/attestations-style-guide/images/lowest-requirements-4.png "A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style")
 _A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using npm style_
 
 In this example, we've used npm visual styles.
@@ -72,7 +72,7 @@ Additional recommendations to help users feel confident about the security of a 
 
 Users also rely on "social proof" (number of downloads, maintainers, recognizable project names) typically found on registry pages. Hashes/checksums also encourage confidence, but only if users recognize them and understand their function.
 
-![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style](/attestations-style-guide/images/lowest-requirements-5.png "A screenshot of a UI example detailing a verion of the lowest level UI with expanded tabs/details using RubyGems style")
+![A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style](/attestations-style-guide/images/lowest-requirements-5.png "A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style")
 _A screenshot of a UI example detailing a version of the lowest level UI with expanded tabs/details using RubyGems style_
 
 This example uses visual styles from RubyGems.
