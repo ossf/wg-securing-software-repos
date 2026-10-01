@@ -41,6 +41,7 @@ The style guide is broken into five parts:
   * Documentation
   * Language localization
 * [Documentation recommendations](/attestations-style-guide/documentation)
+* [PyPI implementation case study](/attestations-style-guide/pypi-case-study)
 
 ## Research
 

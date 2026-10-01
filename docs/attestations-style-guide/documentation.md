@@ -107,3 +107,7 @@ We encourage RubyGems.org, PyPI and npm to use, improve, and extend these templa
 * [RubyGems.org documentation recommendations](/attestations-style-guide/zips/rubygems_attestation_documentation_templates.zip)
 * [PyPI documentation recommendations](/attestations-style-guide/zips/pypi_attestation_documentation_templates.zip)
 * [npm documentation recommendations](/attestations-style-guide/zips/npm_attestation_documentation_templates.zip)
+
+---
+
+Next: [PyPI implementation case study](/attestations-style-guide/pypi-case-study)
