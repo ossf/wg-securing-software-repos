@@ -27,7 +27,7 @@ The  public workplan can be seen [here](https://github.com/orgs/ossf/projects/36
 
 ## The Style Guide
 
-The style guide is broken into five parts:
+The style guide is broken into seven parts:
 
 * Intro, background & contribution information (this page)
 * [Lowest UI requirements (Level A)](/attestations-style-guide/level-a)
