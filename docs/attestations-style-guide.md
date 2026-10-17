@@ -1,6 +1,6 @@
 # Style Guide for Attestations UI/UX
 
-Authors: [Eriol Fox](https://github.com/Erioldoesdesign), [Nicole Harris](https://github.com/nlhkabu), [Dustin Ingram](https://github.com/di)
+Authors: [Eriol Fox](https://github.com/Erioldoesdesign), [Nicole Harris](https://github.com/nlhkabu), [Dustin Ingram](https://github.com/di), [Phillip Drummond](https://github.com/oilsinwater), [Superbloom Design](https://github.com/sprblm)
 
 Last updated: October 2026
 
