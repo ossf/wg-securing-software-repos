@@ -123,7 +123,7 @@ The attestations have been adapted for each attestation type:
 
 1. The attestation block, which the style guide [recommends displaying _under_ the other columns](/attestations-style-guide/level-aaa), has been moved _above_ the other metadata to act as a header. This groups each attestation's identity, workflow, and artifact details together, and allows the attestation type to be used as a heading.
 2. The attestation title displays the attestation type (i.e., PyPI or SLSA) and links to the predicate definition
-3. A logo denotes which service built or signed the attestation alongside the attestation type. Logo combinations include GitHub + PyPI, GitHub + SLSA, GitLab + PyPI, GitLab + SLSA, Google Cloud + PyPI, Google Cloud + SLSA, ActiveState + PyPI, and ActiveState + SLSA.
+3. A logo denotes which service built or signed the attestation alongside the attestation type. Logo combinations include GitHub + PyPI, GitHub + SLSA, GitLab + PyPI, GitLab + SLSA, Google Cloud + PyPI, and Google Cloud + SLSA.
 4. "Identity", "Workflow/Build", and "Artifact" labels reflect the specific data displayed for each attestation type
 5. Subtitles are customized to the attestation type. For example, the repository is labeled as a "Publishing repository" for PyPI Publish attestations, whereas for SLSA attestations, it is labeled as a "Build repository".
 
