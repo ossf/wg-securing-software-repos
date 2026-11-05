@@ -42,6 +42,7 @@ Transparency Log Entry
 Verified / verify / verifying
 : _Definition_: The process that a package repository takes when accepting an attestation from a build platform, ensuring the attestation's source matches the maintainer's configuration _and_ the process users can use to confirm that an attestation is valid
 : _Do_: Use "verified" to describe the repository's automated check during package upload. Use "verify" to describe the user checking the attestation.
+: _Caution_: Users often read "verified" as a guarantee that a package is completely safe (see the [Level AA recommendations](/attestations-style-guide/level-aa)). Always scope the term to what was actually checked. See the [PyPI case study](/attestations-style-guide/pypi-case-study#be-judicious-about-using-verified-checkmark-icons-or-green-styling) for an example.
 : _Examples_: "PyPI verifies this attestation at upload time, confirming that the identity matches what the maintainer previously configured for Trusted Publishing." "To manually verify an artifact against its provenance object..."
 
 ### 2. Structure documentation around user roles
