@@ -119,14 +119,19 @@ One solution to this issue is to implement [“Pending” Trusted Publishers](ht
 
 ## Support
 
-As of December 2025, the following package repositories support Trusted Publishers:
+As of November 2026, the following package repositories support Trusted Publishers:
 
 - [Dart’s pub.dev](https://dart.dev/tools/pub/automated-publishing)
+- [Hex](https://hex.pm/docs/workload-identity)
+- [JSR](https://jsr.io/docs/publishing-packages#publishing-from-github-actions)
 - [npm](https://docs.npmjs.com/trusted-publishers)
 - [NuGet](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing)
+- [Open VSX](https://github.com/eclipse-openvsx/openvsx/wiki/Trusted-Publishing)
+- [prefix.dev](https://prefix.dev/blog/trusted_publishing_to_conda_channels)
 - [Python Package Index](https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/)
 - [RubyGems.org](https://blog.rubygems.org/2023/12/14/trusted-publishing.html)
 - [Rust crates](https://crates.io/docs/trusted-publishing)
+- [Visual Studio Marketplace](https://developer.microsoft.com/blog/trusted-publishing-visual-studio-marketplace/)
 
 ## References
 
